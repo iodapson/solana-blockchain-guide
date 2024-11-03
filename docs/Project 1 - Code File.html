@@ -1,0 +1,246 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Project 1 - Code File - Solana Blockchain Guide</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="1. Overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="2. What is Blockchain & How it Works.html"><strong aria-hidden="true">2.</strong> What is Blockchain & How it Works</a></li><li class="chapter-item expanded "><a href="3. How Blockchain Transactions work.html"><strong aria-hidden="true">3.</strong> How Blockchain Transactions work</a></li><li class="chapter-item expanded "><a href="Project 1 - Code File.html" class="active"><strong aria-hidden="true">4.</strong> Project 1 - Code File</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 1: Favorites Program</li><li class="chapter-item expanded "><a href="4. Solana Project 1 - Section A.html"><strong aria-hidden="true">5.</strong> Solana Project 1 - Section A</a></li><li class="chapter-item expanded "><a href="5. Solana Project 1 - Section B.html"><strong aria-hidden="true">6.</strong> Solana Project 1 - Section B</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Solana Blockchain Guide</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <pre><code class="language-rs">use anchor_lang::prelude::*;
+// Please note that a program has a id also called an 'address' that will be automatically assigned to you when you deploy your Solana program using the Solana playground
+declare_id!(&quot;&quot;);
+
+pub const ANCHOR_DESCRIMINATOR_SIZE: usize = 8; // Your program will need 8 bytes + the size of whatever you saving on the Solana blockchain. 'a_d_s' is something that is written to every account on the Solana blockchain by an Anchor program. | ANCHOR_DESCRIMINATOR_SIZE Purpose: It specifies the type of account it is. It is used by anchor for some of its checks.
+
+// Anchor lets you take a regular Rust program and convert it into a Anchor program using the Solana macro '#[program]'. For example:
+#[program] // '#[program]' would even apply reasonable defualts
+pub mod favorites { // a regular program called favorites
+    use super::*;
+
+    // Now this function 'set_favorites()' would take instructions provided by clients and run them and then save the results to the blockchain
+    pub fn set_favorites() -&gt; Return&lt;()&gt; {
+        // Fill in later
+    }
+}
+
+// This is what we what to save to the blockchain
+#[account] // This macro specifies to save struct 'Favorites' to an account
+#[derive(InitSpace)] // This macro lets Anchor know how big the data is, and gives all the intances of the data (in this case, struct Favorites) the initspace attribute which is the total space used by all the items inside
+pub struct Favorites {
+    pub number: u64,
+
+    // You do need to also specify the size of each field in the struct. This is especially the case for a String data type which essentially has no default max size
+    #[max_len(50)] // (50) as in 50 bytes
+    pub color: String,
+
+    #[max_len(5, 50)] // (5, 50) as in, 5 strings max, with each string being 50 bytes max
+    pub hobbies: Vec&lt;String&gt;,
+}
+
+// Note that when your 'set_favorites' function is called, tney will need to provide a list of accounts that they are going to modify on the blockchain
+// Also note that Solana can process multiple transactions on different accounts at the same time
+
+// When people call the function defined above 'set_favorites', they are going to need to provide account(s) they are going to modify on the blockchain. I guess the function 'set_favorite' needs one or more accounts to act upon
+
+// Struct of accounts for the 'set_favorites' instruction handler
+pub struct SetFavorites { // It is tradition to name the account that the instruction (e.g, 'set_favorites') would act upon as the name of the instruction handler function itself
+    #[account(number)]
+    pub user: Signer&lt;'info&gt; // lifetime `info is a Solana object
+    // so we're gonna specify some options for this account
+    // I'm gonna say that the signer is mutable. Why?
+    // Because the person that signs the instruction to
+    // ...set favorites is going to pay to create their
+    // ...favorites account on the blockchain
+    // You're gonna pay to store that information.
+    //
+    // Also, we'll need the person running 'set_favorites'
+    // ...to specify the favorites account they want to write to.
+    // It doesn't mean that we'll let them write to this account,
+    // ...we just need them to specify the account.
+
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="3. How Blockchain Transactions work.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="4. Solana Project 1 - Section A.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="3. How Blockchain Transactions work.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="4. Solana Project 1 - Section A.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
