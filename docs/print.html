@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="1. Overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="2. What is Blockchain & How it Works.html"><strong aria-hidden="true">2.</strong> What is Blockchain & How it Works</a></li><li class="chapter-item expanded "><a href="3. How Blockchain Transactions work.html"><strong aria-hidden="true">3.</strong> How Blockchain Transactions work</a></li><li class="chapter-item expanded "><a href="Project 1 - Code File.html"><strong aria-hidden="true">4.</strong> Project 1 - Code File</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 1: Favorites Program</li><li class="chapter-item expanded "><a href="4. Solana Project 1 - Section A.html"><strong aria-hidden="true">5.</strong> Solana Project 1 - Section A</a></li><li class="chapter-item expanded "><a href="5. Solana Project 1 - Section B.html"><strong aria-hidden="true">6.</strong> Solana Project 1 - Section B</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="1. Overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="2. What is Blockchain & How it Works.html"><strong aria-hidden="true">2.</strong> What is Blockchain & How it Works</a></li><li class="chapter-item expanded "><a href="Project 1 - Code File.html"><strong aria-hidden="true">3.</strong> Project 1 - Code File</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 1: Favorites Program</li><li class="chapter-item expanded "><a href="3. Solana Project 1 - Section A.html"><strong aria-hidden="true">4.</strong> Solana Project 1 - Section A</a></li><li class="chapter-item expanded "><a href="4. Solana Project 1 - Section B.html"><strong aria-hidden="true">5.</strong> Solana Project 1 - Section B</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -137,8 +137,8 @@
                     <main>
                         <h2 id="solana-in-a-lean-wrap"><a class="header" href="#solana-in-a-lean-wrap">Solana In A Lean Wrap</a></h2>
 <p>This is a compressed version of <a href="https://www.youtube.com/watch?v=amAq-WHAFs8">Solana Blockchain Bootcamp</a> powered by the programming language, <a href="https:///www.rust-lang.org/learn">Rust</a> and TypeScript.</p>
-<p>This book focuses more on the concepts to get things done. It does not cover Soalana-specific concepts in detail. Rather, it extracts and sometimes annotates Solana concepts neccessary to become a very proficient Solana developer</p>
-<p>You can use it a quick reference material, in complement with the official Solana documentaion for a more detailed Solana concepts explainer.</p>
+<p>This book focuses more on the concepts to get things done. It does not cover Solana-specific concepts in detail. Rather, it extracts and sometimes annotates Solana concepts necessary to become a very proficient Solana developer</p>
+<p>You can use it a quick reference material, in complement with the official Solana documentation for a more detailed Solana concepts explainer.</p>
 <h3 id="conventions-used"><a class="header" href="#conventions-used">Conventions Used</a></h3>
 <ul>
 <li>Wherever you see <code>{{_}}</code>, it represents a placeholder text for an actual value, variable, or expression. The text inside the position of <code>_</code> should be used or changed in-place of <code>{{_}}</code>.
@@ -190,14 +190,14 @@ A front-end application that interacts with a Solana cluster.</p>
 </li>
 <li>
 <p><span style="color: orangered;">Client:</span>
-A computer program that accesses the Solan server network cluster.</p>
+A computer program that accesses the Solana server network cluster.</p>
 </li>
 <li>
-<p><span style="color: orangered;">Program:</span>
+<p><span style="color: orangered`;">Program:</span>
 Onchain program / smart contract.</p>
 </li>
 <li>
-<p><span style="color: orangered;">Onchain programmer:</span>
+<p><span style="color: orangered;">Onchain program:</span>
 The executable code on Solana blockchain that interprets the 'instructions' sent inside of each 'transaction' to read and modify accounts over which it has control. These programs are often referred to as &quot;smart contracts&quot; on other blockchains.</p>
 </li>
 <li>
@@ -205,17 +205,16 @@ The executable code on Solana blockchain that interprets the 'instructions' sent
 A call to invoke a specific instruction handler in a program. An instruction also specifies which accounts it wants to read or modify, and additional data that serves as auxiliary input to the 'instruction handler'. A 'client' must include at least one instruction in a 'transaction', and all instructions must complete for the transaction to be considered successful.</p>
 </li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><p>What is blockchain and what can you do with it?</p>
+<div style="break-before: page; page-break-before: always;"></div><p>What is blockchain and how does it work?</p>
 <p><span style="color: orange;">What Blockchain Is:</span></p>
 <p>A distributed database that</p>
 <ul>
 <li>is a ledger</li>
 <li>is stored in multiple locations around the world</li>
 <li>has no central authority</li>
-<li>and directly transacted</li>
 </ul>
 <p><span style="color: orange;">Good to Know 1</span>: A block is a bundle of transactions.</p>
-<p><span style="color: orange;">Good to Know 2:</span> Blockchain uses digital signatures for peer to peer digital verification - it contains information about a transaction like the currency used, time of transaction, and state of transaction (which lets you know whether or not the transaction is successful).</p>
+<p><span style="color: orange;">Good to Know 2:</span> Blockchain uses digital signatures for peer to peer digital verification - it contains information about a transaction like the currency used, time of transaction, and the state of a transaction (which lets you know whether or not the transaction is successful).</p>
 <p>Solana lets you perform fast secure payments in any currency such as Bitcoin.</p>
 <p><span style="color: orange;">What a Smart Contract Is:</span></p>
 <ul>
@@ -232,11 +231,13 @@ A call to invoke a specific instruction handler in a program. An instruction als
 <p>Smart contracts extend blockchain beyond simple payments, such as, lending money without a bank, exchanging items directly with each other, create lottery without a lottery issuer, e.t.c</p>
 </li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><p><span style="color: orange;">Cryptography:</span></p>
+<p><span style="color: orange;">Cryptography In Blockchain:</span></p>
 <p>Users of blockchain each have a keypair (private key &amp; public key)</p>
-<p><span style="color: orange;">Good to Know:</span> private keys are used to sign transactions which proves that you initiated a transaction while your public key is an address where people can go to for transactions with you, and also prove that you made a transaction.</p>
-<p><span style="color: orange;">Solana Wallet:<span>
-Is an address with a small balance of 'Sol'. Users can interact with a Solana smart contract using sol. For example, a user's private key can be instructed to sign a transaction on the Solana blockchain, then transfer the Sol using the system program's transfer function, and then write a note about the transaction using the system's memo program's memo function (of the smart contract, maybe? or perhaps of the Solana blockchain). These steps are called instructions.</p>
+<p><span style="color: orange;">Good to Know 3:</span> private keys are used to sign transactions which proves that you made a transaction while your public key is an address where people can go to for transactions with you.</p>
+<p><span style="color: orange;">Solana Wallet:</span>
+Is an address with a small balance of 'Sol'. Users can interact with a Solana smart contract using 'sol'. For example, a user's private key can be instructed to sign a transaction on the Solana blockchain, then transfer the Sol using the system program's transfer function, and then write a note about the transaction using the system's memo program's memo function (of the smart contract, maybe? or perhaps of the Solana blockchain). These steps are called instructions.</p>
+<p><span style="color: orange;">Key Takeway:</span></p>
+<p>You as a Solana Developer would create Solana apps that interact with a Solana client's account / Solana ledger that is either an executable program or contains data for the Solana client - a computer program that accesses the Solana server network cluster, and your app interacts with the Solana account by executing smart contracts or so-called 'onchain programs' on the Solana blockchain which invoke instruction handlers to handle the client-signed instruction / initiated transaction that modify the client's account.</p>
 <div style="break-before: page; page-break-before: always;"></div><pre><code class="language-rs">use anchor_lang::prelude::*;
 // Please note that a program has a id also called an 'address' that will be automatically assigned to you when you deploy your Solana program using the Solana playground
 declare_id!(&quot;&quot;);
