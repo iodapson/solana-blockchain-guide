@@ -2,9 +2,9 @@
 
 This is a compressed version of [Solana Blockchain Bootcamp](https://www.youtube.com/watch?v=amAq-WHAFs8) powered by the programming language, [Rust](https:///www.rust-lang.org/learn) and TypeScript.
 
-This book focuses more on the concepts to get things done. It does not cover Soalana-specific concepts in detail. Rather, it extracts and sometimes annotates Solana concepts neccessary to become a very proficient Solana developer
+This book focuses more on the concepts to get things done. It does not cover Solana-specific concepts in detail. Rather, it extracts and sometimes annotates Solana concepts necessary to become a very proficient Solana developer
 
-You can use it a quick reference material, in complement with the official Solana documentaion for a more detailed Solana concepts explainer.
+You can use it a quick reference material, in complement with the official Solana documentation for a more detailed Solana concepts explainer.
 
 ### Conventions Used
 
