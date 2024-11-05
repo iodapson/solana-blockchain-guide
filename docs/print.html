@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="1. Overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="2. What is Blockchain & How it Works.html"><strong aria-hidden="true">2.</strong> What is Blockchain & How it Works</a></li><li class="chapter-item expanded "><a href="Project 1 - Code File.html"><strong aria-hidden="true">3.</strong> Project 1 - Code File</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 1: Favorites Program</li><li class="chapter-item expanded "><a href="3. Solana Project 1 - Section A.html"><strong aria-hidden="true">4.</strong> Solana Project 1 - Section A</a></li><li class="chapter-item expanded "><a href="4. Solana Project 1 - Section B.html"><strong aria-hidden="true">5.</strong> Solana Project 1 - Section B</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="1. Overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="2. What is Blockchain & How it Works.html"><strong aria-hidden="true">2.</strong> Blockchain & How it Works</a></li><li class="chapter-item expanded "><a href="Project 1 - Code File.html"><strong aria-hidden="true">3.</strong> Project 1 - Code File</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 1: Favorites Program</li><li class="chapter-item expanded "><a href="3. Solana Project 1 - Section A.html"><strong aria-hidden="true">4.</strong> Solana Project 1 - Section A</a></li><li class="chapter-item expanded "><a href="4. Solana Project 1 - Section B.html"><strong aria-hidden="true">5.</strong> Solana Project 1 - Section B</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -204,6 +204,10 @@ The executable code on Solana blockchain that interprets the 'instructions' sent
 <p><span style="color: orangered;">Instructions:</span>
 A call to invoke a specific instruction handler in a program. An instruction also specifies which accounts it wants to read or modify, and additional data that serves as auxiliary input to the 'instruction handler'. A 'client' must include at least one instruction in a 'transaction', and all instructions must complete for the transaction to be considered successful.</p>
 </li>
+<li>
+<p><span style="color: orangered;">Transaction:</span>
+One or more instructions signed by a client using one or more keypairs and executed atomically with only two possible outcomes: success or failure.</p>
+</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><p>What is blockchain and how does it work?</p>
 <p><span style="color: orange;">What Blockchain Is:</span></p>
@@ -237,7 +241,7 @@ A call to invoke a specific instruction handler in a program. An instruction als
 <p><span style="color: orange;">Solana Wallet:</span>
 Is an address with a small balance of 'Sol'. Users can interact with a Solana smart contract using 'sol'. For example, a user's private key can be instructed to sign a transaction on the Solana blockchain, then transfer the Sol using the system program's transfer function, and then write a note about the transaction using the system's memo program's memo function (of the smart contract, maybe? or perhaps of the Solana blockchain). These steps are called instructions.</p>
 <p><span style="color: orange;">Key Takeway:</span></p>
-<p>You as a Solana Developer would create Solana apps that interact with a Solana client's account / Solana ledger that is either an executable program or contains data for the Solana client - a computer program that accesses the Solana server network cluster, and your app interacts with the Solana account by executing smart contracts or so-called 'onchain programs' on the Solana blockchain which invoke instruction handlers to handle the client-signed instruction / initiated transaction that modify the client's account.</p>
+<p>You as a Solana Developer would create Solana apps that interact with a Solana client's account / Solana client's ledger that is either an executable program or holds data for the Solana client - a Solana client is computer program that accesses the Solana server network cluster, and your app interacts with a Solana account by executing smart contracts or so-called 'onchain programs' on the Solana blockchain which invoke instruction handlers to handle a client's signed instruction / initiated transactions that modify the client's account on the blockchain.</p>
 <div style="break-before: page; page-break-before: always;"></div><pre><code class="language-rs">use anchor_lang::prelude::*;
 // Please note that a program has a id also called an 'address' that will be automatically assigned to you when you deploy your Solana program using the Solana playground
 declare_id!(&quot;&quot;);

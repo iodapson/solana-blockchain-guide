@@ -5,7 +5,7 @@
 # Overview
 
 - [Overview](./1.%20Overview.md)
-- [What is Blockchain & How it Works](./2.%20What%20is%20Blockchain%20&%20How%20it%20Works.md)
+- [Blockchain & How it Works](./2.%20What%20is%20Blockchain%20&%20How%20it%20Works.md)
 - [Project 1 - Code File](Project%201%20-%20Code%20File.md)
 
 ---
