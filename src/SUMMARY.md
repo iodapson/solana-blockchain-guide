@@ -14,3 +14,4 @@
 
 - [Solana Project 1 - Section A](3.%20Solana%20Project%201%20-%20Section%20A.md)
 - [Solana Project 1 - Section B](4.%20Solana%20Project%201%20-%20Section%20B.md)
+- [Solana Project 1 - Section C](5.%20Solana%20Project%201%20-%20Section%20C.md)

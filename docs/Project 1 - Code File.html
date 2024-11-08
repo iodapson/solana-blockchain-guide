@@ -75,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="1. Overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="2. What is Blockchain & How it Works.html"><strong aria-hidden="true">2.</strong> Blockchain & How it Works</a></li><li class="chapter-item expanded "><a href="Project 1 - Code File.html" class="active"><strong aria-hidden="true">3.</strong> Project 1 - Code File</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 1: Favorites Program</li><li class="chapter-item expanded "><a href="3. Solana Project 1 - Section A.html"><strong aria-hidden="true">4.</strong> Solana Project 1 - Section A</a></li><li class="chapter-item expanded "><a href="4. Solana Project 1 - Section B.html"><strong aria-hidden="true">5.</strong> Solana Project 1 - Section B</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="1. Overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="2. What is Blockchain & How it Works.html"><strong aria-hidden="true">2.</strong> Blockchain & How it Works</a></li><li class="chapter-item expanded "><a href="Project 1 - Code File.html" class="active"><strong aria-hidden="true">3.</strong> Project 1 - Code File</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 1: Favorites Program</li><li class="chapter-item expanded "><a href="3. Solana Project 1 - Section A.html"><strong aria-hidden="true">4.</strong> Solana Project 1 - Section A</a></li><li class="chapter-item expanded "><a href="4. Solana Project 1 - Section B.html"><strong aria-hidden="true">5.</strong> Solana Project 1 - Section B</a></li><li class="chapter-item expanded "><a href="5. Solana Project 1 - Section C.html"><strong aria-hidden="true">6.</strong> Solana Project 1 - Section C</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -134,7 +134,9 @@
 
                 <div id="content" class="content">
                     <main>
-                        <pre><code class="language-rs">use anchor_lang::prelude::*;
+                        <p>Here is a quick and immersive introduction to the first Solana program developed in the Solana Bootcamp - 2024.</p>
+<p>This program allows a user to save a favorite to the blockchain. The user run a favorite saving transaction, sign the trasaction, and gets charged for it.</p>
+<pre><code class="language-rs">use anchor_lang::prelude::*;
 // Please note that a program has a id also called an 'address' that will be automatically assigned to you when you deploy your Solana program using the Solana playground
 declare_id!(&quot;&quot;);
 
@@ -145,13 +147,13 @@ pub const ANCHOR_DESCRIMINATOR_SIZE: usize = 8; // Your program will need 8 byte
 pub mod favorites { // a regular program called favorites
     use super::*;
 
-    // Now this function 'set_favorites()' would take instructions provided by clients and run them and then save the results to the blockchain
+    // Now this function 'set_favorites()' would take instructions provided by clients, run them, and then save the results to the blockchain
     pub fn set_favorites() -&gt; Return&lt;()&gt; {
         // Fill in later
     }
 }
 
-// This is what we what to save to the blockchain
+// 'Favorites' is what we what to save to the blockchain
 #[account] // This macro specifies to save struct 'Favorites' to an account
 #[derive(InitSpace)] // This macro lets Anchor know how big the data is, and gives all the intances of the data (in this case, struct Favorites) the initspace attribute which is the total space used by all the items inside
 pub struct Favorites {
@@ -165,27 +167,26 @@ pub struct Favorites {
     pub hobbies: Vec&lt;String&gt;,
 }
 
-// Note that when your 'set_favorites' function is called, tney will need to provide a list of accounts that they are going to modify on the blockchain
+// Note that when your 'set_favorites' function is called, the instruction runner will need to provide a list of accounts involved with what they are going to modify on the blockchain - the account to be modified, the account that would sign the modifications, e.t.c
 // Also note that Solana can process multiple transactions on different accounts at the same time
 
-// When people call the function defined above 'set_favorites', they are going to need to provide account(s) they are going to modify on the blockchain. I guess the function 'set_favorite' needs one or more accounts to act upon
-
 // Struct of accounts for the 'set_favorites' instruction handler
-pub struct SetFavorites { // It is tradition to name the account that the instruction (e.g, 'set_favorites') would act upon as the name of the instruction handler function itself
-    #[account(number)]
-    pub user: Signer&lt;'info&gt; // lifetime `info is a Solana object
-    // so we're gonna specify some options for this account
-    // I'm gonna say that the signer is mutable. Why?
-    // Because the person that signs the instruction to
-    // ...set favorites is going to pay to create their
-    // ...favorites account on the blockchain
-    // You're gonna pay to store that information.
-    //
-    // Also, we'll need the person running 'set_favorites'
-    // ...to specify the favorites account they want to write to.
-    // It doesn't mean that we'll let them write to this account,
-    // ...we just need them to specify the account.
+pub struct SetFavorites&lt;'info&gt; { // this struct holds every meta data needed for a successful 'set_favorites' action - the destination account to add a favorite to, the signer (instruction runner)
 
+    #[account(mut)] // the account of the instruction runner needs to be mutable since they will be paying to execute the 'set_favorites' instruction handler
+    pub user: Signer&lt;'info&gt;, // lifetime `info is a Solana object
+
+    // the actual account of all favorites set by users of our 'set_favorites' instruction handler
+    #[account(
+        init_if_needed, // make a 'favorites' Account if it doesn't already exist
+        payer = user, // the payer signs and gets charged for the transaction of adding a favorite
+        space = ANCHOR_DESCRIMINATOR_SIZE + Favorites::INIT_SPACE, // how much space favorites need
+        seed = [b&quot;favorites&quot;, user.key().as_ref()], // this is a PDA used to give a non-user account (e.g, favorites) an address on the blockchain
+        bump // Used to calculate the seed provided above
+    )]
+    pub favorites: Account&lt;'info, Favorites&gt;,
+
+    pub system_program: Program&lt;'info, System&gt;,
 }
 </code></pre>
 
