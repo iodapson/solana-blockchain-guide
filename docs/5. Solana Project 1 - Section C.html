@@ -177,12 +177,32 @@ pub struct SetFavorites&lt;'info&gt; {
 
 #[program]
 pub mod favorites {
+
     use super::*;
 
     // Now this function 'set_favorites()' would take instructions provided by clients, run them, and then save the results to the blockchain
-    pub fn set_favorites() -&gt; Result&lt;()&gt; {
-        // Fill in later
+    pub fn set_favorites(context: Context&lt;SetFavorites&gt;,
+        number: u64,
+        color: String,
+        hobbies: Vec&lt;String&gt;
+    ) -&gt; Result&lt;()&gt; {
+        msg!(&quot;Greetings from {}&quot;, context.program_id);
+        let user_public_key = contect.accounts.user.key();
+
+        mds!(&quot;User {user_public_key}'s favorite number is: {nummber}, favorite color is: {color}, and hobbies are: {hobbies:?}&quot;);
+
+        // this is the code line that actually writes a new favorite into the favorites account
+        context.accounts.favorites.set_inner(
+            Favorites {
+                number,
+                color,
+                hobbies,
+            }
+        )
+
+        Ok(())
     }
+
 }
 </code></pre>
 
