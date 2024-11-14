@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="1. Overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="2. What is Blockchain & How it Works.html"><strong aria-hidden="true">2.</strong> Blockchain & How it Works</a></li><li class="chapter-item expanded "><a href="Project 1 - Code File.html"><strong aria-hidden="true">3.</strong> Project 1 - Code File</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 1: Favorites Program</li><li class="chapter-item expanded "><a href="3. Solana Project 1 - Section A.html"><strong aria-hidden="true">4.</strong> Solana Project 1 - Section A</a></li><li class="chapter-item expanded "><a href="4. Solana Project 1 - Section B.html"><strong aria-hidden="true">5.</strong> Solana Project 1 - Section B</a></li><li class="chapter-item expanded "><a href="5. Solana Project 1 - Section C.html"><strong aria-hidden="true">6.</strong> Solana Project 1 - Section C</a></li><li class="chapter-item expanded "><a href="6. Solana Project - Section D.html"><strong aria-hidden="true">7.</strong> Solana Project 1 - Section D</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 2: Voting Application</li><li class="chapter-item expanded "><a href="7. Installing Solana on a Local Dev Machine.html"><strong aria-hidden="true">8.</strong> Installing Solana on a Local Dev Machine</a></li><li class="chapter-item expanded "><a href="8. Creating the Voting Dapp.html"><strong aria-hidden="true">9.</strong> Creatng the Voting App</a></li><li class="chapter-item expanded "><a href="9. Understanding the Voting Dapp.html"><strong aria-hidden="true">10.</strong> Understanding the Voting Dapp</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="1. Overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="2. What is Blockchain & How it Works.html"><strong aria-hidden="true">2.</strong> Blockchain & How it Works</a></li><li class="chapter-item expanded "><a href="Project 1 - Code File.html"><strong aria-hidden="true">3.</strong> Project 1 - Code File</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 1: Favorites Program</li><li class="chapter-item expanded "><a href="3. Solana Project 1 - Section A.html"><strong aria-hidden="true">4.</strong> Solana Project 1 - Section A</a></li><li class="chapter-item expanded "><a href="4. Solana Project 1 - Section B.html"><strong aria-hidden="true">5.</strong> Solana Project 1 - Section B</a></li><li class="chapter-item expanded "><a href="5. Solana Project 1 - Section C.html"><strong aria-hidden="true">6.</strong> Solana Project 1 - Section C</a></li><li class="chapter-item expanded "><a href="6. Solana Project - Section D.html"><strong aria-hidden="true">7.</strong> Solana Project 1 - Section D</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 2: Voting Application</li><li class="chapter-item expanded "><a href="7. Installing Solana on a Local Dev Machine.html"><strong aria-hidden="true">8.</strong> Installing Solana on a Local Dev Machine</a></li><li class="chapter-item expanded "><a href="8. Creating the Voting Dapp.html"><strong aria-hidden="true">9.</strong> Creating the Voting App</a></li><li class="chapter-item expanded "><a href="9. Understanding the Voting Dapp.html"><strong aria-hidden="true">10.</strong> Understanding the Voting Dapp</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -356,7 +356,8 @@ https://beta.solpg.io/</p>
 <p>Then press the 'Create' button. This automatically creates a Solana project for you with a src/lib.rs file included.</p>
 </li>
 </ol>
-<div style="break-before: page; page-break-before: always;"></div><p>Now let's look at a complete code for our program that saves a user's favorite to the blockchain. If you read <a href="Project%201%20-%20Code%20File.html">Project 1 - Code File</a>, then you already have a good idea what most of the code herein is doing:</p>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="your-first-taste-of-a-solana-program"><a class="header" href="#your-first-taste-of-a-solana-program">Your First Taste of a Solana Program</a></h3>
+<p>Now let's look at a complete code for our program that saves a user's favorite to the blockchain. If you read <a href="Project%201%20-%20Code%20File.html">Project 1 - Code File</a>, then you already have a good idea what most of the code herein is doing:</p>
 <pre><code class="language-rs">use anchor_lang::prelude::*;
 declare_id!(&quot;&quot;);
 
@@ -446,10 +447,10 @@ pub mod favorites {
 <hr />
 <p>You can search for your Solana account on the blockchain by copying your program's account <code>id</code> inside the macro <code>declare_id!()</code> and pasting it into the Solana Explorer search bar as a search query.</p>
 <hr />
-<p>For visuals on how to deploy this project's Solana program from inside the Solana Explorer , watch the bootcamp course video from [30:21 - 32:50].</p>
+<p>For visuals on how to deploy this Solana program using the Solana Explorer , watch the bootcamp course video from [30:21 - 32:50].</p>
 <hr />
 <p>Your Solana explorer link to request for an airdrop would vary depending on your <code>declare_id!()</code> value. For example, let's say your <code>declare_id!()</code> value is <code>ww9C83noARSQVBnqmCUmaVdbJjmiwcV9j2LkXYMoUCV</code>, then, your appropriate Solana explorer link would then be - https://explorer.solana.com/address/ww9C83noARSQVBnqmCUmaVdbJjmiwcV9j2LkXYMoUCV?cluster=devnet</p>
-<div style="break-before: page; page-break-before: always;"></div><p>Invoking Your Solana Program on the Solana Playground</p>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="invoking-your-solana-program-on-the-solana-playground"><a class="header" href="#invoking-your-solana-program-on-the-solana-playground">Invoking Your Solana Program on the Solana Playground</a></h3>
 <p>Let's head over to the Solana playground after successfully deploying our Solana program.</p>
 <ul>
 <li>
@@ -479,7 +480,7 @@ Next, click the seed(2) input box again, and this time click 'Current wallet'.</
 <hr />
 <p>For visuals on how to this project's Solana program from inside the Solana Explorer , watch the bootcamp course video from [32:51 - 34:56].</p>
 <div style="break-before: page; page-break-before: always;"></div><h3 id="find-out-how-to-make-solana-apps-on-your-local-dev-machine"><a class="header" href="#find-out-how-to-make-solana-apps-on-your-local-dev-machine">Find out How to Make Solana Apps on Your Local Dev Machine</a></h3>
-<p>Key Lessons</p>
+<p>Key Chapter Lessons</p>
 <ul>
 <li>Calculate votes</li>
 <li>User (voter) verification</li>
@@ -580,10 +581,10 @@ If you would like to add the avm binary to your path (recommended), then please 
 <p>Note that the Solana <code>Testnet</code> validator will run at port '8899' (<code>http://127.0.0.1:8899</code>) by default.</p>
 <hr />
 <h3 id="good-to-know"><a class="header" href="#good-to-know">Good to Know:</a></h3>
-<p>You can check out <code>http://127.0.0.1:8899</code> and click on the button right next to your <code>Select Wallet</code> button that says <code>devnet</code> and then click on <code>local</code> from the drop-down. Optionally click on the <code>Account</code> menu to see information about the amount of Sol that you have locally. If you have followed this guide up till now, there will be no account to display. We'll do that soon.</p>
+<p>You can check out <code>http://127.0.0.1:8899</code> and click on the button right next to your <code>Select Wallet</code> button that says <code>devnet</code> and then click on <code>local</code> from the drop-down. Optionally click on the <code>Account</code> menu to see information about the amount of Sol that you have locally. If you have followed this guide up till now, there will be no account to display. We'll fix that soon.</p>
 <p>You can also use the Solana Explorer website <a href="https://explorer.solana.com">https://explorer.solana.com</a> to look at everything that is happening on your local Validator. Simply click on the green button on the webpage that says <code>Mainnet Beta</code>, and then choose <code>Custom RPC URL</code> from the drop-down options.</p>
 <p>For visuals, please check out [43:48 - 49:25] of the Bootcamp course video.</p>
-<p><span style="color: orange;">5.</span> Create your Solana wallet:</p>
+<p><span style="color: orange;">6.</span> Create your Solana wallet:</p>
 <p>Now that everything works, that is, your project template was installed successfully and runs without any hitch, and can be read from the Solana Explorer website, it is now time to create your Solana wallet. Do the following:</p>
 <ul>
 <li>Follow the remainder of the instructions on this Solana Installation doc section of the webpage: <a href="https://solana.com/docs/intro/installation#solana-cli-basics">https://solana.com/docs/intro/installation#solana-cli-basics</a></li>
