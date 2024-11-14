@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="1. Overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="2. What is Blockchain & How it Works.html"><strong aria-hidden="true">2.</strong> Blockchain & How it Works</a></li><li class="chapter-item expanded "><a href="Project 1 - Code File.html"><strong aria-hidden="true">3.</strong> Project 1 - Code File</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 1: Favorites Program</li><li class="chapter-item expanded "><a href="3. Solana Project 1 - Section A.html"><strong aria-hidden="true">4.</strong> Solana Project 1 - Section A</a></li><li class="chapter-item expanded "><a href="4. Solana Project 1 - Section B.html"><strong aria-hidden="true">5.</strong> Solana Project 1 - Section B</a></li><li class="chapter-item expanded "><a href="5. Solana Project 1 - Section C.html"><strong aria-hidden="true">6.</strong> Solana Project 1 - Section C</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="1. Overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="2. What is Blockchain & How it Works.html"><strong aria-hidden="true">2.</strong> Blockchain & How it Works</a></li><li class="chapter-item expanded "><a href="Project 1 - Code File.html"><strong aria-hidden="true">3.</strong> Project 1 - Code File</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 1: Favorites Program</li><li class="chapter-item expanded "><a href="3. Solana Project 1 - Section A.html"><strong aria-hidden="true">4.</strong> Solana Project 1 - Section A</a></li><li class="chapter-item expanded "><a href="4. Solana Project 1 - Section B.html"><strong aria-hidden="true">5.</strong> Solana Project 1 - Section B</a></li><li class="chapter-item expanded "><a href="5. Solana Project 1 - Section C.html"><strong aria-hidden="true">6.</strong> Solana Project 1 - Section C</a></li><li class="chapter-item expanded "><a href="6. Solana Project - Section D.html"><strong aria-hidden="true">7.</strong> Solana Project 1 - Section D</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 2: Voting Application</li><li class="chapter-item expanded "><a href="7. Installing Solana on a Local Dev Machine.html"><strong aria-hidden="true">8.</strong> Installing Solana on a Local Dev Machine</a></li><li class="chapter-item expanded "><a href="8. Creating the Voting Dapp.html"><strong aria-hidden="true">9.</strong> Creatng the Voting App</a></li><li class="chapter-item expanded "><a href="9. Understanding the Voting Dapp.html"><strong aria-hidden="true">10.</strong> Understanding the Voting Dapp</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -175,8 +175,16 @@ Handy lady - Mike MacCana</p>
 <li>Rust</li>
 <li>Typescript</li>
 </ul>
-<p>Start Date:
+<p>--Start Date:
 02:31AM - 02/11/2024 (WAT)</p>
+<hr />
+<p><span style="color: orange;">General Assumption:</span></p>
+<p>In this written guide which is based on the Bootcamp course, it is assumed that you are using either a Linux machine or have WSL2 installed on your Windows machine provided you are on Windows. If you are a Mac user, the bootcamp course makes provision for you, and you might still find the contents of this guide to be non-conflicting with your machine. Stick around!</p>
+<p>If you are on a Windows machine, but do not have WSL2 already installed, please do so now by first opening your <code>Windows Powershell</code> and then running command -</p>
+<pre><code class="language-bash">wsl --install
+</code></pre>
+<p>If you are on Windows machine, and already have WSL1 installed, stick around. Sooner or later, you will upgrade to WSL2 in the process of following this written guide.</p>
+<p>Also, if you are on a Windows machine, and are using WSL and perhaps unsure about what directory to use as your project's working directory, may I suggest something similar to - <code>cd ../../../../home/&lt;your-user-name&gt;</code>, so we can be on the same page (no pun intended) about stuff and the bootcamp in general.</p>
 <hr />
 <p><span style="color: orange;">IMPORTANT SOLANA GLOSSARY OF TERMS:</span></p>
 <ul>
@@ -256,7 +264,7 @@ pub mod favorites { // a regular program called favorites
     use super::*;
 
     // Now this function 'set_favorites()' would take instructions provided by clients, run them, and then save the results to the blockchain
-    pub fn set_favorites() -&gt; Return&lt;()&gt; {
+    pub fn set_favorites() -&gt; Result&lt;()&gt; {
         // Fill in later
     }
 }
@@ -279,17 +287,18 @@ pub struct Favorites {
 // Also note that Solana can process multiple transactions on different accounts at the same time
 
 // Struct of accounts for the 'set_favorites' instruction handler
+#[derive(Accounts)]
 pub struct SetFavorites&lt;'info&gt; { // this struct holds every meta data needed for a successful 'set_favorites' action - the destination account to add a favorite to, the signer (instruction runner)
 
     #[account(mut)] // the account of the instruction runner needs to be mutable since they will be paying to execute the 'set_favorites' instruction handler
-    pub user: Signer&lt;'info&gt;, // lifetime `info is a Solana object
+    pub user: Signer&lt;'info&gt;,
 
     // the actual account of all favorites set by users of our 'set_favorites' instruction handler
     #[account(
-        init_if_needed, // make a 'favorites' Account if it doesn't already exist
+        init_if_needed, // make a new 'favorites' account if it doesn't already exist
         payer = user, // the payer signs and gets charged for the transaction of adding a favorite
         space = ANCHOR_DESCRIMINATOR_SIZE + Favorites::INIT_SPACE, // how much space favorites need
-        seed = [b&quot;favorites&quot;, user.key().as_ref()], // this is a PDA used to give a non-user account (e.g, favorites) an address on the blockchain
+        seeds = [b&quot;favorites&quot;, user.key().as_ref()], // this is a PDA used to give a non-user account (e.g, favorites) an address on the blockchain
         bump // Used to calculate the seed provided above
     )]
     pub favorites: Account&lt;'info, Favorites&gt;,
@@ -297,6 +306,7 @@ pub struct SetFavorites&lt;'info&gt; { // this struct holds every meta data need
     pub system_program: Program&lt;'info, System&gt;,
 }
 </code></pre>
+<p>Now press the '</p>
 <div style="break-before: page; page-break-before: always;"></div><p><span style="color: orange;">Project Memo:</span>
 A smart contract to save your favorite things to the blockchain.</p>
 <p><span style="color: orange;">Lessons:</span></p>
@@ -354,7 +364,7 @@ pub const ANCHOR_DESCRIMINATOR_SIZE: usize = 8;
 
 
 
-// 'Favorites' is what we what to save to the blockchain
+// 'Favorites' is what we what to save to the Blockchain
 #[account]
 #[derive(InitSpace)]
 pub struct Favorites {
@@ -367,18 +377,19 @@ pub struct Favorites {
     pub hobbies: Vec&lt;String&gt;,
 }
 
-// this struct holds every meta data needed for a successful 'set_favorites' action - the destination account to add a favorite to, the signer (instruction runner)
+// this struct holds every meta data needed for a successful 'set_favorites' action - the destination account to add a favorite to, the signer (instruction runner), &amp; the system_program
+#[derive(Accounts)]
 pub struct SetFavorites&lt;'info&gt; {
 
     #[account(mut)]
-    pub user: Signer&lt;'info&gt;
+    pub user: Signer&lt;'info&gt;,
 
-    // the actual account of all favorites set by users of our 'set_favorites' instruction handler
+    // An act account for all favorites set per user of our 'set_favorites' instruction handler
     #[account(
         init_if_needed,
         payer = user,
         space = ANCHOR_DESCRIMINATOR_SIZE + Favorites::INIT_SPACE,
-        seed = [b&quot;favorites&quot;, user.key().as_ref()], // a PDA used to give a non-user account (e.g, favorites) an address on the blockchain
+        seeds = [b&quot;favorites&quot;, user.key().as_ref()], // a PDA used to give a non-user account (e.g, favorites) an address on the Blockchain
         bump // Used to calculate the seed provided above
     )]
     pub favorites: Account&lt;'info, Favorites&gt;,
@@ -392,16 +403,18 @@ pub mod favorites {
 
     use super::*;
 
-    // Now this function 'set_favorites()' would take instructions provided by clients, run them, and then save the results to the blockchain
+    // Now function 'set_favorites()' would take instructions provided by clients, run them, and then save the results to the Blockchain
     pub fn set_favorites(context: Context&lt;SetFavorites&gt;,
         number: u64,
         color: String,
         hobbies: Vec&lt;String&gt;
     ) -&gt; Result&lt;()&gt; {
-        msg!(&quot;Greetings from {}&quot;, context.program_id);
-        let user_public_key = contect.accounts.user.key();
 
-        mds!(&quot;User {user_public_key}'s favorite number is: {nummber}, favorite color is: {color}, and hobbies are: {hobbies:?}&quot;);
+        let user_public_key = context.accounts.user.key();
+
+        msg!(&quot;Greetings from {}&quot;, context.program_id);
+
+        msg!(&quot;User {}'s favorite number is: {number}, favorite color is: {color}, and hobbies are: {hobbies:?}&quot;, user_public_key);
 
         // this is the code line that actually writes a new favorite into the favorites account
         context.accounts.favorites.set_inner(
@@ -410,14 +423,172 @@ pub mod favorites {
                 color,
                 hobbies,
             }
-        )
+        );
 
         Ok(())
     }
 
 }
 </code></pre>
-
+<p>Now click on the 'Build' button inside the Solana Explorer.</p>
+<p>Upon building the project, you should click on 'Deploy'.</p>
+<p>When you do attempt to deploy though, you will be prompted about two things:</p>
+<ul>
+<li>
+<p>Whether or not to save a <code>keypair</code>. Note that you do not have to. You can simply click the <code>Continue</code> button.</p>
+</li>
+<li>
+<p>Secondly, your low balance of <code>sol</code>. You will be asked to choose whether or not to request for an airdrop (as in, acquirefree dev-net <code>sol</code>) from inside the Solana Explorer command-prompt. For now, type and enter <code>no</code> into the command line.</p>
+</li>
+</ul>
+<p>You can actually request for an airdrop from the Solana explorer. You need to first click on your devnet address which opens a new browser tab to the Solana Explorer website. Next copy your <code>Address</code>, and head over to <a href="https://faucet.solana.com">https://faucet.solana.com</a>, paste your copied address into the <code>Wallet Address</code> input, choose an <code>Amount</code> (preferably, 5), and then click the <code>Confirm Airdrop</code> button. You should see a prompt that says &quot;Airdrop was successful!&quot;.</p>
+<p>Now go back to the Solana Playground, and click on the <code>Deploy</code> button. After a successful transaction, go back to your Wallet page on the Solana Explorer, scroll down to your <code>Transaction History</code>, and click the refresh button to see the transaction history with the latest transaction updates.</p>
+<hr />
+<p>You can search for your Solana account on the blockchain by copying your program's account <code>id</code> inside the macro <code>declare_id!()</code> and pasting it into the Solana Explorer search bar as a search query.</p>
+<hr />
+<p>For visuals on how to deploy this project's Solana program from inside the Solana Explorer , watch the bootcamp course video from [30:21 - 32:50].</p>
+<hr />
+<p>Your Solana explorer link to request for an airdrop would vary depending on your <code>declare_id!()</code> value. For example, let's say your <code>declare_id!()</code> value is <code>ww9C83noARSQVBnqmCUmaVdbJjmiwcV9j2LkXYMoUCV</code>, then, your appropriate Solana explorer link would then be - https://explorer.solana.com/address/ww9C83noARSQVBnqmCUmaVdbJjmiwcV9j2LkXYMoUCV?cluster=devnet</p>
+<div style="break-before: page; page-break-before: always;"></div><p>Invoking Your Solana Program on the Solana Playground</p>
+<p>Let's head over to the Solana playground after successfully deploying our Solana program.</p>
+<ul>
+<li>
+<p>Click on the test-tube icon that says <code>Test</code> when highlighted.</p>
+</li>
+<li>
+<p>Provide input values for <code>Instructions</code> - <code>setFavorites</code> - <code>Args</code>. I used values - <pre>
+7 for number
+red for color
+[&quot;hello&quot;, &quot;hi&quot;, &quot;salute&quot;, &quot;bonjour&quot;, &quot;hola&quot;] for hobbies
+</pre></p>
+</li>
+<li>
+<p>Provide input values for <code>Instructions</code> - <code>setFavorites</code> - <code>Accounts</code>. I selected values -</p>
+<pre>
+'Current wallet' for user
+'From seed' for favorites
+</pre>
+<p>Now click the 'Add Seed' button,
+For the seed(1): choose 'string', then type '&quot;favorites&quot;' and click 'Custom'</p>
+<p>Click the 'Add Seed' button again to add a seed(2)
+For the seed(2): choose 'publicKey'
+Next, click the seed(2) input box again, and this time click 'Current wallet'.</p>
+<p>Now click on the <code>Generate</code> - <code>Test</code> and watch your test pass. Click the 'Solana explorer' pop-up to see your test result on the Solana explorer.</p>
+</li>
+</ul>
+<hr />
+<p>For visuals on how to this project's Solana program from inside the Solana Explorer , watch the bootcamp course video from [32:51 - 34:56].</p>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="find-out-how-to-make-solana-apps-on-your-local-dev-machine"><a class="header" href="#find-out-how-to-make-solana-apps-on-your-local-dev-machine">Find out How to Make Solana Apps on Your Local Dev Machine</a></h3>
+<p>Key Lessons</p>
+<ul>
+<li>Calculate votes</li>
+<li>User (voter) verification</li>
+<li>Account management</li>
+<li>Build using PDAs</li>
+</ul>
+<p>Tutor &amp; Project Lead: Jacob Creech</p>
+<p><b>Getting Started:</b></p>
+<p>For references, please visit the Anchor Installation webpage here - <a href="https://www.anchor-lang.com/docs/installation">https://www.anchor-lang.com/docs/installation</a></p>
+<p>Please note that if you're on Windows, it is recommended that you install WSL2 for your local development.</p>
+<ol>
+<li>
+<p>Install Rust <a href="https://www.rust-lang.org/tools/install">Rust</a></p>
+</li>
+<li>
+<p>Next up, please follow the installation instruction for <a href="https://solana.com/docs/intro/installation">Solana Installation here</a>. And just in case you encounter the error <code>error: linker 'cc' not found</code> or <code>error: could not exec the linker cc = note: Permission denied (os error 13)</code> in the process of following this guide to install anchor on your Linux system, then first run this command to fix this error;</p>
+</li>
+</ol>
+<pre><code class="language-bash">sudo apt-get update &amp;&amp; sudo apt-get upgrade &amp;&amp; sudo apt-get install -y pkg-config build-essential libudev-dev libssl-dev
+</code></pre>
+<p><b>Important Notice:</b>
+Please note that immediately after you have installed Anchor, but right before you use Yarn to create a new Anchor project, you should verify that the <code>PATH</code> enviroment variable was set up correctly by running command</p>
+<pre><code class="language-bash">which anchor
+</code></pre>
+<p>Your output from running the bash command above should look similar to <code>/home/user/.cargo/bin/anchor</code>. If the command fails or the output is empty, make sure to add the <code>~/.cargo/bin</code> directory to the <code>PATH</code> environment variable. Since this guide assumes you are using a bash terminal on WSL2, the command to use will be:</p>
+<pre><code class="language-bash">echo 'export PATH=&quot;$HOME/.cargo/bin:$PATH&quot;' &gt;&gt; ~/.bashrc
+source ~/.bashrc
+</code></pre>
+<p>For more information about other terminals (e.g Fish, and Zsh), check the bottom section of this <a href="https://www.anchor-lang.com/docs/installation">Anchor Installation page</a>. You may also want to follow the Generating Shell Completions guide on the page.</p>
+<p><b>Moving On...</b>
+If you would like to add the avm binary to your path (recommended), then please apply the following command, replacinng <code>&lt;your-user-name-here&gt;</code> with you actual user name:</p>
+<pre><code class="language-bash">export PATH=&quot;/home/&lt;your-user-name-here&gt;/.avm/bin:$PATH&quot;
+</code></pre>
+<p>Then to confirm that the avm binary has been added to your PATH, run command:</p>
+<pre><code class="language-bash">echo $PATH
+</code></pre>
+<hr />
+<p>Now you can resume following the <a href="https://solana.com/docs/intro/installation">Solana Installation here</a> to create a new Solana project using Yarn.</p>
+<h4 id="wsl-information"><a class="header" href="#wsl-information">WSL Information:</a></h4>
+<p>Please note that if you are a Windows user, you need to be using WSL2 instead of WSL1. To verify the version of WSL that you are using, please run the following command on your <code>Windows Powershell</code>:</p>
+<pre><code class="language-bash">wsl -l -v
+</code></pre>
+<p>The Solana installation guide recommends that you use NVM (Node Virtual Manager), and guess what, if you try to install NVM on WSL1, NVM would recommend that you use WSL2. Read the rest of this section</p>
+<p>To upgrade from WSL1 to WSL2, you need to:</p>
+<ul>
+<li>Enable the virtual machine optional component used by WSL 2, and Download the Linux kernel update package. Use this link to find out how you can do both - <a href="https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-3---enable-virtual-machine-feature">https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-3---enable-virtual-machine-feature</a>. Please, remember to upgrade your WSL from inside Windows Powershell using command - <code>wsl --set-version &lt;distro name&gt; 2</code> after enabling the virtual machine optional componsnet used by WSL 2, and downloading the Linux kernel update package.</li>
+</ul>
+<p>For more information on how to Upgrade WSL version from WSL 1 to WSL 2, review the section of this page - <a href="https://learn.microsoft.com/en-us/windows/wsl/install#upgrade-version-from-wsl-1-to-wsl-2">https://learn.microsoft.com/en-us/windows/wsl/install#upgrade-version-from-wsl-1-to-wsl-2</a></p>
+<p>For more information on how to Enable Virtual Machine Feature and Download the Linux kernel update package, then review Step 3 and Step 4 of this page - <a href="https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-3---enable-virtual-machine-feature">https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-3---enable-virtual-machine-feature</a></p>
+<h4 id="hold-on"><a class="header" href="#hold-on">Hold On..</a></h4>
+<p>Provided that you have been following the installation guide here - <a href="https://solana.com/docs/intro/installation">https://solana.com/docs/intro/installation</a>, please notes that you don't have any need to run command <code>$ anchor build</code> just yet. You also do not yet need to follow the remainder of the installation guide, specifically the section on <a href="https://solana.com/docs/intro/installation#solana-cli-basics">Solana CLI Basics</a>. Why? You see, Solana has <code>Testnet</code>, <code>Devnet</code>, and <code>Mainnet</code> and this course starts out with just the <code>Testnet</code>, but the Solana CLI Basics section of the Solana Installation guide would get you configurations for Solana <code>Mainnet</code> for your machine. Right now you only need to deal with Solana <code>Testnet</code>. No worries we'll come around to start dealing with the <code>Devnet</code> and <code>Mainnet</code> sooner or later as you work your way through the bootcamp.</p>
+<hr />
+<p>Congratulations! Now you are good to go to create awesome Solana projects.</p>
+<hr />
+<iframe src="https://solana.com/docs/intro/installation" frameborder="0" style="min-width: 480px;"></iframe>
+<hr />
+<p>Timestamp - [37:40 - 43:47]</p>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="find-out-how-to-create-a-solana-app-quickly-from-an-official-template"><a class="header" href="#find-out-how-to-create-a-solana-app-quickly-from-an-official-template">Find Out How to Create a Solana App Quickly from an Official Template</a></h3>
+<p>Do the following in the order listed:</p>
+<p><span style="color: orange;">1.</span> Inside your <code>WSL</code> terminal, <code>cd</code> or <code>mkdir</code> the directory of your choice for the project. In my case it looks like this <code>/home/&lt;my-user-name&gt;/solana-bootcamp/bootcamp-temp</code>.</p>
+<p><span style="color: orange;">2.</span> Run an npx command to create a new Solana app using a ready-made template:</p>
+<pre><code class="language-bash">npx create-solana-dapp
+</code></pre>
+<p><b>Please Note:</b></p>
+<p>If you asked for permission to install for example <code>create-solana-dapp@4.1.0</code>, simply press the 'Enter' key on your keyboard to proceed.</p>
+<p>In the Solana bootcamp, the name of the app was - <code>voting-dapp</code>, the selected framework was - <code>Next.js</code>, the selected template was - <code>next-tailwind-counter (Next.js + Tailwind CSS + Anchor Counter Example)</code>.</p>
+<p>--it takes a while to install via npm, so now might be the right time to go have some snack or distract yourself with something else.</p>
+<p><span style="color: orange;">3.</span> Cd in to the <code>voting-dapp</code>, and run the npm installation command (you can use npm locally):</p>
+<pre><code class="language-bash">npm i
+</code></pre>
+<p>On my WSL (2) installation on my Windows 10 machine, <code>Installing via npm</code> never completes (I don't know I didn't stick around beyond 3 hours to find out if it would still finish the install). If that is the case for you too, don't panic, simple cancel the installation and do the following:</p>
+<ul>
+<li>Install a lower version of Node using nvm:</li>
+</ul>
+<pre><code class="language-bash">nvm install 23.0.0
+</code></pre>
+<ul>
+<li>Downgrade to a lower version of npm:</li>
+</ul>
+<pre><code class="language-bash">npm install npm@9.7.1 -g
+</code></pre>
+<ul>
+<li>Use Node version 23.0.0 (although you may find that nvm already uses this version especially if you have just installed it):</li>
+</ul>
+<pre><code class="language-bash">nvm use 23.0.0
+</code></pre>
+<ul>
+<li>Optionally exit out of WSL, re-open it, and cd into the directory containing your project. For me, my project's cd command was <code>$: cd ../../../../home/&lt;my-user-name&gt;/solana-github/bootcamp-temp/voting-dapp</code></li>
+</ul>
+<p><span style="color: orange;">4.</span> Run the now installed <code>voting-dapp</code> using npm with command:</p>
+<pre><code class="language-bash">npm run dev
+</code></pre>
+<p>Please note that if you had probelems with your project and had to tweak your Node and nmp versions, please note that it would best for you to delete your existing <code>voting-app</code>, and re-create another one, and then cd into it, and run <code>$: npm run dev</code>.</p>
+<p>Also note that the <code>voting-dapp</code> will run at <code>localhost:3000</code> by default. Feel free to check it out.</p>
+<p><span style="color: orange;">5.</span> Run the Solana <code>Testnet</code> validator toolchain using command:</p>
+<pre><code class="language-bash">solana-test-validator
+</code></pre>
+<p>Note that the Solana <code>Testnet</code> validator will run at port '8899' (<code>http://127.0.0.1:8899</code>) by default.</p>
+<hr />
+<h3 id="good-to-know"><a class="header" href="#good-to-know">Good to Know:</a></h3>
+<p>You can check out <code>http://127.0.0.1:8899</code> and click on the button right next to your <code>Select Wallet</code> button that says <code>devnet</code> and then click on <code>local</code> from the drop-down. Optionally click on the <code>Account</code> menu to see information about the amount of Sol that you have locally. If you have followed this guide up till now, there will be no account to display. We'll do that soon.</p>
+<p>You can also use the Solana Explorer website <a href="https://explorer.solana.com">https://explorer.solana.com</a> to look at everything that is happening on your local Validator. Simply click on the green button on the webpage that says <code>Mainnet Beta</code>, and then choose <code>Custom RPC URL</code> from the drop-down options.</p>
+<p>For visuals, please check out [43:48 - 49:25] of the Bootcamp course video.</p>
+<p><span style="color: orange;">5.</span> Create your Solana wallet:</p>
+<p>Now that everything works, that is, your project template was installed successfully and runs without any hitch, and can be read from the Solana Explorer website, it is now time to create your Solana wallet. Do the following:</p>
+<ul>
+<li>Follow the remainder of the instructions on this Solana Installation doc section of the webpage: <a href="https://solana.com/docs/intro/installation#solana-cli-basics">https://solana.com/docs/intro/installation#solana-cli-basics</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

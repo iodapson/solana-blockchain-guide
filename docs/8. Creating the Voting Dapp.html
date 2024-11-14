@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Solana Project 1 - Section B - Solana Blockchain Guide</title>
+        <title>Creatng the Voting App - Solana Blockchain Guide</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -75,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="1. Overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="2. What is Blockchain & How it Works.html"><strong aria-hidden="true">2.</strong> Blockchain & How it Works</a></li><li class="chapter-item expanded "><a href="Project 1 - Code File.html"><strong aria-hidden="true">3.</strong> Project 1 - Code File</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 1: Favorites Program</li><li class="chapter-item expanded "><a href="3. Solana Project 1 - Section A.html"><strong aria-hidden="true">4.</strong> Solana Project 1 - Section A</a></li><li class="chapter-item expanded "><a href="4. Solana Project 1 - Section B.html" class="active"><strong aria-hidden="true">5.</strong> Solana Project 1 - Section B</a></li><li class="chapter-item expanded "><a href="5. Solana Project 1 - Section C.html"><strong aria-hidden="true">6.</strong> Solana Project 1 - Section C</a></li><li class="chapter-item expanded "><a href="6. Solana Project - Section D.html"><strong aria-hidden="true">7.</strong> Solana Project 1 - Section D</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 2: Voting Application</li><li class="chapter-item expanded "><a href="7. Installing Solana on a Local Dev Machine.html"><strong aria-hidden="true">8.</strong> Installing Solana on a Local Dev Machine</a></li><li class="chapter-item expanded "><a href="8. Creating the Voting Dapp.html"><strong aria-hidden="true">9.</strong> Creatng the Voting App</a></li><li class="chapter-item expanded "><a href="9. Understanding the Voting Dapp.html"><strong aria-hidden="true">10.</strong> Understanding the Voting Dapp</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="1. Overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="2. What is Blockchain & How it Works.html"><strong aria-hidden="true">2.</strong> Blockchain & How it Works</a></li><li class="chapter-item expanded "><a href="Project 1 - Code File.html"><strong aria-hidden="true">3.</strong> Project 1 - Code File</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 1: Favorites Program</li><li class="chapter-item expanded "><a href="3. Solana Project 1 - Section A.html"><strong aria-hidden="true">4.</strong> Solana Project 1 - Section A</a></li><li class="chapter-item expanded "><a href="4. Solana Project 1 - Section B.html"><strong aria-hidden="true">5.</strong> Solana Project 1 - Section B</a></li><li class="chapter-item expanded "><a href="5. Solana Project 1 - Section C.html"><strong aria-hidden="true">6.</strong> Solana Project 1 - Section C</a></li><li class="chapter-item expanded "><a href="6. Solana Project - Section D.html"><strong aria-hidden="true">7.</strong> Solana Project 1 - Section D</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 2: Voting Application</li><li class="chapter-item expanded "><a href="7. Installing Solana on a Local Dev Machine.html"><strong aria-hidden="true">8.</strong> Installing Solana on a Local Dev Machine</a></li><li class="chapter-item expanded "><a href="8. Creating the Voting Dapp.html" class="active"><strong aria-hidden="true">9.</strong> Creatng the Voting App</a></li><li class="chapter-item expanded "><a href="9. Understanding the Voting Dapp.html"><strong aria-hidden="true">10.</strong> Understanding the Voting Dapp</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -134,44 +134,66 @@
 
                 <div id="content" class="content">
                     <main>
-                        <p><span style="color: orange;">About the Project 1:</span>
-A program that save a user's favorite things on the blockchain and use the user's digital signatures to ensure that only the user can access and update their review using the user's wallet address to identify the user?</p>
-<p><span style="color: orange;">About Project 1's Alternate Description:</span>
-A program that save someone's favorite things to the blockchain and uses digital signature to ensure that only the wallet holder can update thier own favorites.</p>
-<p><span style="color: orange;">Again, Tools Used:</span></p>
+                        <h3 id="find-out-how-to-create-a-solana-app-quickly-from-an-official-template"><a class="header" href="#find-out-how-to-create-a-solana-app-quickly-from-an-official-template">Find Out How to Create a Solana App Quickly from an Official Template</a></h3>
+<p>Do the following in the order listed:</p>
+<p><span style="color: orange;">1.</span> Inside your <code>WSL</code> terminal, <code>cd</code> or <code>mkdir</code> the directory of your choice for the project. In my case it looks like this <code>/home/&lt;my-user-name&gt;/solana-bootcamp/bootcamp-temp</code>.</p>
+<p><span style="color: orange;">2.</span> Run an npx command to create a new Solana app using a ready-made template:</p>
+<pre><code class="language-bash">npx create-solana-dapp
+</code></pre>
+<p><b>Please Note:</b></p>
+<p>If you asked for permission to install for example <code>create-solana-dapp@4.1.0</code>, simply press the 'Enter' key on your keyboard to proceed.</p>
+<p>In the Solana bootcamp, the name of the app was - <code>voting-dapp</code>, the selected framework was - <code>Next.js</code>, the selected template was - <code>next-tailwind-counter (Next.js + Tailwind CSS + Anchor Counter Example)</code>.</p>
+<p>--it takes a while to install via npm, so now might be the right time to go have some snack or distract yourself with something else.</p>
+<p><span style="color: orange;">3.</span> Cd in to the <code>voting-dapp</code>, and run the npm installation command (you can use npm locally):</p>
+<pre><code class="language-bash">npm i
+</code></pre>
+<p>On my WSL (2) installation on my Windows 10 machine, <code>Installing via npm</code> never completes (I don't know I didn't stick around beyond 3 hours to find out if it would still finish the install). If that is the case for you too, don't panic, simple cancel the installation and do the following:</p>
 <ul>
-<li>Solana playground</li>
-<li>Anchor (which is Solana's most popular framework for making Solana programs, aka, Solana smart contracts).</li>
+<li>Install a lower version of Node using nvm:</li>
 </ul>
-<p><span style="color: orange;">Solana Playground Link:</span>
-https://beta.solpg.io/</p>
-<p><span style="color: orange;">STEPS:</span></p>
-<ol>
-<li>
-<p>Go to the Solana playground.</p>
-</li>
-<li>
-<p>Click the 'Create a new project' button.</p>
-</li>
-<li>
-<p>Give your project its name.</p>
-</li>
-<li>
-<p>Click on the 'Anchor (Rust)' button.</p>
-</li>
-<li>
-<p>Then press the 'Create' button. This automatically creates a Solana project for you with a src/lib.rs file included.</p>
-</li>
-</ol>
+<pre><code class="language-bash">nvm install 23.0.0
+</code></pre>
+<ul>
+<li>Downgrade to a lower version of npm:</li>
+</ul>
+<pre><code class="language-bash">npm install npm@9.7.1 -g
+</code></pre>
+<ul>
+<li>Use Node version 23.0.0 (although you may find that nvm already uses this version especially if you have just installed it):</li>
+</ul>
+<pre><code class="language-bash">nvm use 23.0.0
+</code></pre>
+<ul>
+<li>Optionally exit out of WSL, re-open it, and cd into the directory containing your project. For me, my project's cd command was <code>$: cd ../../../../home/&lt;my-user-name&gt;/solana-github/bootcamp-temp/voting-dapp</code></li>
+</ul>
+<p><span style="color: orange;">4.</span> Run the now installed <code>voting-dapp</code> using npm with command:</p>
+<pre><code class="language-bash">npm run dev
+</code></pre>
+<p>Please note that if you had probelems with your project and had to tweak your Node and nmp versions, please note that it would best for you to delete your existing <code>voting-app</code>, and re-create another one, and then cd into it, and run <code>$: npm run dev</code>.</p>
+<p>Also note that the <code>voting-dapp</code> will run at <code>localhost:3000</code> by default. Feel free to check it out.</p>
+<p><span style="color: orange;">5.</span> Run the Solana <code>Testnet</code> validator toolchain using command:</p>
+<pre><code class="language-bash">solana-test-validator
+</code></pre>
+<p>Note that the Solana <code>Testnet</code> validator will run at port '8899' (<code>http://127.0.0.1:8899</code>) by default.</p>
+<hr />
+<h3 id="good-to-know"><a class="header" href="#good-to-know">Good to Know:</a></h3>
+<p>You can check out <code>http://127.0.0.1:8899</code> and click on the button right next to your <code>Select Wallet</code> button that says <code>devnet</code> and then click on <code>local</code> from the drop-down. Optionally click on the <code>Account</code> menu to see information about the amount of Sol that you have locally. If you have followed this guide up till now, there will be no account to display. We'll do that soon.</p>
+<p>You can also use the Solana Explorer website <a href="https://explorer.solana.com">https://explorer.solana.com</a> to look at everything that is happening on your local Validator. Simply click on the green button on the webpage that says <code>Mainnet Beta</code>, and then choose <code>Custom RPC URL</code> from the drop-down options.</p>
+<p>For visuals, please check out [43:48 - 49:25] of the Bootcamp course video.</p>
+<p><span style="color: orange;">5.</span> Create your Solana wallet:</p>
+<p>Now that everything works, that is, your project template was installed successfully and runs without any hitch, and can be read from the Solana Explorer website, it is now time to create your Solana wallet. Do the following:</p>
+<ul>
+<li>Follow the remainder of the instructions on this Solana Installation doc section of the webpage: <a href="https://solana.com/docs/intro/installation#solana-cli-basics">https://solana.com/docs/intro/installation#solana-cli-basics</a></li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="3. Solana Project 1 - Section A.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="7. Installing Solana on a Local Dev Machine.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                            <a rel="next" href="5. Solana Project 1 - Section C.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="9. Understanding the Voting Dapp.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
@@ -180,10 +202,10 @@ https://beta.solpg.io/</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="3. Solana Project 1 - Section A.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="7. Installing Solana on a Local Dev Machine.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                    <a rel="next" href="5. Solana Project 1 - Section C.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="9. Understanding the Voting Dapp.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

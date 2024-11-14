@@ -15,7 +15,7 @@ pub mod favorites { // a regular program called favorites
     use super::*;
 
     // Now this function 'set_favorites()' would take instructions provided by clients, run them, and then save the results to the blockchain
-    pub fn set_favorites() -> Return<()> {
+    pub fn set_favorites() -> Result<()> {
         // Fill in later
     }
 }
@@ -38,17 +38,18 @@ pub struct Favorites {
 // Also note that Solana can process multiple transactions on different accounts at the same time
 
 // Struct of accounts for the 'set_favorites' instruction handler
+#[derive(Accounts)]
 pub struct SetFavorites<'info> { // this struct holds every meta data needed for a successful 'set_favorites' action - the destination account to add a favorite to, the signer (instruction runner)
 
     #[account(mut)] // the account of the instruction runner needs to be mutable since they will be paying to execute the 'set_favorites' instruction handler
-    pub user: Signer<'info>, // lifetime `info is a Solana object
+    pub user: Signer<'info>,
 
     // the actual account of all favorites set by users of our 'set_favorites' instruction handler
     #[account(
-        init_if_needed, // make a 'favorites' Account if it doesn't already exist
+        init_if_needed, // make a new 'favorites' account if it doesn't already exist
         payer = user, // the payer signs and gets charged for the transaction of adding a favorite
         space = ANCHOR_DESCRIMINATOR_SIZE + Favorites::INIT_SPACE, // how much space favorites need
-        seed = [b"favorites", user.key().as_ref()], // this is a PDA used to give a non-user account (e.g, favorites) an address on the blockchain
+        seeds = [b"favorites", user.key().as_ref()], // this is a PDA used to give a non-user account (e.g, favorites) an address on the blockchain
         bump // Used to calculate the seed provided above
     )]
     pub favorites: Account<'info, Favorites>,
@@ -56,3 +57,5 @@ pub struct SetFavorites<'info> { // this struct holds every meta data needed for
     pub system_program: Program<'info, System>,
 }
 ```
+
+Now press the '
