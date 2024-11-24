@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="1. Overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="2. What is Blockchain & How it Works.html"><strong aria-hidden="true">2.</strong> Blockchain & How it Works</a></li><li class="chapter-item expanded "><a href="Project 1 - Code File.html"><strong aria-hidden="true">3.</strong> Project 1 - Code File</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 1: Favorites Program</li><li class="chapter-item expanded "><a href="3. Solana Project 1 - Section A.html"><strong aria-hidden="true">4.</strong> Solana Project 1 - Section A</a></li><li class="chapter-item expanded "><a href="4. Solana Project 1 - Section B.html"><strong aria-hidden="true">5.</strong> Solana Project 1 - Section B</a></li><li class="chapter-item expanded "><a href="5. Solana Project 1 - Section C.html"><strong aria-hidden="true">6.</strong> Solana Project 1 - Section C</a></li><li class="chapter-item expanded "><a href="6. Solana Project - Section D.html"><strong aria-hidden="true">7.</strong> Solana Project 1 - Section D</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 2: Voting Application</li><li class="chapter-item expanded "><a href="7. Installing Solana on a Local Dev Machine.html"><strong aria-hidden="true">8.</strong> Installing Solana on a Local Dev Machine</a></li><li class="chapter-item expanded "><a href="8. Creating the Voting Dapp.html"><strong aria-hidden="true">9.</strong> Creating the Voting App</a></li><li class="chapter-item expanded "><a href="9. Understanding the Voting Dapp.html"><strong aria-hidden="true">10.</strong> Understanding the Voting Dapp</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="1. Overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="2. What is Blockchain & How it Works.html"><strong aria-hidden="true">2.</strong> Blockchain & How it Works</a></li><li class="chapter-item expanded "><a href="Project 1 - Code File.html"><strong aria-hidden="true">3.</strong> Project 1 - Code File</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 1: Favorites Program</li><li class="chapter-item expanded "><a href="3. Solana Project 1 - Section A.html"><strong aria-hidden="true">4.</strong> Solana Project 1 - Section A</a></li><li class="chapter-item expanded "><a href="4. Solana Project 1 - Section B.html"><strong aria-hidden="true">5.</strong> Solana Project 1 - Section B</a></li><li class="chapter-item expanded "><a href="5. Solana Project 1 - Section C.html"><strong aria-hidden="true">6.</strong> Solana Project 1 - Section C</a></li><li class="chapter-item expanded "><a href="6. Solana Project - Section D.html"><strong aria-hidden="true">7.</strong> Solana Project 1 - Section D</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 2: Voting Application</li><li class="chapter-item expanded "><a href="7. Installing Solana on a Local Dev Machine.html"><strong aria-hidden="true">8.</strong> Installing Solana on a Local Dev Machine</a></li><li class="chapter-item expanded "><a href="8. Creating the Voting Dapp.html"><strong aria-hidden="true">9.</strong> Creating the Voting Dapp</a></li><li class="chapter-item expanded "><a href="9. Understanding the Voting Dapp.html"><strong aria-hidden="true">10.</strong> Understanding the Voting Dapp</a></li><li class="chapter-item expanded "><a href="10. Testing Dapps.html"><strong aria-hidden="true">11.</strong> Testing Dapps</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -135,7 +135,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h2 id="solana-in-a-lean-wrap"><a class="header" href="#solana-in-a-lean-wrap">Solana In A Lean Wrap</a></h2>
+                        <h2 id="solana-blochain-guide"><a class="header" href="#solana-blochain-guide">Solana Blochain Guide</a></h2>
 <p>This is a compressed version of <a href="https://www.youtube.com/watch?v=amAq-WHAFs8">Solana Blockchain Bootcamp</a> powered by the programming language, <a href="https:///www.rust-lang.org/learn">Rust</a> and TypeScript.</p>
 <p>This book focuses more on the concepts to get things done. It does not cover Solana-specific concepts in detail. Rather, it extracts and sometimes annotates Solana concepts necessary to become a very proficient Solana developer</p>
 <p>You can use it a quick reference material, in complement with the official Solana documentation for a more detailed Solana concepts explainer.</p>
@@ -364,7 +364,6 @@ declare_id!(&quot;&quot;);
 pub const ANCHOR_DESCRIMINATOR_SIZE: usize = 8;
 
 
-
 // 'Favorites' is what we what to save to the Blockchain
 #[account]
 #[derive(InitSpace)]
@@ -511,7 +510,7 @@ source ~/.bashrc
 </code></pre>
 <p>For more information about other terminals (e.g Fish, and Zsh), check the bottom section of this <a href="https://www.anchor-lang.com/docs/installation">Anchor Installation page</a>. You may also want to follow the Generating Shell Completions guide on the page.</p>
 <p><b>Moving On...</b>
-If you would like to add the avm binary to your path (recommended), then please apply the following command, replacinng <code>&lt;your-user-name-here&gt;</code> with you actual user name:</p>
+If you would like to add the avm binary to your path (recommended), then please apply the following command, replacing <code>&lt;your-user-name-here&gt;</code> with your actual user name:</p>
 <pre><code class="language-bash">export PATH=&quot;/home/&lt;your-user-name-here&gt;/.avm/bin:$PATH&quot;
 </code></pre>
 <p>Then to confirm that the avm binary has been added to your PATH, run command:</p>
@@ -530,8 +529,9 @@ If you would like to add the avm binary to your path (recommended), then please 
 </ul>
 <p>For more information on how to Upgrade WSL version from WSL 1 to WSL 2, review the section of this page - <a href="https://learn.microsoft.com/en-us/windows/wsl/install#upgrade-version-from-wsl-1-to-wsl-2">https://learn.microsoft.com/en-us/windows/wsl/install#upgrade-version-from-wsl-1-to-wsl-2</a></p>
 <p>For more information on how to Enable Virtual Machine Feature and Download the Linux kernel update package, then review Step 3 and Step 4 of this page - <a href="https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-3---enable-virtual-machine-feature">https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-3---enable-virtual-machine-feature</a></p>
-<h4 id="hold-on"><a class="header" href="#hold-on">Hold On..</a></h4>
-<p>Provided that you have been following the installation guide here - <a href="https://solana.com/docs/intro/installation">https://solana.com/docs/intro/installation</a>, please notes that you don't have any need to run command <code>$ anchor build</code> just yet. You also do not yet need to follow the remainder of the installation guide, specifically the section on <a href="https://solana.com/docs/intro/installation#solana-cli-basics">Solana CLI Basics</a>. Why? You see, Solana has <code>Testnet</code>, <code>Devnet</code>, and <code>Mainnet</code> and this course starts out with just the <code>Testnet</code>, but the Solana CLI Basics section of the Solana Installation guide would get you configurations for Solana <code>Mainnet</code> for your machine. Right now you only need to deal with Solana <code>Testnet</code>. No worries we'll come around to start dealing with the <code>Devnet</code> and <code>Mainnet</code> sooner or later as you work your way through the bootcamp.</p>
+<!--<h4 id="hold-on"><a class="header" href="#hold-on">Hold On..</a></h4>
+
+Provided that you have been following the installation guide here - [https://solana.com/docs/intro/installation](https://solana.com/docs/intro/installation), please note that you don't have any need to run command `$ anchor build` just yet. You also do not yet need to follow the remainder of the installation guide, specifically the section on [Solana CLI Basics](https://solana.com/docs/intro/installation#solana-cli-basics). Why? You see, Solana has `Testnet`, `Devnet`, and `Mainnet` and this course starts out with just the `Testnet`, but the Solana CLI Basics section of the Solana Installation guide would get you configurations for Solana `Mainnet` for your machine. Right now you only need to deal with Solana `Testnet`. No worries we'll come around to start dealing with the `Devnet` and `Mainnet` sooner or later as you work your way through the bootcamp.-->
 <hr />
 <p>Congratulations! Now you are good to go to create awesome Solana projects.</p>
 <hr />
@@ -541,6 +541,7 @@ If you would like to add the avm binary to your path (recommended), then please 
 <div style="break-before: page; page-break-before: always;"></div><h3 id="find-out-how-to-create-a-solana-app-quickly-from-an-official-template"><a class="header" href="#find-out-how-to-create-a-solana-app-quickly-from-an-official-template">Find Out How to Create a Solana App Quickly from an Official Template</a></h3>
 <p>Do the following in the order listed:</p>
 <p><span style="color: orange;">1.</span> Inside your <code>WSL</code> terminal, <code>cd</code> or <code>mkdir</code> the directory of your choice for the project. In my case it looks like this <code>/home/&lt;my-user-name&gt;/solana-bootcamp/bootcamp-temp</code>.</p>
+<br />
 <p><span style="color: orange;">2.</span> Run an npx command to create a new Solana app using a ready-made template:</p>
 <pre><code class="language-bash">npx create-solana-dapp
 </code></pre>
@@ -548,6 +549,7 @@ If you would like to add the avm binary to your path (recommended), then please 
 <p>If you asked for permission to install for example <code>create-solana-dapp@4.1.0</code>, simply press the 'Enter' key on your keyboard to proceed.</p>
 <p>In the Solana bootcamp, the name of the app was - <code>voting-dapp</code>, the selected framework was - <code>Next.js</code>, the selected template was - <code>next-tailwind-counter (Next.js + Tailwind CSS + Anchor Counter Example)</code>.</p>
 <p>--it takes a while to install via npm, so now might be the right time to go have some snack or distract yourself with something else.</p>
+<br />
 <p><span style="color: orange;">3.</span> Cd in to the <code>voting-dapp</code>, and run the npm installation command (you can use npm locally):</p>
 <pre><code class="language-bash">npm i
 </code></pre>
@@ -567,29 +569,521 @@ If you would like to add the avm binary to your path (recommended), then please 
 </ul>
 <pre><code class="language-bash">nvm use 23.0.0
 </code></pre>
+<p>Reference - <a href="https://github.com/npm/cli/issues/7857#issuecomment-2424107768">https://github.com/npm/cli/issues/7857#issuecomment-2424107768</a></p>
 <ul>
 <li>Optionally exit out of WSL, re-open it, and cd into the directory containing your project. For me, my project's cd command was <code>$: cd ../../../../home/&lt;my-user-name&gt;/solana-github/bootcamp-temp/voting-dapp</code></li>
 </ul>
+<br />
 <p><span style="color: orange;">4.</span> Run the now installed <code>voting-dapp</code> using npm with command:</p>
 <pre><code class="language-bash">npm run dev
 </code></pre>
-<p>Please note that if you had probelems with your project and had to tweak your Node and nmp versions, please note that it would best for you to delete your existing <code>voting-app</code>, and re-create another one, and then cd into it, and run <code>$: npm run dev</code>.</p>
+<p>Please note that if you had problems with your project and had to tweak your installed <code>Node</code> and <code>nmp</code> versions, it would be best for you to delete your existing <code>voting-app</code>, and re-create another one, and then cd into it, and run <code>$: npm run dev</code>.</p>
 <p>Also note that the <code>voting-dapp</code> will run at <code>localhost:3000</code> by default. Feel free to check it out.</p>
-<p><span style="color: orange;">5.</span> Run the Solana <code>Testnet</code> validator toolchain using command:</p>
+<br />
+<p><span style="color: orange;">5.</span> Run the Solana <code>Testnet</code> validator toolchain in another WSL terminal using command:</p>
 <pre><code class="language-bash">solana-test-validator
 </code></pre>
-<p>Note that the Solana <code>Testnet</code> validator will run at port '8899' (<code>http://127.0.0.1:8899</code>) by default.</p>
-<hr />
-<h3 id="good-to-know"><a class="header" href="#good-to-know">Good to Know:</a></h3>
-<p>You can check out <code>http://127.0.0.1:8899</code> and click on the button right next to your <code>Select Wallet</code> button that says <code>devnet</code> and then click on <code>local</code> from the drop-down. Optionally click on the <code>Account</code> menu to see information about the amount of Sol that you have locally. If you have followed this guide up till now, there will be no account to display. We'll fix that soon.</p>
+<p>You may nagivate to a parent directory of your <code>voting-dapp</code> project's working directory before running the <code>solana-test-validator</code> command.</p>
+<p>Note that the Solana <code>Testnet</code> validator will run at port '8899' (<code>http://127.0.0.1:8899</code>) by default. And this <code>solana-test-validator</code> creates a new directory named <code>test-ledger</code>.</p>
+<p><b>Good to Know :</b></p>
+<p>You can check out <code>http://127.0.0.1:8899</code> and click on the button right next to your <code>Select Wallet</code> button that says <code>devnet</code> and then click on <code>local</code> from the drop-down. Optionally click on the <code>Account</code> menu to see information about the amount of Sol that you have locally. If you have followed this guide up till now, there will be no account to display. We'll fix that soon in step 6.</p>
 <p>You can also use the Solana Explorer website <a href="https://explorer.solana.com">https://explorer.solana.com</a> to look at everything that is happening on your local Validator. Simply click on the green button on the webpage that says <code>Mainnet Beta</code>, and then choose <code>Custom RPC URL</code> from the drop-down options.</p>
 <p>For visuals, please check out [43:48 - 49:25] of the Bootcamp course video.</p>
+<br />
 <p><span style="color: orange;">6.</span> Create your Solana wallet:</p>
-<p>Now that everything works, that is, your project template was installed successfully and runs without any hitch, and can be read from the Solana Explorer website, it is now time to create your Solana wallet. Do the following:</p>
+<p>Now that everything pretty much works, namely - your project template was installed successfully, runs without any hitch, and can be read from the Solana Explorer website, it is now time to create your Solana wallet. Do the following:</p>
 <ul>
-<li>Follow the remainder of the instructions on this Solana Installation doc section of the webpage: <a href="https://solana.com/docs/intro/installation#solana-cli-basics">https://solana.com/docs/intro/installation#solana-cli-basics</a></li>
+<li>
+<p>Stop your voting-dapp and solana-test-validator using <code>Ctrl + C</code>, if it is currently running.</p>
+</li>
+<li>
+<p>Follow the remainder of the instructions on this Solana Installation doc section of the webpage: <a href="https://solana.com/docs/intro/installation#solana-cli-basics">https://solana.com/docs/intro/installation#solana-cli-basics</a>. You do not have to change anything or make any choice unless you are told explicitly to do so.</p>
+</li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div>
+<p><b>Also</b>, please note that you should have your Solana project (e.g, 'voting-dapp) running using command:</p>
+<pre><code class="language-bash">npm run dev
+</code></pre>
+<p>then</p>
+<pre><code class="language-bash">solana config set -ul
+</code></pre>
+<p>...before actually running the solana-test-validator command on a separate terminal:</p>
+<pre><code class="language-bash">solana-test-validator
+</code></pre>
+<p>Whether you run <code>solana-test-validator</code> before or after <code>npm run dev</code> doesn't actually matter.</p>
+<p><b>Good to Know :</b></p>
+<p>You only need to <code>$: solana config get</code> once. You can check your Solana balance using command:</p>
+<pre><code class="language-bash">solana balance
+</code></pre>
+<p>You can check your Solana address / pubkey using command:</p>
+<pre><code class="language-bash">solana address
+</code></pre>
+<p>And you can actually change your wallet address / generate a new one using command:</p>
+<pre><code class="language-bash">solana-keygen new --force
+</code></pre>
+<br />
+<p><b>Helpful Solana config commands include:</b></p>
+<pre><code class="language-cmd">solana config set --url mainnet-beta
+solana config set --url devnet
+solana config set --url localhost
+solana config set --url testnet
+</code></pre>
+<p>OR</p>
+<pre><code class="language-cmd">solana config set -um    # For mainnet-beta
+solana config set -ud    # For devnet
+solana config set -ul    # For localhost
+solana config set -ut    # For testnet
+</code></pre>
+<p></b>Good to Know:</b></p>
+<p>You can actually run wsl from VS code. Simple use your wsl terminal to navigate to the directory containing your code files and then use the <code>$: code .</code> command to open the project in VS Code.</p>
+<p>It is very likely that when you run <code>$: solana --version</code> on VS-code for the first time as decribed above, it would see as though the solana-cli is lost on your machine (not installed anymore). Fret not, simply run the following command to fix this minor issue once and for all:</p>
+<pre><code class="language-bash">export PATH=&quot;$HOME/.local/share/solana/install/active_release/bin:$PATH&quot;
+</code></pre>
+<p>Finally, please note that you have to navigate to the <code>anchor</code> directory inside your project, then enter the anchor build command before you actually run your Solana project using <code>$: npm run dev</code>. This is the anchor build command:</p>
+<pre><code class="language-bash">anchor build
+</code></pre>
+<p>By building the anchor directory inside your project, you make it easier for your project to detect your Solana wallet and connect to it.</p>
+<p>Timestamp - [43:48 - 49:25]</p>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="lets-first-address-the-design-to-understand-what-we-need-to-do-conceptually"><a class="header" href="#lets-first-address-the-design-to-understand-what-we-need-to-do-conceptually">Let's first address the design to understand what we need to do conceptually.</a></h3>
+<br/>
+<h4 id="its-design-specification"><a class="header" href="#its-design-specification">Its Design Specification</a></h4>
+<!--![Screenshot of the voting dapp concept](./assets/Screenshot_20241116-124950.jpg 'Votingdapp diagramatic illustration')-->
+<p><img src="./assets/The-Votingdapp-Design-Specification.png" alt="Screenshot of the Voting Dapp's Design Specification" title="The Voting Dapp Design Specification diagramatic explanation" /></p>
+<ul>
+<li>In the illustration above, we have two accounts - <code>Poll</code> and <code>Candidate</code>, and for each account we've specified the data we want stored inside it on the right-hand side of the screen, so for example, for Account <code>Poll</code>, we want to store - <code>poll_id</code>, <code>description</code>, <code>poll_start</code>, <code>poll_end</code>, and <code>candidate_amount</code>.</li>
+<li>Whereas, for Account <code>Candidate</code>, we want to store - <code>candidate_name</code> and <code>candidate_amount</code>.</li>
+<li>On the left-hand side of each Account, we specify the seed we want to use, so for example, for Account <code>Poll</code>, we use <code>poll_id</code> as its seeds, wherease for Account <code>Candidate</code>, we use <code>poll_id</code> + <code>candidate_name</code> as its seeds.</li>
+<li>Finally, we have a set of Instructions namely; <code>Initialize_Poll</code>, <code>Initialize_Candidate</code>, and <code>Vote</code>.</li>
+</ul>
+<br/>
+<h4 id="its-code"><a class="header" href="#its-code">Its Code:</a></h4>
+<pre><code class="language-rust">use anchor_lang::prelude::*;
+
+declare_id!(&quot;5s3PtT8kLYCv1WEp6dSh3T7EuF35Z6jSu5Cvx4hWG79H&quot;);
+
+#[program]
+pub mod voting {
+    use super::*;
+
+    pub fn initialize_poll(ctx: Context&lt;InitializePoll&gt;,
+                            _poll_id: u64,
+                            start_time: u64,
+                            end_time: u64,
+                            name: String,
+                            description: String) -&gt; Result&lt;()&gt; {
+        ctx.accounts.poll_account.poll_name = name;
+        ctx.accounts.poll_account.poll_description = description;
+        ctx.accounts.poll_account.poll_voting_start = start_time;
+        ctx.accounts.poll_account.poll_voting_end = end_time;
+        Ok(())
+    }
+
+    pub fn initialize_candidate(ctx: Context&lt;InitializeCandidate&gt;,
+                                _poll_id: u64,
+                                candidate: String) -&gt; Result&lt;()&gt; {
+        ctx.accounts.candidate_account.candidate_name = candidate;
+        ctx.accounts.poll_account.poll_option_index += 1;
+        Ok(())
+    }
+
+    pub fn vote(ctx: Context&lt;Vote&gt;, _poll_id: u64, _candidate: String) -&gt; Result&lt;()&gt; {
+        let candidate_account = &amp;mut ctx.accounts.candidate_account;
+        let current_time = Clock::get()?.unix_timestamp;
+
+        if current_time &gt; (ctx.accounts.poll_account.poll_voting_end as i64) {
+            return Err(ErrorCode::VotingEnded.into());
+        }
+
+        if current_time &lt;= (ctx.accounts.poll_account.poll_voting_start as i64) {
+            return Err(ErrorCode::VotingNotStarted.into());
+        }
+
+        candidate_account.candidate_votes += 1;
+
+        Ok(())
+    }
+
+}
+
+#[derive(Accounts)]
+#[instruction(poll_id: u64)]
+pub struct InitializePoll&lt;'info&gt; {
+    #[account(mut)]
+    pub signer: Signer&lt;'info&gt;,
+
+    #[account(
+        init_if_needed,
+        payer = signer,
+        space = 8 + PollAccount::INIT_SPACE,
+        seeds = [b&quot;poll&quot;.as_ref(), poll_id.to_le_bytes().as_ref()],
+        bump
+    )]
+    pub poll_account: Account&lt;'info, PollAccount&gt;,
+
+    pub system_program: Program&lt;'info, System&gt;,
+}
+
+#[derive(Accounts)]
+#[instruction(poll_id: u64, candidate: String)]
+pub struct InitializeCandidate&lt;'info&gt; {
+    #[account(mut)]
+    pub signer: Signer&lt;'info&gt;,
+
+    pub poll_account: Account&lt;'info, PollAccount&gt;,
+
+    #[account(
+        init,
+        payer = signer,
+        space = 8 + CandidateAccount::INIT_SPACE,
+        seeds = [poll_id.to_le_bytes().as_ref(), candidate.as_ref()],
+        bump
+    )]
+    pub candidate_account: Account&lt;'info, CandidateAccount&gt;,
+
+    pub system_program: Program&lt;'info, System&gt;,
+}
+
+#[derive(Accounts)]
+#[instruction(poll_id: u64, candidate: String)]
+pub struct Vote&lt;'info&gt; {
+    #[account(mut)]
+    pub signer: Signer&lt;'info&gt;,
+
+    #[account(
+        mut,
+        seeds = [b&quot;poll&quot;.as_ref(), poll_id.to_le_bytes().as_ref()],
+        bump,
+    )]
+    pub poll_account: Account&lt;'info, PollAccount&gt;,
+
+    #[account(
+        mut,
+        seeds = [poll_id.to_le_bytes().as_ref(), candidate.as_ref()],
+        bump)]
+    pub candidate_account: Account&lt;'info, CandidateAccount&gt;,
+}
+
+#[account]
+#[derive(InitSpace)]
+pub struct CandidateAccount {
+    #[max_len(32)]
+    pub candidate_name: String,
+    pub candidate_votes: u64,
+}
+
+#[account]
+#[derive(InitSpace)]
+pub struct PollAccount{
+    #[max_len(32)]
+    pub poll_name: String,
+    #[max_len(280)]
+    pub poll_description: String,
+    pub poll_voting_start: u64,
+    pub poll_voting_end: u64,
+    pub poll_option_index: u64,
+}
+
+#[error_code]
+pub enum ErrorCode {
+    #[msg(&quot;Voting has not started yet&quot;)]
+    VotingNotStarted,
+    #[msg(&quot;Voting has ended&quot;)]
+    VotingEnded,
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><p>Anchor Bankrun - [1:13:46 - ]</p>
+<h3 id="testing-our-dapp"><a class="header" href="#testing-our-dapp">Testing Our Dapp</a></h3>
+<p>To run tests for our dapp, we need to install an npm tool called Anchor Bankrun, which is a testing framework that allows us to test our smart contract methods / instructions to make sure that our expected values occurs.</p>
+<ol>
+<li>
+<h4 id="install-anchor-bankrun"><a class="header" href="#install-anchor-bankrun">Install anchor-bankrun</a></h4>
+</li>
+</ol>
+<p>You can use either <code>Yarn</code> or <code>Npm</code> to install anchor-bankrun (provided that you do not have it installed already; check the ending part of this section to know whether or not you already. have <code>anchor-bankrun</code> installed). Now make sure to <code>cd</code> into your dapp project's directory before running any one of the commands below:</p>
+<p>For <code>Yarn</code>:</p>
+<pre><code class="language-bash">yarn add anchor-bankrun
+</code></pre>
+<p>For <code>Npm</code>:</p>
+<pre><code class="language-bash">npm install anchor-bankrun
+</code></pre>
+<p>The installation command for Anchor bankrun is:</p>
+<pre><code class="language-bash">npm install anchor-bankrun
+</code></pre>
+<p>It is very likely that you already have it installed, especially if you used command <code>$: npx create-solana-dapp</code> to generate a template for your project.</p>
+<ol start="2">
+<li>
+<h4 id="locate-and-edit-your-votingdaapspects-file"><a class="header" href="#locate-and-edit-your-votingdaapspects-file">Locate and edit your 'votingdaap.spec.ts' file</a></h4>
+</li>
+</ol>
+<p>This file can be found inside your project's <code>anchor - tests</code> folder.</p>
+<p>Open your <code>votingdapp.spect.ts</code> file and clear most of the code that already exists inside it such that it now looks like this:</p>
+<pre><code class="language-ts">import * as anchor from '@coral-xyz/anchor';
+import { Program } from '@coral-xyz/anchor';
+import { Keypair } from '@solana/web3.js';
+//import { Votingdapp } from '../target/types/votingdapp'
+
+describe('votingdapp', () =&gt; {
+	// 'votingdapp is just called 'voting' in the bootcamp course
+	it('Initialize Poll', async () =&gt; {
+		// ...
+	});
+});
+</code></pre>
+<p>In the bootcamp course video, the <code>describe</code> function above has a first argument string value of <code>'voting'</code> instead of <code>'votingdapp'</code> - please note the slight difference.</p>
+<ol start="3">
+<li>
+<h4 id="choose-the-target-smart-contract-program-to-test"><a class="header" href="#choose-the-target-smart-contract-program-to-test">Choose the target smart contract program to test</a></h4>
+</li>
+</ol>
+<p>Each <code>anchor build</code> command compiles our project into a Solana binary that looks similar to this - <code>&lt;your-project-name&gt;.so</code>. This file is essential because it is the smart contract program / Solana dapp we wish to test.</p>
+<p>We need to first copy our <code>votingdapp.so</code> binary file. The <code>votingdapp.so</code> file can be located inside the <code>anchor - target - deploy</code> folder of our project's directory. Paste this file.</p>
+<p>Next, paste the copied <code>votingdapp.so</code> binary file into the <code>anchor - tests - fixtures</code> folder. You may have to create a new fixtures folder if it does not already exist inside the tests folder. Please note that you will need to repeat this everytime you add new features to your program and want to test the new build of your program.</p>
+<ol start="4">
+<li>
+<h4 id="integrate-your-idl-file-into-your-dapps-spects-code"><a class="header" href="#integrate-your-idl-file-into-your-dapps-spects-code">Integrate your IDL file into your dapp's .spec.ts code.</a></h4>
+</li>
+</ol>
+<p>An IDL is an interface to help build and generate language-specific format for calling smart contracts similar to Ethereum's ABI. And the idl for our Solana dapp can be inside the <code>anchor - target - idl</code> folder. For our <code>votingdapp</code> dapp (in this written guide), the idl file is named <code>votingdapp.json</code>, whereas in the bootcamp course video this file is called <code>voting.json</code> - please note the slight difference.</p>
+<p>To integrate the idl into our previously edited <code>votingdapp.spec.ts</code> <a href="10.%20Testing%20Dapps.html#locate-and-edit-your-votingdaapspects-file">code</a>, add the following statement to <code>votingdapp.spec.ts</code>'s code:</p>
+<pre><code class="language-ts">import * as anchor from '@coral-xyz/anchor';
+import { Program } from '@coral-xyz/anchor';
+import { Keypair } from '@solana/web3.js';
+//import { Votingdapp } from '../target/types/votingdapp'
+const IDL = require('../target/idl/votingdapp.json');
+
+describe('votingdapp', () =&gt; {
+	it('Initialize Poll', async () =&gt; {
+		// ...
+	});
+});
+</code></pre>
+<ol start="5">
+<li>
+<h4 id="import-program-type-votingdapp-into-your-spects-test-file"><a class="header" href="#import-program-type-votingdapp-into-your-spects-test-file">Import program type 'Votingdapp' into your .spec.ts test file:</a></h4>
+</li>
+</ol>
+<p>You nned to add the following import statement to <code>votingdapp.spec.ts</code> <a href="10.%20Testing%20Dapps.html#locate-and-edit-your-votingdaapspects-file">code</a>:</p>
+<pre><code class="language-ts">...
+
+import { Votingdapp } from '../target/types/votingdapp';
+
+...
+</code></pre>
+<p>In the bootcamp's video course, the specific object imported was <code>Voting</code> instead of <code>Votingdapp</code>, so please take note of this slight difference.</p>
+<p>We'll start by creating an integration test for the the <code>Initialize_Poll</code> instruction first.</p>
+<pre><code class="language-ts">import * as anchor from '@coral-xyz/anchor';
+import { Program } from '@coral-xyz/anchor';
+import { Keypair } from '@solana/web3.js';
+import { Votingdapp } from '../target/types/votingdapp';
+
+const IDL = require('../target/idl/votingdapp.json');
+
+describe('votingdapp', () =&gt; {
+	it('Initialize Poll', async () =&gt; {
+		// ...
+	});
+});
+</code></pre>
+<ol start="6">
+<li>
+<h4 id="now-create-the-context-and-provider-for-each-test-case-eg-the-initialize_poll-instruction"><a class="header" href="#now-create-the-context-and-provider-for-each-test-case-eg-the-initialize_poll-instruction">Now create the Context and Provider for each test case, e.g, the <code>Initialize_Poll</code> instruction:</a></h4>
+</li>
+</ol>
+<pre><code class="language-ts">const context = await startAnchor('', [], []);
+const provider = new BankrunProvider(context);
+</code></pre>
+<p>Creating the <code>Context</code> and <code>Provider</code> allows us to interact with our smart contract.</p>
+<p><code>startAnchor</code> comes from the <code>solana-bankrun</code> Node module, which is pre-installed.</p>
+<p><code>BankrunProvider</code> comes from the <code>anchor-bankrun</code> Node module, which should come pre-installed.</p>
+<p>Your <code>votingdapp.spec.ts</code> <a href="10.%20Testing%20Dapps.html#locate-and-edit-your-votingdaapspects-file">code</a> should now look like this:</p>
+<pre><code class="language-ts">import * as anchor from '@coral-xyz/anchor';
+import { Program } from '@coral-xyz/anchor';
+import { Keypair } from '@solana/web3.js';
+import { Votingdapp } from '../target/types/votingdapp';
+//import { BankrunProvider, startAnchor } from 'anchor-bankrun';
+import { startAnchor } from 'solana-bankrun'; /* Take note of this import */
+import { BankrunProvider } from 'anchor-bankrun';
+
+const IDL = require('../target/idl/votingdapp.json');
+
+describe('votingdapp', () =&gt; {
+	it('Initialize Poll', async () =&gt; {
+		const context = await startAnchor('', [], []); // its first arg specifies the path of the 'tests' folder which is local in most cases
+		const provider = new BankrunProvider(context);
+	});
+});
+</code></pre>
+<ol start="7">
+<li>
+<h4 id="declare-your-program-address-pubkey-const-inside-votingdappspects-for-startanchors-extraprograms-use-inside-our-initialize_poll-it-function"><a class="header" href="#declare-your-program-address-pubkey-const-inside-votingdappspects-for-startanchors-extraprograms-use-inside-our-initialize_poll-it-function">Declare your program address (PubKey) const inside votingdapp.spec.ts for 'startAnchor()'s extraPrograms use inside our Initialize_Poll it() function:</a></h4>
+</li>
+</ol>
+<p>The pub-key of our votingdapp will be provided as part of the second argument of the <code>startAnchor</code> function's <code>extraPrograms</code> array-parameter. <code>extraPrograms</code> here will be an array that contains just one object.</p>
+<ul>
+<li>By now your votingdapp program will have a pubkey. Simply go to the <code>anchor - programs - src</code> folder and grab the string inside <code>declare_id!(&quot;&quot;)</code>, and use it to create a new <code>votingdappAddress' PublicKey</code> constant like so:</li>
+</ul>
+<pre><code class="language-rust">...
+const votingdappAddress = new PubKey(&quot;AsjZ3kWAUSQRNt2pZVeJkywhZ6gpLpHZmJjduPmKZDZZ&quot;);
+...
+</code></pre>
+<ul>
+<li>Now pass the newly created <code>votingdaapAddress</code> constant to your it()'s <code>startAnchor</code>'s <code>extraPrograms</code> / <code>AddedPrograms</code> array-parameter. Here, <code>extraPrograms</code> array-parameter will contain just a single object value that has a signature of - <code>{name: '', programId: &lt;your-program-address&gt;}</code>. Your <code>votingdapp.spec.ts</code> code should now look like this:</li>
+</ul>
+<pre><code class="language-ts">import * as anchor from '@coral-xyz/anchor';
+import { Program } from '@coral-xyz/anchor';
+import { Keypair, PublicKey } from '@solana/web3.js';
+import { Votingdapp } from '../target/types/votingdapp';
+//import { BankrunProvider, startAnchor } from 'anchor-bankrun';
+import { startAnchor } from 'solana-bankrun';
+import { BankrunProvider } from 'anchor-bankrun';
+
+const IDL = require('../target/idl/votingdapp.json');
+
+const votingdappAddress = new PublicKey(
+	'AsjZ3kWAUSQRNt2pZVeJkywhZ6gpLpHZmJjduPmKZDZZ'
+); // code update
+
+describe('votingdapp', () =&gt; {
+	it('Initialize Poll', async () =&gt; {
+		const context = await startAnchor(
+			'',
+			[{ name: 'votingdapp', programId: votingdaapAddress }], // code update
+			[]
+		);
+		const provider = new BankrunProvider(context);
+	});
+});
+</code></pre>
+<ol start="8">
+<li>
+<h4 id="create-the-program-object-inside-your-it-integration-test-function"><a class="header" href="#create-the-program-object-inside-your-it-integration-test-function">Create the Program object inside your it (integration test) function</a></h4>
+</li>
+</ol>
+<p>This is where we would bring in our program type <code>Votingdapp</code> that was <a href="10.%20Testing%20Dapps.html#import-program-type-votingdapp-into-your-spects-test-file">imported here</a>, and pass-in the <code>IDL</code> and <code>provider</code> constants created <a href="10.%20Testing%20Dapps.html#integrate-your-idl-file-into-your-dapps-spects-code">here</a> and <a href="10.%20Testing%20Dapps.html#declare-your-program-address-pubkey-const-inside-votingdappspects-for-startanchors-extraprograms-use-inside-our-initialize_poll-it-function">here</a>, respectively.</p>
+<p>This is what the code to create the Program object looks like:</p>
+<pre><code class="language-ts">...
+const votingdappProgram = new Program&lt;Votingdapp&gt;(
+	IDL,
+	provider
+)
+...
+</code></pre>
+<p>Your entire <code>votingdapp.spec.ts</code> code should now look like this:</p>
+<pre><code class="language-ts">import * as anchor from '@coral-xyz/anchor';
+import { Program } from '@coral-xyz/anchor';
+import { Keypair, PublicKey } from '@solana/web3.js';
+import { Votingdapp } from '../target/types/votingdapp';
+//import { BankrunProvider, startAnchor } from 'anchor-bankrun';
+import { startAnchor } from 'solana-bankrun'; // 'startAnchor' can also be imported from 'anchor-bankrun' just like in the above comment
+import { BankrunProvider } from 'anchor-bankrun';
+
+const IDL = require('../target/idl/votingdapp.json');
+
+const votingdappAddress = new PublicKey(
+	'AsjZ3kWAUSQRNt2pZVeJkywhZ6gpLpHZmJjduPmKZDZZ'
+);
+
+describe('votingdapp', () =&gt; {
+	it('Initialize Poll', async () =&gt; {
+		const context = await startAnchor(
+			'',
+			[{ name: 'votingddapp', programId: votingdappAddress }],
+			[]
+		);
+
+		const provider = new BankrunProvider(context);
+
+		const votingdappProgram = new Program&lt;Votingdapp&gt;(IDL, provider);
+	});
+});
+</code></pre>
+<ol start="9">
+<li>
+<h4 id="interact-with-our-votingdappprogram-instructions-using-the-idl"><a class="header" href="#interact-with-our-votingdappprogram-instructions-using-the-idl">Interact with our 'votingdappProgram' instructions using the IDL</a></h4>
+</li>
+</ol>
+<p>To do this, we would simply await a call to <code>votingProgram.method.&lt;our-choice-instruction-to-test&gt;</code>.</p>
+<p>We need to make sure to with provide the values needed for <our-choice-instruction-to-test>' method signature, for example, the <code>initialize_poll</code> instruction handler function inside our program has this method signature:</p>
+<pre><code class="language-rust">...
+pub fn initialize_poll(
+	ctx: &lt;InitializePoll&gt;,
+	poll_id: u64,
+	description: String,
+	poll_start: u64,
+	poll_end: u64,
+) -&gt; Result&lt;()&gt; {
+	// ... function body ...
+}
+...
+</code></pre>
+<p>Hence the IDL interaction for it is as follows:</p>
+<pre><code class="language-typescript">...
+// initializePoll is for our `iniitialize poll` it() function for our smart-contract / program's votingdapp.spec.ts
+await votingdappProgram.methods.initializePoll(
+	new anchor.BN(1), // BN is how we create a u64 in TypeScript
+	&quot;What is your favorite type of peanut butter&quot;,
+	new anchor.BN(0),
+	new anchor.BN(1821246480),
+).rpc(); // the rpc() call executes the instruction within our program
+...
+</code></pre>
+<p>Your <code>votingdapp.spec.ts</code> should now look similar to this:</p>
+<pre><code class="language-typescript">import * as anchor from '@coral-xyz/anchor';
+import { Program } from '@coral-xyz/anchor';
+import { Keypair, PublicKey } from '@solana/web3.js';
+import { Votingdapp } from '../target/types/votingdapp';
+import { BankrunProvider, startAnchor } from 'anchor-bankrun';
+//import { startAnchor } from 'solana-bankrun';
+//import { BankrunProvider } from 'anchor-bankrun';
+
+const IDL = require('../target/idl/votingdapp.json');
+
+const votingdappAddress = new PublicKey(
+	'AsjZ3kWAUSQRNt2pZVeJkywhZ6gpLpHZmJjduPmKZDZZ'
+);
+
+describe('votingdapp', () =&gt; {
+	it('Initialize Poll', async () =&gt; {
+		const context = await startAnchor(
+			'',
+			[{ name: 'votingdapp', programId: votingdappAddress }],
+			[]
+		);
+		const provider = new BankrunProvider(context);
+
+		const votingdappProgram = new Program&lt;Votingdapp&gt;(IDL, provider);
+
+		await votingdappProgram.methods
+			.initializePoll(
+				new anchor.BN(1),
+				'What is your favorite type of peanut butter',
+				new anchor.BN(0),
+				new anchor.BN(1821246680)
+			)
+			.rpc();
+	});
+});
+</code></pre>
+<ol start="10">
+<li>
+<h4 id="verify-your-anchortomls-programslocalnet-attribute-key-matches-the-name-of-your-spects-file"><a class="header" href="#verify-your-anchortomls-programslocalnet-attribute-key-matches-the-name-of-your-spects-file">Verify your Anchor.toml's &quot;[programs.localnet]&quot; attribute key matches the name of your .spec.ts file:</a></h4>
+</li>
+</ol>
+<p>Your <code>Anchor.toml</code> file can be found inside the <code>anchor</code> folder inside your dapp project's working directory. Open this file make sure that your <code>[programs.localnet]</code> attribute's key has the correct name that matches your <code>.spec.ts</code> file. In our case it is <code>votingdapp</code>. You can find the <code>[programs.localnet]</code> attribute on line-8 of your <code>Anchor.toml</code> file.</p>
+<p>If you have been following the naming convention used in this guide, then your <code>[programs.localnet]</code> key should be called <code>votingdapp</code>. If you named things as done in the bootcamp's course video it would be <code>voting</code> instead.</p>
+<ol start="11">
+<li>
+<h4 id="run-the-anchor-test-command"><a class="header" href="#run-the-anchor-test-command">Run the anchor test command:</a></h4>
+</li>
+</ol>
+<p>You can simply run the command provided below if you do not currently have the <code>solana-test-validator</code> running in the background because the <code>anchor test</code> command would fire up <code>solana-test-validator</code>.</p>
+<pre><code class="language-bash">anchor test --skip-deploy
+</code></pre>
+<p>If you already have <code>solana-test-validator</code> running then you need to use this command instead to skip the <code>anchor test</code> command from also running the <code>solana-test-validator</code> tool:</p>
+<pre><code class="language-bash">anchor test --skip-local-validator --skip-deploy
+</code></pre>
+<p>You should now see some tests passed similar to what I had here:</p>
+<p><img src="./assets/votingdapp.spec.ts-test-setup-output.png" alt="A screenshot of $: anchor test --skip-deploy command's ouput result" title="My '$: anchor test --skip-deploy' output result" /></p>
+
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

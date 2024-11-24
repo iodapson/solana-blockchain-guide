@@ -1,0 +1,479 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Testing Dapps - Solana Blockchain Guide</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="1. Overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="2. What is Blockchain & How it Works.html"><strong aria-hidden="true">2.</strong> Blockchain & How it Works</a></li><li class="chapter-item expanded "><a href="Project 1 - Code File.html"><strong aria-hidden="true">3.</strong> Project 1 - Code File</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 1: Favorites Program</li><li class="chapter-item expanded "><a href="3. Solana Project 1 - Section A.html"><strong aria-hidden="true">4.</strong> Solana Project 1 - Section A</a></li><li class="chapter-item expanded "><a href="4. Solana Project 1 - Section B.html"><strong aria-hidden="true">5.</strong> Solana Project 1 - Section B</a></li><li class="chapter-item expanded "><a href="5. Solana Project 1 - Section C.html"><strong aria-hidden="true">6.</strong> Solana Project 1 - Section C</a></li><li class="chapter-item expanded "><a href="6. Solana Project - Section D.html"><strong aria-hidden="true">7.</strong> Solana Project 1 - Section D</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 2: Voting Application</li><li class="chapter-item expanded "><a href="7. Installing Solana on a Local Dev Machine.html"><strong aria-hidden="true">8.</strong> Installing Solana on a Local Dev Machine</a></li><li class="chapter-item expanded "><a href="8. Creating the Voting Dapp.html"><strong aria-hidden="true">9.</strong> Creating the Voting Dapp</a></li><li class="chapter-item expanded "><a href="9. Understanding the Voting Dapp.html"><strong aria-hidden="true">10.</strong> Understanding the Voting Dapp</a></li><li class="chapter-item expanded "><a href="10. Testing Dapps.html" class="active"><strong aria-hidden="true">11.</strong> Testing Dapps</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Solana Blockchain Guide</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p>Anchor Bankrun - [1:13:46 - ]</p>
+<h3 id="testing-our-dapp"><a class="header" href="#testing-our-dapp">Testing Our Dapp</a></h3>
+<p>To run tests for our dapp, we need to install an npm tool called Anchor Bankrun, which is a testing framework that allows us to test our smart contract methods / instructions to make sure that our expected values occurs.</p>
+<ol>
+<li>
+<h4 id="install-anchor-bankrun"><a class="header" href="#install-anchor-bankrun">Install anchor-bankrun</a></h4>
+</li>
+</ol>
+<p>You can use either <code>Yarn</code> or <code>Npm</code> to install anchor-bankrun (provided that you do not have it installed already; check the ending part of this section to know whether or not you already. have <code>anchor-bankrun</code> installed). Now make sure to <code>cd</code> into your dapp project's directory before running any one of the commands below:</p>
+<p>For <code>Yarn</code>:</p>
+<pre><code class="language-bash">yarn add anchor-bankrun
+</code></pre>
+<p>For <code>Npm</code>:</p>
+<pre><code class="language-bash">npm install anchor-bankrun
+</code></pre>
+<p>The installation command for Anchor bankrun is:</p>
+<pre><code class="language-bash">npm install anchor-bankrun
+</code></pre>
+<p>It is very likely that you already have it installed, especially if you used command <code>$: npx create-solana-dapp</code> to generate a template for your project.</p>
+<ol start="2">
+<li>
+<h4 id="locate-and-edit-your-votingdaapspects-file"><a class="header" href="#locate-and-edit-your-votingdaapspects-file">Locate and edit your 'votingdaap.spec.ts' file</a></h4>
+</li>
+</ol>
+<p>This file can be found inside your project's <code>anchor - tests</code> folder.</p>
+<p>Open your <code>votingdapp.spect.ts</code> file and clear most of the code that already exists inside it such that it now looks like this:</p>
+<pre><code class="language-ts">import * as anchor from '@coral-xyz/anchor';
+import { Program } from '@coral-xyz/anchor';
+import { Keypair } from '@solana/web3.js';
+//import { Votingdapp } from '../target/types/votingdapp'
+
+describe('votingdapp', () =&gt; {
+	// 'votingdapp is just called 'voting' in the bootcamp course
+	it('Initialize Poll', async () =&gt; {
+		// ...
+	});
+});
+</code></pre>
+<p>In the bootcamp course video, the <code>describe</code> function above has a first argument string value of <code>'voting'</code> instead of <code>'votingdapp'</code> - please note the slight difference.</p>
+<ol start="3">
+<li>
+<h4 id="choose-the-target-smart-contract-program-to-test"><a class="header" href="#choose-the-target-smart-contract-program-to-test">Choose the target smart contract program to test</a></h4>
+</li>
+</ol>
+<p>Each <code>anchor build</code> command compiles our project into a Solana binary that looks similar to this - <code>&lt;your-project-name&gt;.so</code>. This file is essential because it is the smart contract program / Solana dapp we wish to test.</p>
+<p>We need to first copy our <code>votingdapp.so</code> binary file. The <code>votingdapp.so</code> file can be located inside the <code>anchor - target - deploy</code> folder of our project's directory. Paste this file.</p>
+<p>Next, paste the copied <code>votingdapp.so</code> binary file into the <code>anchor - tests - fixtures</code> folder. You may have to create a new fixtures folder if it does not already exist inside the tests folder. Please note that you will need to repeat this everytime you add new features to your program and want to test the new build of your program.</p>
+<ol start="4">
+<li>
+<h4 id="integrate-your-idl-file-into-your-dapps-spects-code"><a class="header" href="#integrate-your-idl-file-into-your-dapps-spects-code">Integrate your IDL file into your dapp's .spec.ts code.</a></h4>
+</li>
+</ol>
+<p>An IDL is an interface to help build and generate language-specific format for calling smart contracts similar to Ethereum's ABI. And the idl for our Solana dapp can be inside the <code>anchor - target - idl</code> folder. For our <code>votingdapp</code> dapp (in this written guide), the idl file is named <code>votingdapp.json</code>, whereas in the bootcamp course video this file is called <code>voting.json</code> - please note the slight difference.</p>
+<p>To integrate the idl into our previously edited <code>votingdapp.spec.ts</code> <a href="#locate-and-edit-your-votingdaapspects-file">code</a>, add the following statement to <code>votingdapp.spec.ts</code>'s code:</p>
+<pre><code class="language-ts">import * as anchor from '@coral-xyz/anchor';
+import { Program } from '@coral-xyz/anchor';
+import { Keypair } from '@solana/web3.js';
+//import { Votingdapp } from '../target/types/votingdapp'
+const IDL = require('../target/idl/votingdapp.json');
+
+describe('votingdapp', () =&gt; {
+	it('Initialize Poll', async () =&gt; {
+		// ...
+	});
+});
+</code></pre>
+<ol start="5">
+<li>
+<h4 id="import-program-type-votingdapp-into-your-spects-test-file"><a class="header" href="#import-program-type-votingdapp-into-your-spects-test-file">Import program type 'Votingdapp' into your .spec.ts test file:</a></h4>
+</li>
+</ol>
+<p>You nned to add the following import statement to <code>votingdapp.spec.ts</code> <a href="#locate-and-edit-your-votingdaapspects-file">code</a>:</p>
+<pre><code class="language-ts">...
+
+import { Votingdapp } from '../target/types/votingdapp';
+
+...
+</code></pre>
+<p>In the bootcamp's video course, the specific object imported was <code>Voting</code> instead of <code>Votingdapp</code>, so please take note of this slight difference.</p>
+<p>We'll start by creating an integration test for the the <code>Initialize_Poll</code> instruction first.</p>
+<pre><code class="language-ts">import * as anchor from '@coral-xyz/anchor';
+import { Program } from '@coral-xyz/anchor';
+import { Keypair } from '@solana/web3.js';
+import { Votingdapp } from '../target/types/votingdapp';
+
+const IDL = require('../target/idl/votingdapp.json');
+
+describe('votingdapp', () =&gt; {
+	it('Initialize Poll', async () =&gt; {
+		// ...
+	});
+});
+</code></pre>
+<ol start="6">
+<li>
+<h4 id="now-create-the-context-and-provider-for-each-test-case-eg-the-initialize_poll-instruction"><a class="header" href="#now-create-the-context-and-provider-for-each-test-case-eg-the-initialize_poll-instruction">Now create the Context and Provider for each test case, e.g, the <code>Initialize_Poll</code> instruction:</a></h4>
+</li>
+</ol>
+<pre><code class="language-ts">const context = await startAnchor('', [], []);
+const provider = new BankrunProvider(context);
+</code></pre>
+<p>Creating the <code>Context</code> and <code>Provider</code> allows us to interact with our smart contract.</p>
+<p><code>startAnchor</code> comes from the <code>solana-bankrun</code> Node module, which is pre-installed.</p>
+<p><code>BankrunProvider</code> comes from the <code>anchor-bankrun</code> Node module, which should come pre-installed.</p>
+<p>Your <code>votingdapp.spec.ts</code> <a href="#locate-and-edit-your-votingdaapspects-file">code</a> should now look like this:</p>
+<pre><code class="language-ts">import * as anchor from '@coral-xyz/anchor';
+import { Program } from '@coral-xyz/anchor';
+import { Keypair } from '@solana/web3.js';
+import { Votingdapp } from '../target/types/votingdapp';
+//import { BankrunProvider, startAnchor } from 'anchor-bankrun';
+import { startAnchor } from 'solana-bankrun'; /* Take note of this import */
+import { BankrunProvider } from 'anchor-bankrun';
+
+const IDL = require('../target/idl/votingdapp.json');
+
+describe('votingdapp', () =&gt; {
+	it('Initialize Poll', async () =&gt; {
+		const context = await startAnchor('', [], []); // its first arg specifies the path of the 'tests' folder which is local in most cases
+		const provider = new BankrunProvider(context);
+	});
+});
+</code></pre>
+<ol start="7">
+<li>
+<h4 id="declare-your-program-address-pubkey-const-inside-votingdappspects-for-startanchors-extraprograms-use-inside-our-initialize_poll-it-function"><a class="header" href="#declare-your-program-address-pubkey-const-inside-votingdappspects-for-startanchors-extraprograms-use-inside-our-initialize_poll-it-function">Declare your program address (PubKey) const inside votingdapp.spec.ts for 'startAnchor()'s extraPrograms use inside our Initialize_Poll it() function:</a></h4>
+</li>
+</ol>
+<p>The pub-key of our votingdapp will be provided as part of the second argument of the <code>startAnchor</code> function's <code>extraPrograms</code> array-parameter. <code>extraPrograms</code> here will be an array that contains just one object.</p>
+<ul>
+<li>By now your votingdapp program will have a pubkey. Simply go to the <code>anchor - programs - src</code> folder and grab the string inside <code>declare_id!(&quot;&quot;)</code>, and use it to create a new <code>votingdappAddress' PublicKey</code> constant like so:</li>
+</ul>
+<pre><code class="language-rust">...
+const votingdappAddress = new PubKey(&quot;AsjZ3kWAUSQRNt2pZVeJkywhZ6gpLpHZmJjduPmKZDZZ&quot;);
+...
+</code></pre>
+<ul>
+<li>Now pass the newly created <code>votingdaapAddress</code> constant to your it()'s <code>startAnchor</code>'s <code>extraPrograms</code> / <code>AddedPrograms</code> array-parameter. Here, <code>extraPrograms</code> array-parameter will contain just a single object value that has a signature of - <code>{name: '', programId: &lt;your-program-address&gt;}</code>. Your <code>votingdapp.spec.ts</code> code should now look like this:</li>
+</ul>
+<pre><code class="language-ts">import * as anchor from '@coral-xyz/anchor';
+import { Program } from '@coral-xyz/anchor';
+import { Keypair, PublicKey } from '@solana/web3.js';
+import { Votingdapp } from '../target/types/votingdapp';
+//import { BankrunProvider, startAnchor } from 'anchor-bankrun';
+import { startAnchor } from 'solana-bankrun';
+import { BankrunProvider } from 'anchor-bankrun';
+
+const IDL = require('../target/idl/votingdapp.json');
+
+const votingdappAddress = new PublicKey(
+	'AsjZ3kWAUSQRNt2pZVeJkywhZ6gpLpHZmJjduPmKZDZZ'
+); // code update
+
+describe('votingdapp', () =&gt; {
+	it('Initialize Poll', async () =&gt; {
+		const context = await startAnchor(
+			'',
+			[{ name: 'votingdapp', programId: votingdaapAddress }], // code update
+			[]
+		);
+		const provider = new BankrunProvider(context);
+	});
+});
+</code></pre>
+<ol start="8">
+<li>
+<h4 id="create-the-program-object-inside-your-it-integration-test-function"><a class="header" href="#create-the-program-object-inside-your-it-integration-test-function">Create the Program object inside your it (integration test) function</a></h4>
+</li>
+</ol>
+<p>This is where we would bring in our program type <code>Votingdapp</code> that was <a href="#import-program-type-votingdapp-into-your-spects-test-file">imported here</a>, and pass-in the <code>IDL</code> and <code>provider</code> constants created <a href="#integrate-your-idl-file-into-your-dapps-spects-code">here</a> and <a href="#declare-your-program-address-pubkey-const-inside-votingdappspects-for-startanchors-extraprograms-use-inside-our-initialize_poll-it-function">here</a>, respectively.</p>
+<p>This is what the code to create the Program object looks like:</p>
+<pre><code class="language-ts">...
+const votingdappProgram = new Program&lt;Votingdapp&gt;(
+	IDL,
+	provider
+)
+...
+</code></pre>
+<p>Your entire <code>votingdapp.spec.ts</code> code should now look like this:</p>
+<pre><code class="language-ts">import * as anchor from '@coral-xyz/anchor';
+import { Program } from '@coral-xyz/anchor';
+import { Keypair, PublicKey } from '@solana/web3.js';
+import { Votingdapp } from '../target/types/votingdapp';
+//import { BankrunProvider, startAnchor } from 'anchor-bankrun';
+import { startAnchor } from 'solana-bankrun'; // 'startAnchor' can also be imported from 'anchor-bankrun' just like in the above comment
+import { BankrunProvider } from 'anchor-bankrun';
+
+const IDL = require('../target/idl/votingdapp.json');
+
+const votingdappAddress = new PublicKey(
+	'AsjZ3kWAUSQRNt2pZVeJkywhZ6gpLpHZmJjduPmKZDZZ'
+);
+
+describe('votingdapp', () =&gt; {
+	it('Initialize Poll', async () =&gt; {
+		const context = await startAnchor(
+			'',
+			[{ name: 'votingddapp', programId: votingdappAddress }],
+			[]
+		);
+
+		const provider = new BankrunProvider(context);
+
+		const votingdappProgram = new Program&lt;Votingdapp&gt;(IDL, provider);
+	});
+});
+</code></pre>
+<ol start="9">
+<li>
+<h4 id="interact-with-our-votingdappprogram-instructions-using-the-idl"><a class="header" href="#interact-with-our-votingdappprogram-instructions-using-the-idl">Interact with our 'votingdappProgram' instructions using the IDL</a></h4>
+</li>
+</ol>
+<p>To do this, we would simply await a call to <code>votingProgram.method.&lt;our-choice-instruction-to-test&gt;</code>.</p>
+<p>We need to make sure to with provide the values needed for <our-choice-instruction-to-test>' method signature, for example, the <code>initialize_poll</code> instruction handler function inside our program has this method signature:</p>
+<pre><code class="language-rust">...
+pub fn initialize_poll(
+	ctx: &lt;InitializePoll&gt;,
+	poll_id: u64,
+	description: String,
+	poll_start: u64,
+	poll_end: u64,
+) -&gt; Result&lt;()&gt; {
+	// ... function body ...
+}
+...
+</code></pre>
+<p>Hence the IDL interaction for it is as follows:</p>
+<pre><code class="language-typescript">...
+// initializePoll is for our `iniitialize poll` it() function for our smart-contract / program's votingdapp.spec.ts
+await votingdappProgram.methods.initializePoll(
+	new anchor.BN(1), // BN is how we create a u64 in TypeScript
+	&quot;What is your favorite type of peanut butter&quot;,
+	new anchor.BN(0),
+	new anchor.BN(1821246480),
+).rpc(); // the rpc() call executes the instruction within our program
+...
+</code></pre>
+<p>Your <code>votingdapp.spec.ts</code> should now look similar to this:</p>
+<pre><code class="language-typescript">import * as anchor from '@coral-xyz/anchor';
+import { Program } from '@coral-xyz/anchor';
+import { Keypair, PublicKey } from '@solana/web3.js';
+import { Votingdapp } from '../target/types/votingdapp';
+import { BankrunProvider, startAnchor } from 'anchor-bankrun';
+//import { startAnchor } from 'solana-bankrun';
+//import { BankrunProvider } from 'anchor-bankrun';
+
+const IDL = require('../target/idl/votingdapp.json');
+
+const votingdappAddress = new PublicKey(
+	'AsjZ3kWAUSQRNt2pZVeJkywhZ6gpLpHZmJjduPmKZDZZ'
+);
+
+describe('votingdapp', () =&gt; {
+	it('Initialize Poll', async () =&gt; {
+		const context = await startAnchor(
+			'',
+			[{ name: 'votingdapp', programId: votingdappAddress }],
+			[]
+		);
+		const provider = new BankrunProvider(context);
+
+		const votingdappProgram = new Program&lt;Votingdapp&gt;(IDL, provider);
+
+		await votingdappProgram.methods
+			.initializePoll(
+				new anchor.BN(1),
+				'What is your favorite type of peanut butter',
+				new anchor.BN(0),
+				new anchor.BN(1821246680)
+			)
+			.rpc();
+	});
+});
+</code></pre>
+<ol start="10">
+<li>
+<h4 id="verify-your-anchortomls-programslocalnet-attribute-key-matches-the-name-of-your-spects-file"><a class="header" href="#verify-your-anchortomls-programslocalnet-attribute-key-matches-the-name-of-your-spects-file">Verify your Anchor.toml's &quot;[programs.localnet]&quot; attribute key matches the name of your .spec.ts file:</a></h4>
+</li>
+</ol>
+<p>Your <code>Anchor.toml</code> file can be found inside the <code>anchor</code> folder inside your dapp project's working directory. Open this file make sure that your <code>[programs.localnet]</code> attribute's key has the correct name that matches your <code>.spec.ts</code> file. In our case it is <code>votingdapp</code>. You can find the <code>[programs.localnet]</code> attribute on line-8 of your <code>Anchor.toml</code> file.</p>
+<p>If you have been following the naming convention used in this guide, then your <code>[programs.localnet]</code> key should be called <code>votingdapp</code>. If you named things as done in the bootcamp's course video it would be <code>voting</code> instead.</p>
+<ol start="11">
+<li>
+<h4 id="run-the-anchor-test-command"><a class="header" href="#run-the-anchor-test-command">Run the anchor test command:</a></h4>
+</li>
+</ol>
+<p>You can simply run the command provided below if you do not currently have the <code>solana-test-validator</code> running in the background because the <code>anchor test</code> command would fire up <code>solana-test-validator</code>.</p>
+<pre><code class="language-bash">anchor test --skip-deploy
+</code></pre>
+<p>If you already have <code>solana-test-validator</code> running then you need to use this command instead to skip the <code>anchor test</code> command from also running the <code>solana-test-validator</code> tool:</p>
+<pre><code class="language-bash">anchor test --skip-local-validator --skip-deploy
+</code></pre>
+<p>You should now see some tests passed similar to what I had here:</p>
+<p><img src="./assets/votingdapp.spec.ts-test-setup-output.png" alt="A screenshot of $: anchor test --skip-deploy command's ouput result" title="My '$: anchor test --skip-deploy' output result" /></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="9. Understanding the Voting Dapp.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="9. Understanding the Voting Dapp.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

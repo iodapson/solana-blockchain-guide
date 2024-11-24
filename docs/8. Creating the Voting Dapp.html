@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Creating the Voting App - Solana Blockchain Guide</title>
+        <title>Creating the Voting Dapp - Solana Blockchain Guide</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -75,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="1. Overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="2. What is Blockchain & How it Works.html"><strong aria-hidden="true">2.</strong> Blockchain & How it Works</a></li><li class="chapter-item expanded "><a href="Project 1 - Code File.html"><strong aria-hidden="true">3.</strong> Project 1 - Code File</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 1: Favorites Program</li><li class="chapter-item expanded "><a href="3. Solana Project 1 - Section A.html"><strong aria-hidden="true">4.</strong> Solana Project 1 - Section A</a></li><li class="chapter-item expanded "><a href="4. Solana Project 1 - Section B.html"><strong aria-hidden="true">5.</strong> Solana Project 1 - Section B</a></li><li class="chapter-item expanded "><a href="5. Solana Project 1 - Section C.html"><strong aria-hidden="true">6.</strong> Solana Project 1 - Section C</a></li><li class="chapter-item expanded "><a href="6. Solana Project - Section D.html"><strong aria-hidden="true">7.</strong> Solana Project 1 - Section D</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 2: Voting Application</li><li class="chapter-item expanded "><a href="7. Installing Solana on a Local Dev Machine.html"><strong aria-hidden="true">8.</strong> Installing Solana on a Local Dev Machine</a></li><li class="chapter-item expanded "><a href="8. Creating the Voting Dapp.html" class="active"><strong aria-hidden="true">9.</strong> Creating the Voting App</a></li><li class="chapter-item expanded "><a href="9. Understanding the Voting Dapp.html"><strong aria-hidden="true">10.</strong> Understanding the Voting Dapp</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="1. Overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="2. What is Blockchain & How it Works.html"><strong aria-hidden="true">2.</strong> Blockchain & How it Works</a></li><li class="chapter-item expanded "><a href="Project 1 - Code File.html"><strong aria-hidden="true">3.</strong> Project 1 - Code File</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 1: Favorites Program</li><li class="chapter-item expanded "><a href="3. Solana Project 1 - Section A.html"><strong aria-hidden="true">4.</strong> Solana Project 1 - Section A</a></li><li class="chapter-item expanded "><a href="4. Solana Project 1 - Section B.html"><strong aria-hidden="true">5.</strong> Solana Project 1 - Section B</a></li><li class="chapter-item expanded "><a href="5. Solana Project 1 - Section C.html"><strong aria-hidden="true">6.</strong> Solana Project 1 - Section C</a></li><li class="chapter-item expanded "><a href="6. Solana Project - Section D.html"><strong aria-hidden="true">7.</strong> Solana Project 1 - Section D</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 2: Voting Application</li><li class="chapter-item expanded "><a href="7. Installing Solana on a Local Dev Machine.html"><strong aria-hidden="true">8.</strong> Installing Solana on a Local Dev Machine</a></li><li class="chapter-item expanded "><a href="8. Creating the Voting Dapp.html" class="active"><strong aria-hidden="true">9.</strong> Creating the Voting Dapp</a></li><li class="chapter-item expanded "><a href="9. Understanding the Voting Dapp.html"><strong aria-hidden="true">10.</strong> Understanding the Voting Dapp</a></li><li class="chapter-item expanded "><a href="10. Testing Dapps.html"><strong aria-hidden="true">11.</strong> Testing Dapps</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -137,6 +137,7 @@
                         <h3 id="find-out-how-to-create-a-solana-app-quickly-from-an-official-template"><a class="header" href="#find-out-how-to-create-a-solana-app-quickly-from-an-official-template">Find Out How to Create a Solana App Quickly from an Official Template</a></h3>
 <p>Do the following in the order listed:</p>
 <p><span style="color: orange;">1.</span> Inside your <code>WSL</code> terminal, <code>cd</code> or <code>mkdir</code> the directory of your choice for the project. In my case it looks like this <code>/home/&lt;my-user-name&gt;/solana-bootcamp/bootcamp-temp</code>.</p>
+<br />
 <p><span style="color: orange;">2.</span> Run an npx command to create a new Solana app using a ready-made template:</p>
 <pre><code class="language-bash">npx create-solana-dapp
 </code></pre>
@@ -144,6 +145,7 @@
 <p>If you asked for permission to install for example <code>create-solana-dapp@4.1.0</code>, simply press the 'Enter' key on your keyboard to proceed.</p>
 <p>In the Solana bootcamp, the name of the app was - <code>voting-dapp</code>, the selected framework was - <code>Next.js</code>, the selected template was - <code>next-tailwind-counter (Next.js + Tailwind CSS + Anchor Counter Example)</code>.</p>
 <p>--it takes a while to install via npm, so now might be the right time to go have some snack or distract yourself with something else.</p>
+<br />
 <p><span style="color: orange;">3.</span> Cd in to the <code>voting-dapp</code>, and run the npm installation command (you can use npm locally):</p>
 <pre><code class="language-bash">npm i
 </code></pre>
@@ -163,28 +165,80 @@
 </ul>
 <pre><code class="language-bash">nvm use 23.0.0
 </code></pre>
+<p>Reference - <a href="https://github.com/npm/cli/issues/7857#issuecomment-2424107768">https://github.com/npm/cli/issues/7857#issuecomment-2424107768</a></p>
 <ul>
 <li>Optionally exit out of WSL, re-open it, and cd into the directory containing your project. For me, my project's cd command was <code>$: cd ../../../../home/&lt;my-user-name&gt;/solana-github/bootcamp-temp/voting-dapp</code></li>
 </ul>
+<br />
 <p><span style="color: orange;">4.</span> Run the now installed <code>voting-dapp</code> using npm with command:</p>
 <pre><code class="language-bash">npm run dev
 </code></pre>
-<p>Please note that if you had probelems with your project and had to tweak your Node and nmp versions, please note that it would best for you to delete your existing <code>voting-app</code>, and re-create another one, and then cd into it, and run <code>$: npm run dev</code>.</p>
+<p>Please note that if you had problems with your project and had to tweak your installed <code>Node</code> and <code>nmp</code> versions, it would be best for you to delete your existing <code>voting-app</code>, and re-create another one, and then cd into it, and run <code>$: npm run dev</code>.</p>
 <p>Also note that the <code>voting-dapp</code> will run at <code>localhost:3000</code> by default. Feel free to check it out.</p>
-<p><span style="color: orange;">5.</span> Run the Solana <code>Testnet</code> validator toolchain using command:</p>
+<br />
+<p><span style="color: orange;">5.</span> Run the Solana <code>Testnet</code> validator toolchain in another WSL terminal using command:</p>
 <pre><code class="language-bash">solana-test-validator
 </code></pre>
-<p>Note that the Solana <code>Testnet</code> validator will run at port '8899' (<code>http://127.0.0.1:8899</code>) by default.</p>
-<hr />
-<h3 id="good-to-know"><a class="header" href="#good-to-know">Good to Know:</a></h3>
-<p>You can check out <code>http://127.0.0.1:8899</code> and click on the button right next to your <code>Select Wallet</code> button that says <code>devnet</code> and then click on <code>local</code> from the drop-down. Optionally click on the <code>Account</code> menu to see information about the amount of Sol that you have locally. If you have followed this guide up till now, there will be no account to display. We'll fix that soon.</p>
+<p>You may nagivate to a parent directory of your <code>voting-dapp</code> project's working directory before running the <code>solana-test-validator</code> command.</p>
+<p>Note that the Solana <code>Testnet</code> validator will run at port '8899' (<code>http://127.0.0.1:8899</code>) by default. And this <code>solana-test-validator</code> creates a new directory named <code>test-ledger</code>.</p>
+<p><b>Good to Know :</b></p>
+<p>You can check out <code>http://127.0.0.1:8899</code> and click on the button right next to your <code>Select Wallet</code> button that says <code>devnet</code> and then click on <code>local</code> from the drop-down. Optionally click on the <code>Account</code> menu to see information about the amount of Sol that you have locally. If you have followed this guide up till now, there will be no account to display. We'll fix that soon in step 6.</p>
 <p>You can also use the Solana Explorer website <a href="https://explorer.solana.com">https://explorer.solana.com</a> to look at everything that is happening on your local Validator. Simply click on the green button on the webpage that says <code>Mainnet Beta</code>, and then choose <code>Custom RPC URL</code> from the drop-down options.</p>
 <p>For visuals, please check out [43:48 - 49:25] of the Bootcamp course video.</p>
+<br />
 <p><span style="color: orange;">6.</span> Create your Solana wallet:</p>
-<p>Now that everything works, that is, your project template was installed successfully and runs without any hitch, and can be read from the Solana Explorer website, it is now time to create your Solana wallet. Do the following:</p>
+<p>Now that everything pretty much works, namely - your project template was installed successfully, runs without any hitch, and can be read from the Solana Explorer website, it is now time to create your Solana wallet. Do the following:</p>
 <ul>
-<li>Follow the remainder of the instructions on this Solana Installation doc section of the webpage: <a href="https://solana.com/docs/intro/installation#solana-cli-basics">https://solana.com/docs/intro/installation#solana-cli-basics</a></li>
+<li>
+<p>Stop your voting-dapp and solana-test-validator using <code>Ctrl + C</code>, if it is currently running.</p>
+</li>
+<li>
+<p>Follow the remainder of the instructions on this Solana Installation doc section of the webpage: <a href="https://solana.com/docs/intro/installation#solana-cli-basics">https://solana.com/docs/intro/installation#solana-cli-basics</a>. You do not have to change anything or make any choice unless you are told explicitly to do so.</p>
+</li>
 </ul>
+<p><b>Also</b>, please note that you should have your Solana project (e.g, 'voting-dapp) running using command:</p>
+<pre><code class="language-bash">npm run dev
+</code></pre>
+<p>then</p>
+<pre><code class="language-bash">solana config set -ul
+</code></pre>
+<p>...before actually running the solana-test-validator command on a separate terminal:</p>
+<pre><code class="language-bash">solana-test-validator
+</code></pre>
+<p>Whether you run <code>solana-test-validator</code> before or after <code>npm run dev</code> doesn't actually matter.</p>
+<p><b>Good to Know :</b></p>
+<p>You only need to <code>$: solana config get</code> once. You can check your Solana balance using command:</p>
+<pre><code class="language-bash">solana balance
+</code></pre>
+<p>You can check your Solana address / pubkey using command:</p>
+<pre><code class="language-bash">solana address
+</code></pre>
+<p>And you can actually change your wallet address / generate a new one using command:</p>
+<pre><code class="language-bash">solana-keygen new --force
+</code></pre>
+<br />
+<p><b>Helpful Solana config commands include:</b></p>
+<pre><code class="language-cmd">solana config set --url mainnet-beta
+solana config set --url devnet
+solana config set --url localhost
+solana config set --url testnet
+</code></pre>
+<p>OR</p>
+<pre><code class="language-cmd">solana config set -um    # For mainnet-beta
+solana config set -ud    # For devnet
+solana config set -ul    # For localhost
+solana config set -ut    # For testnet
+</code></pre>
+<p></b>Good to Know:</b></p>
+<p>You can actually run wsl from VS code. Simple use your wsl terminal to navigate to the directory containing your code files and then use the <code>$: code .</code> command to open the project in VS Code.</p>
+<p>It is very likely that when you run <code>$: solana --version</code> on VS-code for the first time as decribed above, it would see as though the solana-cli is lost on your machine (not installed anymore). Fret not, simply run the following command to fix this minor issue once and for all:</p>
+<pre><code class="language-bash">export PATH=&quot;$HOME/.local/share/solana/install/active_release/bin:$PATH&quot;
+</code></pre>
+<p>Finally, please note that you have to navigate to the <code>anchor</code> directory inside your project, then enter the anchor build command before you actually run your Solana project using <code>$: npm run dev</code>. This is the anchor build command:</p>
+<pre><code class="language-bash">anchor build
+</code></pre>
+<p>By building the anchor directory inside your project, you make it easier for your project to detect your Solana wallet and connect to it.</p>
+<p>Timestamp - [43:48 - 49:25]</p>
 
                     </main>
 

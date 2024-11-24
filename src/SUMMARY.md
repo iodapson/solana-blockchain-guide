@@ -22,5 +22,6 @@
 # Project 2: Voting Application
 
 - [Installing Solana on a Local Dev Machine](7.%20Installing%20Solana%20on%20a%20Local%20Dev%20Machine.md)
-- [Creating the Voting App](8.%20Creating%20the%20Voting%20Dapp.md)
+- [Creating the Voting Dapp](8.%20Creating%20the%20Voting%20Dapp.md)
 - [Understanding the Voting Dapp](9.%20Understanding%20the%20Voting%20Dapp.md)
+- [Testing Dapps](10.%20Testing%20Dapps.md)

@@ -75,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="1. Overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="2. What is Blockchain & How it Works.html"><strong aria-hidden="true">2.</strong> Blockchain & How it Works</a></li><li class="chapter-item expanded "><a href="Project 1 - Code File.html"><strong aria-hidden="true">3.</strong> Project 1 - Code File</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 1: Favorites Program</li><li class="chapter-item expanded "><a href="3. Solana Project 1 - Section A.html"><strong aria-hidden="true">4.</strong> Solana Project 1 - Section A</a></li><li class="chapter-item expanded "><a href="4. Solana Project 1 - Section B.html"><strong aria-hidden="true">5.</strong> Solana Project 1 - Section B</a></li><li class="chapter-item expanded "><a href="5. Solana Project 1 - Section C.html"><strong aria-hidden="true">6.</strong> Solana Project 1 - Section C</a></li><li class="chapter-item expanded "><a href="6. Solana Project - Section D.html"><strong aria-hidden="true">7.</strong> Solana Project 1 - Section D</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 2: Voting Application</li><li class="chapter-item expanded "><a href="7. Installing Solana on a Local Dev Machine.html"><strong aria-hidden="true">8.</strong> Installing Solana on a Local Dev Machine</a></li><li class="chapter-item expanded "><a href="8. Creating the Voting Dapp.html"><strong aria-hidden="true">9.</strong> Creating the Voting App</a></li><li class="chapter-item expanded "><a href="9. Understanding the Voting Dapp.html" class="active"><strong aria-hidden="true">10.</strong> Understanding the Voting Dapp</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="1. Overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="2. What is Blockchain & How it Works.html"><strong aria-hidden="true">2.</strong> Blockchain & How it Works</a></li><li class="chapter-item expanded "><a href="Project 1 - Code File.html"><strong aria-hidden="true">3.</strong> Project 1 - Code File</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 1: Favorites Program</li><li class="chapter-item expanded "><a href="3. Solana Project 1 - Section A.html"><strong aria-hidden="true">4.</strong> Solana Project 1 - Section A</a></li><li class="chapter-item expanded "><a href="4. Solana Project 1 - Section B.html"><strong aria-hidden="true">5.</strong> Solana Project 1 - Section B</a></li><li class="chapter-item expanded "><a href="5. Solana Project 1 - Section C.html"><strong aria-hidden="true">6.</strong> Solana Project 1 - Section C</a></li><li class="chapter-item expanded "><a href="6. Solana Project - Section D.html"><strong aria-hidden="true">7.</strong> Solana Project 1 - Section D</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 2: Voting Application</li><li class="chapter-item expanded "><a href="7. Installing Solana on a Local Dev Machine.html"><strong aria-hidden="true">8.</strong> Installing Solana on a Local Dev Machine</a></li><li class="chapter-item expanded "><a href="8. Creating the Voting Dapp.html"><strong aria-hidden="true">9.</strong> Creating the Voting Dapp</a></li><li class="chapter-item expanded "><a href="9. Understanding the Voting Dapp.html" class="active"><strong aria-hidden="true">10.</strong> Understanding the Voting Dapp</a></li><li class="chapter-item expanded "><a href="10. Testing Dapps.html"><strong aria-hidden="true">11.</strong> Testing Dapps</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -134,13 +134,163 @@
 
                 <div id="content" class="content">
                     <main>
-                        
+                        <h3 id="lets-first-address-the-design-to-understand-what-we-need-to-do-conceptually"><a class="header" href="#lets-first-address-the-design-to-understand-what-we-need-to-do-conceptually">Let's first address the design to understand what we need to do conceptually.</a></h3>
+<br/>
+<h4 id="its-design-specification"><a class="header" href="#its-design-specification">Its Design Specification</a></h4>
+<!--![Screenshot of the voting dapp concept](./assets/Screenshot_20241116-124950.jpg 'Votingdapp diagramatic illustration')-->
+<p><img src="./assets/The-Votingdapp-Design-Specification.png" alt="Screenshot of the Voting Dapp's Design Specification" title="The Voting Dapp Design Specification diagramatic explanation" /></p>
+<ul>
+<li>In the illustration above, we have two accounts - <code>Poll</code> and <code>Candidate</code>, and for each account we've specified the data we want stored inside it on the right-hand side of the screen, so for example, for Account <code>Poll</code>, we want to store - <code>poll_id</code>, <code>description</code>, <code>poll_start</code>, <code>poll_end</code>, and <code>candidate_amount</code>.</li>
+<li>Whereas, for Account <code>Candidate</code>, we want to store - <code>candidate_name</code> and <code>candidate_amount</code>.</li>
+<li>On the left-hand side of each Account, we specify the seed we want to use, so for example, for Account <code>Poll</code>, we use <code>poll_id</code> as its seeds, wherease for Account <code>Candidate</code>, we use <code>poll_id</code> + <code>candidate_name</code> as its seeds.</li>
+<li>Finally, we have a set of Instructions namely; <code>Initialize_Poll</code>, <code>Initialize_Candidate</code>, and <code>Vote</code>.</li>
+</ul>
+<br/>
+<h4 id="its-code"><a class="header" href="#its-code">Its Code:</a></h4>
+<pre><code class="language-rust">use anchor_lang::prelude::*;
+
+declare_id!(&quot;5s3PtT8kLYCv1WEp6dSh3T7EuF35Z6jSu5Cvx4hWG79H&quot;);
+
+#[program]
+pub mod voting {
+    use super::*;
+
+    pub fn initialize_poll(ctx: Context&lt;InitializePoll&gt;,
+                            _poll_id: u64,
+                            start_time: u64,
+                            end_time: u64,
+                            name: String,
+                            description: String) -&gt; Result&lt;()&gt; {
+        ctx.accounts.poll_account.poll_name = name;
+        ctx.accounts.poll_account.poll_description = description;
+        ctx.accounts.poll_account.poll_voting_start = start_time;
+        ctx.accounts.poll_account.poll_voting_end = end_time;
+        Ok(())
+    }
+
+    pub fn initialize_candidate(ctx: Context&lt;InitializeCandidate&gt;,
+                                _poll_id: u64,
+                                candidate: String) -&gt; Result&lt;()&gt; {
+        ctx.accounts.candidate_account.candidate_name = candidate;
+        ctx.accounts.poll_account.poll_option_index += 1;
+        Ok(())
+    }
+
+    pub fn vote(ctx: Context&lt;Vote&gt;, _poll_id: u64, _candidate: String) -&gt; Result&lt;()&gt; {
+        let candidate_account = &amp;mut ctx.accounts.candidate_account;
+        let current_time = Clock::get()?.unix_timestamp;
+
+        if current_time &gt; (ctx.accounts.poll_account.poll_voting_end as i64) {
+            return Err(ErrorCode::VotingEnded.into());
+        }
+
+        if current_time &lt;= (ctx.accounts.poll_account.poll_voting_start as i64) {
+            return Err(ErrorCode::VotingNotStarted.into());
+        }
+
+        candidate_account.candidate_votes += 1;
+
+        Ok(())
+    }
+
+}
+
+#[derive(Accounts)]
+#[instruction(poll_id: u64)]
+pub struct InitializePoll&lt;'info&gt; {
+    #[account(mut)]
+    pub signer: Signer&lt;'info&gt;,
+
+    #[account(
+        init_if_needed,
+        payer = signer,
+        space = 8 + PollAccount::INIT_SPACE,
+        seeds = [b&quot;poll&quot;.as_ref(), poll_id.to_le_bytes().as_ref()],
+        bump
+    )]
+    pub poll_account: Account&lt;'info, PollAccount&gt;,
+
+    pub system_program: Program&lt;'info, System&gt;,
+}
+
+#[derive(Accounts)]
+#[instruction(poll_id: u64, candidate: String)]
+pub struct InitializeCandidate&lt;'info&gt; {
+    #[account(mut)]
+    pub signer: Signer&lt;'info&gt;,
+
+    pub poll_account: Account&lt;'info, PollAccount&gt;,
+
+    #[account(
+        init,
+        payer = signer,
+        space = 8 + CandidateAccount::INIT_SPACE,
+        seeds = [poll_id.to_le_bytes().as_ref(), candidate.as_ref()],
+        bump
+    )]
+    pub candidate_account: Account&lt;'info, CandidateAccount&gt;,
+
+    pub system_program: Program&lt;'info, System&gt;,
+}
+
+#[derive(Accounts)]
+#[instruction(poll_id: u64, candidate: String)]
+pub struct Vote&lt;'info&gt; {
+    #[account(mut)]
+    pub signer: Signer&lt;'info&gt;,
+
+    #[account(
+        mut,
+        seeds = [b&quot;poll&quot;.as_ref(), poll_id.to_le_bytes().as_ref()],
+        bump,
+    )]
+    pub poll_account: Account&lt;'info, PollAccount&gt;,
+
+    #[account(
+        mut,
+        seeds = [poll_id.to_le_bytes().as_ref(), candidate.as_ref()],
+        bump)]
+    pub candidate_account: Account&lt;'info, CandidateAccount&gt;,
+}
+
+#[account]
+#[derive(InitSpace)]
+pub struct CandidateAccount {
+    #[max_len(32)]
+    pub candidate_name: String,
+    pub candidate_votes: u64,
+}
+
+#[account]
+#[derive(InitSpace)]
+pub struct PollAccount{
+    #[max_len(32)]
+    pub poll_name: String,
+    #[max_len(280)]
+    pub poll_description: String,
+    pub poll_voting_start: u64,
+    pub poll_voting_end: u64,
+    pub poll_option_index: u64,
+}
+
+#[error_code]
+pub enum ErrorCode {
+    #[msg(&quot;Voting has not started yet&quot;)]
+    VotingNotStarted,
+    #[msg(&quot;Voting has ended&quot;)]
+    VotingEnded,
+}
+</code></pre>
+
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                             <a rel="prev" href="8. Creating the Voting Dapp.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="10. Testing Dapps.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
                     </nav>
@@ -150,6 +300,9 @@
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                     <a rel="prev" href="8. Creating the Voting Dapp.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="10. Testing Dapps.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
 

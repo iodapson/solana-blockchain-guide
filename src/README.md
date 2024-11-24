@@ -1,4 +1,4 @@
-<h2>Solana In A Lean Wrap</h2>
+<h2>Solana Blochain Guide</h2>
 
 This is a compressed version of [Solana Blockchain Bootcamp](https://www.youtube.com/watch?v=amAq-WHAFs8) powered by the programming language, [Rust](https:///www.rust-lang.org/learn) and TypeScript.
 
