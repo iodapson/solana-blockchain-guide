@@ -1,6 +1,8 @@
+<h3>Solana Program teaser</h3>
+
 Here is a quick and immersive introduction to the first Solana program developed in the Solana Bootcamp - 2024.
 
-This program allows a user to save a favorite to the blockchain. The user run a favorite saving transaction, sign the trasaction, and gets charged for it.
+The Solana program below allows a user to save a favorite to the blockchain. The user can sign and run a favorite saving transaction, and would get charged for it.
 
 ```rs
 use anchor_lang::prelude::*;
@@ -56,6 +58,7 @@ pub struct SetFavorites<'info> { // this struct holds every meta data needed for
 
     pub system_program: Program<'info, System>,
 }
+
 ```
 
-Now press the '
+Phew! Although fun, the program above contained a lot of comments. This was done to provide as much base understanding as possible and needed to make sense of fundamental Solana patterns. The remainder of this guide book does not contain nearly as much comments.
