@@ -136,7 +136,7 @@
                     <main>
                         <h3 id="add-blinks-and-actions-tovotingdapp-developed-earlier"><a class="header" href="#add-blinks-and-actions-tovotingdapp-developed-earlier">Add Blinks and Actions to'votingdapp' Developed Earlier</a></h3>
 <h4 id="preparing-the-votingdapp-project-for-adding-blinks-and-actions"><a class="header" href="#preparing-the-votingdapp-project-for-adding-blinks-and-actions">Preparing the 'votingdapp' project for adding Blinks and Actions:</a></h4>
-<p>On this page, we'll add blinks and actions to our previously created <code>votingdapp</code> project, and there is a lot of different amount of work that we'd have to do for blinks and actions. We will be referencing the <a href="https://solana.com/docs/advanced/actions">Solana Actions and Blinks documentation page</a> to prepare our <code>votingdapp</code> project for adding Blinks and Actions to it.</p>
+<p>On this page, we'll add Blinks and Actions to our previously created <code>votingdapp</code> project, and there is a lot of different amount of work that we'd have to do for Blinks and Actions. We will be referencing the <a href="https://solana.com/docs/advanced/actions">Solana Actions and Blinks documentation page</a> to prepare our <code>votingdapp</code> project for adding Blinks and Actions to it.</p>
 <p><span style="color: orange;">1</span></p>
 <h4 id="deploy-your-dapp-eg-votingdapp"><a class="header" href="#deploy-your-dapp-eg-votingdapp">Deploy your dapp (e.g, 'votingdapp'):</a></h4>
 <p>In the previous chapter ('Project 2: Voting Application'), we used <code>anchor-bankrun</code> to run tests in the <a href="10.%20Testing%20Dapps.html">Testing Dapps</a> page. However, in this chapter, we will need the local test validator to test our dapp that has some UI bootstrap on top of it.</p>
@@ -167,6 +167,7 @@
 <p>Let us now run our <code>votingdapp</code> in dev mode:</p>
 <pre><code>npm run dev
 </code></pre>
+<br/>
 <p><span style="color: orange;">4</span></p>
 <h4 id="create-a-get-request-to-get-the-right-information-to-do-our-actions"><a class="header" href="#create-a-get-request-to-get-the-right-information-to-do-our-actions">Create a GET request to get the right information to do our Actions:</a></h4>
 <p>We need to structure our request in such a way that follows the guidelines specified in the Solana Actions documentation page' URL schema here - <a href="https://solana.com/docs/advanced/actions#url-scheme">https://solana.com/docs/advanced/actions#url-scheme</a>.</p>
@@ -186,7 +187,8 @@
 <li>You can check out the newly created route by opening <code>localhost:3000/api/votingdapp</code>. You will find the text <code>Hello, from API!</code> written on your screen.</li>
 </ul>
 <p><span style="color: orange;">Good to know 2:</span></p>
-<p>The template we have chosen to build our dapp from spins up a basic NextJS server-side app for working with blinks, which should be noted to be quite a heavy application for these blinks. NextJS server side is quite heavy for this for this usage. It is recommended to use a Node JS server - like an Express server if you can. But because we have a scaffold and we will later on in the course build the actual frontend for the voting application, we are just going to use this backend and bootstrap it with this voting action.</p>
+<p>The template we have chosen to build our dapp from spins up a basic NextJS server-side app for working with blinks, which should be noted to be quite a heavy application for these blinks. NextJS server side is quite heavy for this for this usage. It is recommended to use a Node JS server - like an Express server if you can. But because we have a scaffold and we will later on in the course build the actual frontend for the voting application, we are just going to use this backend and bootstrap it with this voting Action.</p>
+<br/>
 <p><span style="color: orange;">5</span></p>
 <h4 id="return-valuable-information-in-order-to-display-the-blink-on-any-social-media"><a class="header" href="#return-valuable-information-in-order-to-display-the-blink-on-any-social-media">Return valuable information in order to display the blink on any social media</a></h4>
 <p>The expected metadata response after an Action client makes a GET request to an Action provider for its available Actions is a JSON body-payload that follows the specification of <code>ActionGetResponse</code>:</p>
@@ -230,12 +232,15 @@ export async function GET(request: Request) {
 </code></pre>
 <p><span style="color: orange;">Good to know 3:</span></p>
 <p>You can test your blinks using the <a href="dial.to">dial.to</a> website. To use <code>dial.to</code> to test your blinks, you'd include the localhost link to your blink within the <code>dial.to</code> route, similar to this - <code>https://dial.to/?action=solana-action:http://localhost:3000/api/&lt;your-blink-here&gt;</code>. Make sure to avoid CORS related errors. Read the <a href="#check-out-your-blink-visually-using-dialto-and-fix-cors-errors">step 6</a> to know exactly how to prevent CORS-related errors that prevent your blinks from loading when testing blinks.</p>
+<br/>
 <p><span style="color: orange;">6</span></p>
 <h4 id="check-out-your-blink-visually-using-dialto-and-fix-cors-errors"><a class="header" href="#check-out-your-blink-visually-using-dialto-and-fix-cors-errors">Check out your blink visually using dial.to, and fix CORS errors</a></h4>
 <p>In our case, we can use the <code>dial.to</code> website to have a visual representation of what our blink looks like by using the this specific link - <code>https://dial.to/?action=solana-action:http://localhost:3000/api/votingdapp</code>. Upon visiting this link, you'd realise that the blink actually fails to load and is thus, blank. That's because we are yet to fix CORS (Cross Origin Resource Sharing) requirement that your browser has in place to keep you safe online.</p>
 <p><img src="./assets/dial.to-blink-cors-error-screenshot.png" alt="dial.to Blink CORS error screenshot" title="https://dial.to blink CORS error" /></p>
 <p>Let's fix the error by modifying our <code>api/votingdapp/route.ts</code> file:</p>
-<pre><code class="language-ts">import { ActionGetResponse } from '@solana/actions';
+<pre><code class="language-ts">/* route.ts */
+
+import { ActionGetResponse } from '@solana/actions';
 
 export async function GET(request: Request) {
 	const actionMetadata: ActionGetResponse = {
@@ -247,11 +252,134 @@ export async function GET(request: Request) {
 	return Response.json(actionMetadata);
 }
 </code></pre>
-<p>Upon doing the above modifications, our action can now be served by a blink, and if you check our the link to our blink using the appropriate <code>dial.to</code> link to our blink, our blink should now load.</p>
-<p>You would get a warning that your blink is not yet registered, and that's okay for us since we are just testing to make sure it works how we want it to for now. The warning is there to let you know blinks that are known by a blink registry. Using an unknown blink is done at your own risk.</p>
+<p>After making the above modifications, our Action can now be served by a blink, and if you check our the link to our blink using the appropriate <code>dial.to</code> link to our blink, our blink should now load.</p>
+<p>We get a warning that your blink is not yet registered, and that's okay for us since we are just testing to make sure it works how we want it to for now. The warning is there to let you know blinks that are known by a blink registry. Using an unknown blink is done at your own risk:</p>
 <p><img src="./assets/loaded-but-partially-finished-blink.png" alt="Loaded but partially finished blink" title="Dial.to warning that our blink is yet to be registered" /></p>
+<p>Alright, so now we at least have our blink on display using <code>dial.to</code>, but our blink can't post a voting Action. If you click the vote button, you will in fact get a CORS and POST network error.</p>
 <p><span style="color: orange;">Good to know 4:</span></p>
-<p>Part of the whole system for onboarding blinks as of the time of the bootcamp 2024, onto social-media, is that you have to actually get your action registered via some kind of registry out there, e.g Dialect.</p>
+<p>Part of the whole system for onboarding blinks as of the time of the bootcamp 2024, onto social-media, is that you have to actually get your Action registered via some kind of registry out there, e.g. Dialect.</p>
+<br/>
+<p><span style="color: orange;">7</span></p>
+<h4 id="respond-with-metadata-and-available-actions"><a class="header" href="#respond-with-metadata-and-available-actions">Respond with metadata and available Actions</a></h4>
+<p>Let's first prevent a CORS error when making a request inside our blink e.g cliking the <code>vote</code> button to vote inside our <code>votingdapp</code> blink rendered with <code>dial.to</code>.</p>
+<pre><code class="language-ts">/*
+  src/app/api/votingdapp/route.ts
+*/
+
+// imports
+...
+
+export const OPTIONS = GET
+
+// export async function GET(request: Request)
+...
+
+</code></pre>
+<p>Next, we have to update the <code>route.ts</code> for our Blink with the correct <code>LinkedAction</code> metadata so we can showcase corresponding available Actions inside the blink. The <code>ActionGetResponse</code> <a href="#return-valuable-information-in-order-to-display-the-blink-on-any-social-media">spec</a> allows us to specify a <code>LinkedAction</code> value to its <code>links?</code> attribute which is what specifies a list of related Actions for a Blink user to possibly perform. For more details about <code>LinkedActions</code> spec, check <a href="https://solana.com/docs/advanced/actions#get-response-body">this page of Solana docs</a>.</p>
+<p>And since in our <code>votingdapp</code>, we would be performing one of two different post Actions to vote either Crunchy or Smooth, our <code>ActionGetResponse</code>' <code>links</code> field is specified as:</p>
+<pre><code class="language-ts">...
+
+links: {
+    actions: [
+        {
+            label: &quot;Vote for Crunchy&quot;,
+            href: &quot;/api/vote?candidate=crunchy&quot;,
+            type: &quot;post&quot;,
+        },
+        {
+            label: &quot;Vote for Smooth&quot;,
+            href: &quot;/api/vote?candidate=smooth&quot;,
+            type: &quot;post&quot;,
+        }
+    ]
+}
+</code></pre>
+<p>The <code>route.ts</code> for our <code>votingdapp</code> API now lookS like this after specifying a <code>LinkedAction</code> value for our <code>ActionGetResponse</code>' (GET Response body)<code>links?:</code> field:</p>
+<pre><code class="language-ts">/* 
+  src/app/api/votingdapp/route.ts 
+*/
+
+import { ActionGetResponse, ACTIONS_CORS_HEADERS } from '@solana/actions';
+
+export const OPTIONS = GET;
+
+export async function GET(request: Request) {
+	const actionMetadata: ActionGetResponse = {
+		icon: 'https://zestfulkitchen.com/wp-content/uploads/2021/09/Peanut-butter_hero_for-web-2.jpg',
+		title: 'Vote for your favorite type of peanut butter!',
+		description: 'Vote between crunchy and smooth peanut butter',
+		label: 'Vote',
+		links: {
+			actions: [
+				{
+					label: 'Vote for Cruchy',
+					href: '/api/vote?candidate=crunchy',
+					type: 'post',
+				},
+				{
+					label: 'Vote for Smooth',
+					href: '/api/vote?candidate=smooth',
+					type: 'post',
+				},
+			],
+		},
+	};
+	return Response.json(actionMetadata, { headers: ACTIONS_CORS_HEADERS });
+}
+</code></pre>
+<br/>
+<p><span style="color: orange;">8</span></p>
+<h4 id="make-a-post-request-with-the-blink-users-wallet-pubkey"><a class="header" href="#make-a-post-request-with-the-blink-users-wallet-pubkey">Make a 'POST' request with the blink user's wallet pubkey</a></h4>
+<p>Let's now create a new function called <code>POST</code> for this purpose.</p>
+<p>Inside this function, we will need to grab the URL from the request, and the search parameter inside the same URL.</p>
+<pre><code class="language-ts">/*
+  src/app/api/votingdapp/route.ts
+*/
+
+...
+
+export async function POST(request: Request) {
+    const url = new URL(request.url);
+    const candidatae = url.searchParams.get(&quot;candidate&quot;);
+}
+
+</code></pre>
+<p>In our <code>votingdapp</code>, we need to make sure that the vote-candidate given is a valid candidate - 'Crunchy' or Smooth without giving the blink user a strange error in case they someone enter a non-existing candidate.</p>
+<pre><code class="language-ts">/*
+  src/app/api/votingdapp/route.ts
+*/
+
+...
+
+export async function POST(request: Request) {
+    const url = new URL(request.url);
+    const candidatae = url.searchParams.get(&quot;candidate&quot;);
+
+    if (candidate != &quot;crunchy&quot; &amp;&amp; candidate != &quot;smooth&quot;) {
+        return new Response(&quot;Invalid candidate&quot;, { status: 400 });
+    }
+}
+
+</code></pre>
+<p>Create the transaction to send back after the POST request completes. In order to create transactions, we need a few things - a blockhash, a message, and any signatures that we possibly need to send to be added to that transaction.</p>
+<p>Fortunately for us in our <code>votingdapp</code> case though, we don't need any signatures on the server side because we don't care about signing anything on the server-side.</p>
+<hr />
+<p>WHAT IS THE CONNECTION FOR?</p>
+<p>You need to provide a commitment status when you create a connection inside the POST function:</p>
+<pre><code class="language-ts">const connection = new Connection('http://127.0.0.1:8899', 'confirmed');
+</code></pre>
+<p><span style="color: orange;">Good to know 4:</span></p>
+<p>There are various commitment status levels such as; &quot;process&quot;, &quot;confirmed&quot;, &quot;finalized&quot;. And they tell us how certain it is that a transaction would make it on the cluster. Commitment status level <code>process</code> says - hey, I found it, it's not yet confirmed. Commitment status level <code>confirmed</code> means - it's confirmed by 66% of the actual cluster. And then <code>finalized</code> says - it's confirmed by 66% and there's been 31 blocks afterwards that were also confirmed. <code>finalized</code> takes a lot longer, <code>confirmed</code> is generally safe - at the time of the bootcamp's recording, there's never been something that was confirmed that didn't make it to finalized.</p>
+<hr />
+<p>All right, so next, we will grab all the information that we need from the URL (connection we just created). The information we need are;</p>
+<ul>
+<li>The account that the user signed with on the Blink in order to create the transaction body</li>
+<li>The body of the POST request</li>
+</ul>
+<hr />
+<p><span style="color: orange;">Side Note:</span></p>
+<p>Moving forward with this guidebook, it is assumed that you now have a Solana wallet. This guidebook makes use of the phantom wallet. Please go to the official Phantom website - <a href="https://phantom.com">https://phantom.com</a>, and install the Phantom extention on your favorite browser(s). This guide also assumes that you created a <code>seed phrase wallet</code>.</p>
+<hr />
 <p>Timestamp - [1:51:56 - ]</p>
 
                     </main>

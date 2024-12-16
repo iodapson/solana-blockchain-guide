@@ -1,23 +1,27 @@
-<h2>Solana Blochain Guide</h2>
+<h2>Solana Blockhain Guide</h2>
 
-This is a compressed version of [Solana Blockchain Bootcamp](https://www.youtube.com/watch?v=amAq-WHAFs8) powered by the programming language, [Rust](https:///www.rust-lang.org/learn) and TypeScript.
+This is a book version of [Solana Blockchain Bootcamp 2024](https://www.youtube.com/watch?v=amAq-WHAFs8) powered by the [Rust](https:///www.rust-lang.org/learn) programming language. [TypeScript](https://www.typescriptlang.org/docs/handbook/intro.html) is another language used throughout the bootcamp, and thus, this guidebook.
 
-This book focuses more on the concepts to get things done. It does not cover Solana-specific concepts in detail. Rather, it extracts and sometimes annotates Solana concepts necessary to become a very proficient Solana developer
-
-You can use it a quick reference material, in complement with the official Solana documentation for a more detailed Solana concepts explainer.
+You can use it a reference material for Fullstack Solana Development complemented with the official [Solana documentation](https://solana.com/docs) for deeper concepts and know-how.
 
 ### Conventions Used
 
-- Wherever you see `{{_}}`, it represents a placeholder text for an actual value, variable, or expression. The text inside the position of `_` should be used or changed in-place of `{{_}}`.
-  For example, if you see `{{my_chosen_value_name}}`, it should be replaced with `your_chosen_value_name`.
+You would find the conventions used in this guidebook both consistent and very intuitive. For explictness reasons, here are the conventions used throught this guidebook.
+
+- Terminal commands come in two variants; block and inline. Inline terminal commands are typed out in between text using the monospace font and trailed by a $ character, for example `$: ls`. Block terminal commands are written on a separate line without any trailing $ symbol.
+
+- Code identifiers such as struct and function names are written using the monospace font, e.g. struct `SetFavorites`. Non-code identifier keywords are also written in monospace font. Sometimes, to avoid code repetition in code snippets, ellipses `...` are used.
+
+- Some pages may contain little tidbit information worthy of remembering with a colored caption text that says <span style="color: orange;">Good to know</span>. In this guidebook, you will also find another class of noteworthy information with the caption <span style="color: orange;">Sidenote</span>, which tells you the things you require as you progress through the guidebook.
 
 ### Solana Examples
 
 - You can find concrete examples of Solana mini-apps from the official documentation on [Solana Official Docs Page](https://solana.com/docs) for Solana.
-  _Enjoy!_
 
-  Information for the Editor: Disable scroll bar of code block in mdbook using this CSS applied to `docs/css/general.css`' `code{...}` block using this css line:
+### Contributions and Support
 
-  ```css
-  /*white-space: pre-wrap !important; /* CSS customization to make horizontal scroll bars in code view blocks invisible */
-  ```
+- This guidebook would benefit greatly from any kind of support possible. With you support, the guidebook will deliver better value and satisfaction to the new and existing Solana developer. Reading this guidebook is another way you can offer your support and improve the correctness and learner-utitlity it strives to achieve. Should you find typos or inaccuracies in any chapter, page, paragraph or sentence in this guidebook, please feel free to contribute the necessary changes [here](https://iodapson.github.io). Please feel free to fork this guidebook and translate it into other languages.
+
+<br/>
+
+_Enjoy!_
