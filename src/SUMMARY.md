@@ -32,3 +32,10 @@
 
 - [Solana Actions and Blinks](11.%20Solana%20Blinks%20and%20Actions.md)
 - [Adding Blinks & Actions to Our Dapp](12.%20Adding%20Blinks%20&%20Actions%20to%20Our%20Dapp.md)
+
+---
+
+# Project 4: Solana CRUD
+
+- [Project 4 Overview](13.%20Project%204%20Overview.md)
+- [Solana CRUD Project Set-up](14.%20Solana%20CRUD%20Project%20Set-up.md)
