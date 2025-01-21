@@ -1,0 +1,285 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Solana Project 1 - Section C - Solana Blockchain Guide</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="1. Overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="2. What is Blockchain & How it Works.html"><strong aria-hidden="true">2.</strong> Blockchain & How it Works</a></li><li class="chapter-item expanded "><a href="Solana Program teaser.html"><strong aria-hidden="true">3.</strong> Solana Program teaser</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 1: Favorites Program</li><li class="chapter-item expanded "><a href="3. Solana Project 1 - Section A.html"><strong aria-hidden="true">4.</strong> Solana Project 1 - Section A</a></li><li class="chapter-item expanded "><a href="4. Solana Project 1 - Section B.html"><strong aria-hidden="true">5.</strong> Solana Project 1 - Section B</a></li><li class="chapter-item expanded "><a href="5. Solana Project 1 - Section C.html" class="active"><strong aria-hidden="true">6.</strong> Solana Project 1 - Section C</a></li><li class="chapter-item expanded "><a href="6. Solana Project - Section D.html"><strong aria-hidden="true">7.</strong> Solana Project 1 - Section D</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 2: Voting Application</li><li class="chapter-item expanded "><a href="7. Installing Solana on a Local Dev Machine.html"><strong aria-hidden="true">8.</strong> Installing Solana on a Local Dev Machine</a></li><li class="chapter-item expanded "><a href="8. Creating the Voting Dapp.html"><strong aria-hidden="true">9.</strong> Creating the Voting Dapp</a></li><li class="chapter-item expanded "><a href="9. Understanding the Voting Dapp.html"><strong aria-hidden="true">10.</strong> Understanding the Voting Dapp</a></li><li class="chapter-item expanded "><a href="10. Testing Dapps.html"><strong aria-hidden="true">11.</strong> Testing Dapps</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 3: Integrating Blinks</li><li class="chapter-item expanded "><a href="11. Solana Blinks and Actions.html"><strong aria-hidden="true">12.</strong> Solana Actions and Blinks</a></li><li class="chapter-item expanded "><a href="12. Adding Blinks & Actions to Our Dapp.html"><strong aria-hidden="true">13.</strong> Adding Blinks & Actions to Our Dapp</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 4: Solana CRUD</li><li class="chapter-item expanded "><a href="13. Project 4 Overview.html"><strong aria-hidden="true">14.</strong> Project 4 Overview</a></li><li class="chapter-item expanded "><a href="14. Solana CRUD Project Set-up.html"><strong aria-hidden="true">15.</strong> Solana CRUD Project Set-up</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Solana Blockchain Guide</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h3 id="your-first-taste-of-a-solana-program"><a class="header" href="#your-first-taste-of-a-solana-program">Your First Taste of a Solana Program</a></h3>
+<p>Now let's look at a somewhat complete code for a program that saves a user's favorite to the blockchain. If you already read the <a href="Solana%20Program%20teaser.html">Solana Program teaser</a>, then you already have a good idea of what most of the code herein does:</p>
+<pre><code class="language-rs">use anchor_lang::prelude::*;
+declare_id!(&quot;&quot;);
+
+pub const ANCHOR_DESCRIMINATOR_SIZE: usize = 8;
+
+
+// 'Favorites' is what we what to save to the Blockchain
+#[account]
+#[derive(InitSpace)]
+pub struct Favorites {
+    pub number: u64,
+
+    #[max_len(50)] // (50) as in 50 bytes
+    pub color: String,
+
+    #[max_len(5, 50)]
+    pub hobbies: Vec&lt;String&gt;,
+}
+
+// this struct holds every meta data needed for a successful 'set_favorites' action - the destination account to add a favorite to, the signer (instruction runner), &amp; the system_program
+#[derive(Accounts)]
+pub struct SetFavorites&lt;'info&gt; {
+
+    #[account(mut)]
+    pub user: Signer&lt;'info&gt;,
+
+    // An account for all favorites set per user of our 'set_favorites' instruction handler
+    #[account(
+        init_if_needed,
+        payer = user,
+        space = ANCHOR_DESCRIMINATOR_SIZE + Favorites::INIT_SPACE,
+        seeds = [b&quot;favorites&quot;, user.key().as_ref()], // a PDA used to give a non-user account (e.g, 'Favorites') an address on the Blockchain
+        bump // Used to calculate the seed provided above
+    )]
+    pub favorites: Account&lt;'info, Favorites&gt;,
+
+    pub system_program: Program&lt;'info, System&gt;,
+}
+
+
+#[program]
+pub mod favorites {
+
+    use super::*;
+
+    // Now function 'set_favorites()' would take instructions provided by clients, run them, and then save the results to the Blockchain
+    pub fn set_favorites(context: Context&lt;SetFavorites&gt;,
+        number: u64,
+        color: String,
+        hobbies: Vec&lt;String&gt;
+    ) -&gt; Result&lt;()&gt; {
+
+        let user_public_key = context.accounts.user.key();
+
+        msg!(&quot;Greetings from {}&quot;, context.program_id);
+
+        msg!(&quot;User {}'s favorite number is: {number}, favorite color is: {color}, and hobbies are: {hobbies:?}&quot;, user_public_key);
+
+        // this is the code line that actually writes a new favorite into the favorites account
+        context.accounts.favorites.set_inner(
+            Favorites {
+                number,
+                color,
+                hobbies,
+            }
+        );
+
+        Ok(())
+    }
+
+}
+</code></pre>
+<p>After typing the above code into the online Solana Explorer's editor, click on the <code>Build</code> button inside the Solana Explorer.</p>
+<p>Upon a successful build of the program, click on <code>Deploy</code>.</p>
+<p>At this stage, when you attempt to deploy though, you will most likely be prompted about two things:</p>
+<ul>
+<li>
+<p>Whether or not to save a <code>keypair</code>. Note that you do not have to. You can simply click the <code>Continue</code> button.</p>
+</li>
+<li>
+<p>Secondly, your low balance of <code>sol</code>. You will be asked to choose whether or not to request for an airdrop (as in, acquire free dev-net <code>sol</code>) from inside the Solana Explorer command-prompt. For now, type and enter <code>no</code> into the command line.</p>
+</li>
+</ul>
+<p>You can actually request for an airdrop from the Solana explorer. You first need to click on your devnet address which opens a new browser tab to the Solana Explorer website. Next copy your <code>Address</code>, and head over to <a href="https://faucet.solana.com">https://faucet.solana.com</a>, paste your copied address into the <code>Wallet Address</code> input, choose an <code>Amount</code> (preferably, 5), and then click the <code>Confirm Airdrop</code> button. You should see a prompt that says &quot;Airdrop was successful!&quot;.</p>
+<p>Now go back to the Solana Playground, and click on the <code>Deploy</code> button. After a successful transaction, go back to your Wallet page on the Solana Explorer, scroll down to your <code>Transaction History</code>, and click the refresh button to see the transaction history with the latest transaction updates.</p>
+<hr />
+<p>You can search for your Solana account on the blockchain by copying your program's account <code>id</code> inside the macro <code>declare_id!()</code> and pasting it into the Solana Explorer search bar as a search query.</p>
+<hr />
+<p>Your Solana explorer link to request for an airdrop would vary depending on your <code>declare_id!()</code> value. For example, let's say your <code>declare_id!()</code> value is <code>ww9C83noARSQVBnqmCUmaVdbJjmiwcV9j2LkXYMoUCV</code>, then, your appropriate Solana explorer link would then be - https://explorer.solana.com/address/ww9C83noARSQVBnqmCUmaVdbJjmiwcV9j2LkXYMoUCV?cluster=devnet</p>
+<hr />
+<p>Timestamp - [30:21 - 32:50]</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="4. Solana Project 1 - Section B.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="6. Solana Project - Section D.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="4. Solana Project 1 - Section B.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="6. Solana Project - Section D.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

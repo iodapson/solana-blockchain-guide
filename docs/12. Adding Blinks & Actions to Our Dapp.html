@@ -1,0 +1,923 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Adding Blinks &amp; Actions to Our Dapp - Solana Blockchain Guide</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="1. Overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="2. What is Blockchain & How it Works.html"><strong aria-hidden="true">2.</strong> Blockchain & How it Works</a></li><li class="chapter-item expanded "><a href="Solana Program teaser.html"><strong aria-hidden="true">3.</strong> Solana Program teaser</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 1: Favorites Program</li><li class="chapter-item expanded "><a href="3. Solana Project 1 - Section A.html"><strong aria-hidden="true">4.</strong> Solana Project 1 - Section A</a></li><li class="chapter-item expanded "><a href="4. Solana Project 1 - Section B.html"><strong aria-hidden="true">5.</strong> Solana Project 1 - Section B</a></li><li class="chapter-item expanded "><a href="5. Solana Project 1 - Section C.html"><strong aria-hidden="true">6.</strong> Solana Project 1 - Section C</a></li><li class="chapter-item expanded "><a href="6. Solana Project - Section D.html"><strong aria-hidden="true">7.</strong> Solana Project 1 - Section D</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 2: Voting Application</li><li class="chapter-item expanded "><a href="7. Installing Solana on a Local Dev Machine.html"><strong aria-hidden="true">8.</strong> Installing Solana on a Local Dev Machine</a></li><li class="chapter-item expanded "><a href="8. Creating the Voting Dapp.html"><strong aria-hidden="true">9.</strong> Creating the Voting Dapp</a></li><li class="chapter-item expanded "><a href="9. Understanding the Voting Dapp.html"><strong aria-hidden="true">10.</strong> Understanding the Voting Dapp</a></li><li class="chapter-item expanded "><a href="10. Testing Dapps.html"><strong aria-hidden="true">11.</strong> Testing Dapps</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 3: Integrating Blinks</li><li class="chapter-item expanded "><a href="11. Solana Blinks and Actions.html"><strong aria-hidden="true">12.</strong> Solana Actions and Blinks</a></li><li class="chapter-item expanded "><a href="12. Adding Blinks & Actions to Our Dapp.html" class="active"><strong aria-hidden="true">13.</strong> Adding Blinks & Actions to Our Dapp</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 4: Solana CRUD</li><li class="chapter-item expanded "><a href="13. Project 4 Overview.html"><strong aria-hidden="true">14.</strong> Project 4 Overview</a></li><li class="chapter-item expanded "><a href="14. Solana CRUD Project Set-up.html"><strong aria-hidden="true">15.</strong> Solana CRUD Project Set-up</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Solana Blockchain Guide</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h3 id="add-blinks-and-actions-tovotingdapp-developed-earlier"><a class="header" href="#add-blinks-and-actions-tovotingdapp-developed-earlier">Add Blinks and Actions to'votingdapp' Developed Earlier</a></h3>
+<h4 id="preparing-the-votingdapp-project-for-adding-blinks-and-actions"><a class="header" href="#preparing-the-votingdapp-project-for-adding-blinks-and-actions">Preparing the 'votingdapp' project for adding Blinks and Actions:</a></h4>
+<p>On this page, we'll add Blinks and Actions to our previously created <code>votingdapp</code> project, and there is a lot of different amount of work that we'd have to do for Blinks and Actions. We will be referencing the <a href="https://solana.com/docs/advanced/actions">Solana Actions and Blinks documentation page</a> to prepare our <code>votingdapp</code> project for adding Blinks and Actions to it.</p>
+<p><span style="color: orange;">1</span></p>
+<h4 id="deploy-your-dapp-eg-votingdapp"><a class="header" href="#deploy-your-dapp-eg-votingdapp">Deploy your dapp (e.g, 'votingdapp'):</a></h4>
+<p>In the previous chapter ('Project 2: Voting Application'), we used <code>anchor-bankrun</code> to run tests in the <a href="10.%20Testing%20Dapps.html">Testing Dapps</a> page. However, in this chapter, we will need the local test validator to test our dapp that has some UI bootstrap on top of it.</p>
+<p>Let us first go into our <code>anchor</code> folder and perfom an Anchor deploy operation. Now this might be different based off your Solana config, so actually, you might need to check your Solana config first with - <code>$ solana config get</code>. We need to set our config environment to local (RPC URL: http://localhost:8999).</p>
+<p>Set your Solana config environment to local if it isn't already set to local:</p>
+<pre><code class="language-bash">solana config set -ul
+</code></pre>
+<p>Now we can run the anchor deployment command:</p>
+<pre><code class="language-bash">anchor deploy
+</code></pre>
+<p>The above command will deploy your dapp project's binary, e.g, <code>votingdapp.so</code>. to the blockchain.</p>
+<p>If <code>$: anchor deploy</code> fails to work with an error message <span style="color: #722f37; font-size: 12; font-weight: 600;">error sending request for url (http://127.0.01;8099): error trying to connect: tcp connect error: Connection refused (os error 111)</span>, then it means that your 'solana-test-validator' is not running. You can fix the error by just running <code>$: solana-test-validator</code> to start the 'solana-test-validator' which is a requirement to deploy your anchor smart contract locally. Upon starting the 'solana-test-validator', retry the <code>$: anchor deploy</code> command.</p>
+<p>Check your successfully deployed program at <a href="https://explorer.solana.com/">https://explorer.solana.com/</a> - switch from <code>Mainnet Beta</code> to <code>Custom RPC URL</code>, then copy, paste, and enter the <code>Program Id</code> displayed on your terminal into the search bar that has a placeholder text that says - <small style="font-size: 14.5px; letter-spacing: 0.25px;">Search for blocks, accounts, transactions, programs, and tokens</small>.</p>
+<p>After successfully deploying your dapp to the local validator (using <code>solana-test-validator</code>), and searching for your dapps's <code>Program Id</code> on <a href="explorer.solana.com">explorer.solana.com</a>, you should see something somewhat similar to the following:</p>
+<p><img src="./assets/explorer.solana.com-votingdapp-Program-Id-search-result.png" alt="Screenshot of explorer.solana.com votingdapp Program Id search" title="Result of the search for our votingdapp Program Id on Solana Explorer" /></p>
+<p><span style="color: orange;">Good to know 1:</span></p>
+<p>The <code>solana-test-validator</code> command when run for the first time, creates a new folder called <code>test-ledger</code> inside the working directory where the command is run. If you delete this folder and re-run the command, the folder will simply be recreated.</p>
+<br/>
+<p><span style="color: orange;">2</span></p>
+<h4 id="install-solanaactions"><a class="header" href="#install-solanaactions">Install @solana/actions:</a></h4>
+<p>Go into your project's root directory. If you currently inside the <code>anchor</code> directory, then you have to <code>$ cd ..</code> so you can be inside your project's root directory. Use the command below to install <code>@solana/actions</code>:</p>
+<p>NPM:</p>
+<pre><code class="language-bash">npm install @solana/actions
+</code></pre>
+<br/>
+<p><span style="color: orange;">3</span></p>
+<h4 id="run-your-dapp"><a class="header" href="#run-your-dapp">Run your dapp</a></h4>
+<p>Let us now run our <code>votingdapp</code> in dev mode:</p>
+<pre><code>npm run dev
+</code></pre>
+<br/>
+<p><span style="color: orange;">4</span></p>
+<h4 id="create-a-get-request-to-get-the-right-information-to-do-our-actions"><a class="header" href="#create-a-get-request-to-get-the-right-information-to-do-our-actions">Create a GET request to get the right information to do our Actions:</a></h4>
+<p>We need to structure our request in such a way that follows the guidelines specified in the Solana Actions documentation page' URL schema here - <a href="https://solana.com/docs/advanced/actions#url-scheme">https://solana.com/docs/advanced/actions#url-scheme</a>.</p>
+<ul>
+<li>
+<p>We will write the URL Schema for our Actions inside a <code>route.ts</code> code-file located at - <code>web</code> - <code>app</code> - <code>api</code>. For you, the right folder may be <code>src</code> - <code>app</code> - <code>api</code>. Create a new sub-folder named <code>votingdapp</code> inside the <code>api</code> folder. Please note that in the bootcamp's video, the new folder was named <code>voting</code> instead of <code>votingdapp</code>.</p>
+</li>
+<li>
+<p>Now copy the <code>route.ts</code> code file inside <code>.../api/hello</code> into our previous created new <code>.../api/votingdapp</code> sub-folder. The copied <code>route.ts</code> files should have the following content:</p>
+</li>
+</ul>
+<pre><code class="language-ts">export async function GET(request: Request) {
+	return new Response('Hello, from API!');
+}
+</code></pre>
+<ul>
+<li>You can check out the newly created route by opening <code>localhost:3000/api/votingdapp</code>. You will find the text <code>Hello, from API!</code> written on your screen.</li>
+</ul>
+<p><span style="color: orange;">Good to know 2:</span></p>
+<p>The template we have chosen to build our dapp from spins up a basic NextJS server-side app for working with Blinks, which should be noted to be quite a heavy application for these Blinks. NextJS server side is quite heavy for this for this usage. It is recommended to use a Node JS server - like an Express server if you can. But because we have a scaffold and we will later on in the course build the actual frontend for the voting application, we are just going to use this backend and bootstrap it with this voting Action.</p>
+<br/>
+<p><span style="color: orange;">5</span></p>
+<h4 id="return-valuable-information-in-order-to-display-the-blink-on-any-social-media"><a class="header" href="#return-valuable-information-in-order-to-display-the-blink-on-any-social-media">Return valuable information in order to display the Blink on any social media</a></h4>
+<p>The expected metadata response after an Action client makes a GET request to an Action provider for its available Actions is a JSON body-payload that follows the specification of <code>ActionGetResponse</code>:</p>
+<pre><code class="language-ts">export type ActionType = 'action' | 'completed';
+
+export type ActionGetResponse = Action&lt;'action'&gt;;
+
+export interface Action&lt;T extends ActionType&gt; {
+	/** type of Action to present to the user */
+	type: T;
+	/** image url that represents the source of the action request */
+	icon: string;
+	/** describes the source of the action request */
+	title: string;
+	/** brief summary of the action to be performed */
+	description: string;
+	/** button text rendered to the user */
+	label: string;
+	/** UI state for the button being rendered to the user */
+	disabled?: boolean;
+	links?: {
+		/** list of related Actions a user could perform */
+		actions: LinkedAction[];
+	};
+	/** non-fatal error message to be displayed to the user */
+	error?: ActionError;
+}
+</code></pre>
+<p>Fields <code>icon</code>, <code>title</code>, <code>description</code>, and <code>label</code> are required. The remaining fields are optional. We will also need to provide CORS information. For now our <code>api/votingdapp</code>'s <code>route.ts</code> now looks like this:</p>
+<pre><code class="language-ts">import { ActionGetResponse } from '@solana/actions';
+
+export async function GET(request: Request) {
+	const actionMetadata: ActionGetResponse = {
+		icon: 'https://zestfulkitchen.com/wp-content/uploads/2021/09/Peanut-butter_hero_for-web-2.jpg',
+		title: 'Vote for your favorite type of peanut butter!',
+		description: 'Vote between crunchy and smooth peanut butter',
+		label: 'Vote',
+	};
+	return Response.json(actionMetadata);
+}
+</code></pre>
+<p><span style="color: orange;">Good to know 3:</span></p>
+<p>You can test your Blinks using the <a href="dial.to">dial.to</a> website. To use <code>dial.to</code> to test your Blinks, you'd include the localhost link to your Blink within the <code>dial.to</code> route, similar to this - <code>https://dial.to/?action=solana-action:http://localhost:3000/api/&lt;your-blink-here&gt;</code>. Make sure to avoid CORS related errors. Read the <a href="#check-out-your-blink-visually-using-dialto-and-fix-cors-errors">step 6</a> to know exactly how to prevent CORS-related errors that prevent your Blinks from loading when testing Blinks.</p>
+<br/>
+<p><span style="color: orange;">6</span></p>
+<h4 id="check-out-your-blink-visually-using-dialto-and-fix-cors-errors"><a class="header" href="#check-out-your-blink-visually-using-dialto-and-fix-cors-errors">Check out your Blink visually using dial.to, and fix CORS errors</a></h4>
+<p>In our case, we can use the <code>dial.to</code> website to have a visual representation of what our Blink looks like by using the this specific link - <code>https://dial.to/?action=solana-action:http://localhost:3000/api/votingdapp</code>. Upon visiting this link, you'd realise that the Blink actually fails to load and is thus, blank. That's because we are yet to fix CORS (Cross Origin Resource Sharing) requirement that your browser has in place to keep you safe online.</p>
+<p><img src="./assets/dial.to-blink-cors-error-screenshot.png" alt="dial.to Blink CORS error screenshot" title="https://dial.to Blink CORS error" /></p>
+<p>Let's fix the error by modifying our <code>api/votingdapp/route.ts</code> file:</p>
+<pre><code class="language-ts">/*
+    src/app/api/votingdapp/route.ts
+*/
+
+import { ActionGetResponse } from '@solana/actions';
+
+export async function GET(request: Request) {
+	const actionMetadata: ActionGetResponse = {
+		icon: 'https://zestfulkitchen.com/wp-content/uploads/2021/09/Peanut-butter_hero_for-web-2.jpg',
+		title: 'Vote for your favorite type of peanut butter!',
+		description: 'Vote between crunchy and smooth peanut butter',
+		label: 'Vote',
+	};
+	return Response.json(actionMetadata);
+}
+</code></pre>
+<p>After making the above modifications, our Action can now be served by a Blink, and if you check our the link to our Blink using the appropriate <code>dial.to</code> link to our Blink, our Blink should now load.</p>
+<p>We get a warning that your Blink is not yet registered, and that's okay for us since we are just testing to make sure it works how we want it to for now. The warning is there to let you know Blinks that are known by a Blink registry. Using an unknown Blink is done at your own risk:</p>
+<p><img src="./assets/loaded-but-partially-finished-blink.png" alt="Loaded but partially finished blink" title="Dial.to warning that our Blink is yet to be registered" /></p>
+<p>Alright, so now we at least have our Blink on display using <code>dial.to</code>, but our Blink can't post a voting Action. If you click the vote button, you will in fact get a CORS and POST network error.</p>
+<p><span style="color: orange;">Good to know 4:</span></p>
+<p>Part of the whole system for onboarding Blinks as of the time of the bootcamp 2024, onto social-media, is that you have to actually get your Action registered via some kind of registry out there, e.g. Dialect.</p>
+<br/>
+<p><span style="color: orange;">7</span></p>
+<h4 id="respond-with-metadata-and-available-actions"><a class="header" href="#respond-with-metadata-and-available-actions">Respond with metadata and available Actions</a></h4>
+<p>Let's first prevent a CORS error when making a request inside our Blink e.g cliking the <code>vote</code> button to vote inside our <code>votingdapp</code> Blink rendered with <code>dial.to</code>.</p>
+<pre><code class="language-ts">/*
+  src/app/api/votingdapp/route.ts
+*/
+
+// imports
+...
+
+export const OPTIONS = GET
+
+// export async function GET(request: Request)
+...
+
+</code></pre>
+<p>Next, we have to update the <code>route.ts</code> for our Blink with the correct <code>LinkedAction</code> metadata so we can showcase corresponding available Actions inside the Blink. The <code>ActionGetResponse</code> <a href="#return-valuable-information-in-order-to-display-the-blink-on-any-social-media">spec</a> allows us to specify a <code>LinkedAction</code> value to its <code>links?</code> attribute which is what specifies a list of related Actions for a Blink user to possibly perform. For more details about <code>LinkedActions</code> spec, check <a href="https://solana.com/docs/advanced/actions#get-response-body">this page of Solana docs</a>.</p>
+<p>And since in our <code>votingdapp</code>, we would be performing one of two different post Actions to vote either Crunchy or Smooth, our <code>ActionGetResponse</code>' <code>links</code> field is specified as:</p>
+<pre><code class="language-ts">...
+
+links: {
+    actions: [
+        {
+            label: &quot;Vote for Crunchy&quot;,
+            href: &quot;/api/vote?candidate=crunchy&quot;,
+            type: &quot;post&quot;,
+        },
+        {
+            label: &quot;Vote for Smooth&quot;,
+            href: &quot;/api/vote?candidate=smooth&quot;,
+            type: &quot;post&quot;,
+        }
+    ]
+}
+</code></pre>
+<p>The <code>route.ts</code> for our <code>votingdapp</code> API now lookS like this after specifying a <code>LinkedAction</code> value for our <code>ActionGetResponse</code>' (GET Response body)<code>links?:</code> field:</p>
+<pre><code class="language-ts">/* 
+  src/app/api/votingdapp/route.ts 
+*/
+
+import { ActionGetResponse, ACTIONS_CORS_HEADERS } from '@solana/actions';
+
+export const OPTIONS = GET;
+
+export async function GET(request: Request) {
+	const actionMetadata: ActionGetResponse = {
+		icon: 'https://zestfulkitchen.com/wp-content/uploads/2021/09/Peanut-butter_hero_for-web-2.jpg',
+		title: 'Vote for your favorite type of peanut butter!',
+		description: 'Vote between crunchy and smooth peanut butter',
+		label: 'Vote',
+		links: {
+			actions: [
+				{
+					label: 'Vote for Crunchy',
+					href: '/api/vote?candidate=crunchy',
+					type: 'post',
+				},
+				{
+					label: 'Vote for Smooth',
+					href: '/api/vote?candidate=smooth',
+					type: 'post',
+				},
+			],
+		},
+	};
+	return Response.json(actionMetadata, { headers: ACTIONS_CORS_HEADERS });
+}
+</code></pre>
+<br/>
+<p><span style="color: orange;">Side Note:</span></p>
+<p>Moving forward with this guidebook, it is assumed that you now have a Solana wallet. This guidebook makes use of the phantom wallet. Please go to the official Phantom website - <a href="https://phantom.com">https://phantom.com</a>, and install the Phantom extention on your favorite browser(s). This guide also assumes that you created a <code>seed phrase wallet</code>.</p>
+<br/>
+<p><span style="color: orange;">8</span></p>
+<h4 id="make-a-post-request-with-the-blink-users-wallet-pubkey"><a class="header" href="#make-a-post-request-with-the-blink-users-wallet-pubkey">Make a 'POST' request with the Blink user's wallet pubkey</a></h4>
+<p>Let's now create a new function called <code>POST</code> for this purpose and learn what we need to include for our <code>votingdapp</code> to work.</p>
+<ol>
+<li>Inside this function, we will need to grab the URL from the request, and the search parameter inside the same URL.</li>
+</ol>
+<pre><code class="language-ts">/*
+    src/app/api/votingdapp/route.ts
+*/
+
+// imports
+...
+
+...
+
+export async function POST(request: Request) {
+    const url = new URL(request.url);
+    const candidate = url.searchParams.get(&quot;candidate&quot;);
+}
+
+</code></pre>
+<ol start="2">
+<li>In our <code>votingdapp</code>, we need to make sure that the vote-candidate given is a valid candidate - 'Crunchy' or 'Smooth' without giving the user of the Blink a strange error in case someone enter a non-existing candidate.</li>
+</ol>
+<pre><code class="language-ts">/*
+    src/app/api/votingdapp/route.ts
+*/
+
+// imports
+...
+
+// export async function GET(request: Request)
+...
+
+export async function POST(request: Request) {
+    const url = new URL(request.url);
+    const candidate = url.searchParams.get(&quot;candidate&quot;);
+
+    if (candidate != &quot;crunchy&quot; &amp;&amp; candidate != &quot;smooth&quot;) {
+        return new Response(&quot;Invalid candidate&quot;, { status: 400 });
+    }
+}
+
+</code></pre>
+<ol start="3">
+<li>Create a connection to our local test validator. We need to provide a commitment status when you create a connection inside the POST function:</li>
+</ol>
+<pre><code class="language-ts">/*
+    src/app/api/votingdapp/route.ts
+*/
+
+// imports
+...
+
+// export async function GET(request: Request)
+...
+
+export async function POST(request: Request) {
+    ...
+
+	const connection = new Connection('http://127.0.0.1:8899', 'confirmed');
+}
+</code></pre>
+<p><span style="color: orange;">Good to know 4:</span></p>
+<p>There are various commitment status levels such as; &quot;process&quot;, &quot;confirmed&quot;, &quot;finalized&quot;. And they tell us how certain it is that a transaction would make it on the cluster. Commitment status level <code>process</code> says - hey, I found it, it's not yet confirmed. Commitment status level <code>confirmed</code> means - it's confirmed by 66% of the actual cluster. And then <code>finalized</code> says - it's confirmed by 66% and there's been 31 blocks afterwards that were also confirmed. <code>finalized</code> takes a lot longer, <code>confirmed</code> is generally safe - at the time of the bootcamp's recording, there's never been something that was confirmed that didn't make it to finalized.</p>
+<ol start="4">
+<li>Alright, so next, let's grab the account that the user signed with on the Blink by copying the account address from the body of the POST request in our Blink made when we decided to vote for a candidate such as &quot;Crunchy&quot;. In our case it is the public key tied to your wallet as seen below:</li>
+</ol>
+<p><img src="./assets/POST-payload-to-vote-a-candidate-e.g-Crunchy.png" alt="POST payload to vote a candidate e.g Crunchy" title="Crunchy vote Request Payload" /></p>
+<p>We would also gracefully handle the error case where the account provided/found is invalid:</p>
+<pre><code class="language-ts">/*
+    src/app/api/votingdapp/route.ts
+*/
+
+// imports
+...
+
+// export async function GET(request: Request)
+...
+
+export async function POST(request: Request) {
+    ...
+
+	const body: ActionPostRequest = await request.json;
+	const voter = new PublicKey(body.account);
+	let voter;
+
+	try {
+		voter = new PublicKey(body.account);
+	} catch (error) {
+		return new Response('Invalid account', {
+			status: 400,
+			headers: ACTIONS_CORS_HEADERS,
+		});
+	}
+}
+</code></pre>
+<ol start="5">
+<li>Create the transaction to send back after the POST request completes. In order to create transactions, we need a few things - a blockhash, a message, and any signatures that we possibly need to send to be added to that transaction.</li>
+</ol>
+<p>Fortunately for us in our <code>votingdapp</code> case though, we don't need any signatures on the server side because we don't care about signing anything on the server-side.</p>
+<ul>
+<li>Pull in our <code>IDL</code> and <code>Votingdapp</code> type into our <code>route.ts</code> file just like we had it earlier in our <code>votingdapp.spec.ts</code> file:</li>
+</ul>
+<pre><code class="language-ts">/*
+    src/app/api/votingdapp/route.ts
+*/
+
+// previous imports
+...
+
+import { Votingdapp } from '@/../anchor/target/types/votingdapp';
+
+const IDL = require('@/../anchor/target/idl/votingdapp.json');
+
+...
+
+</code></pre>
+<ul>
+<li>Create a program provider. Note that unlike in our previous <code>votingdapp.spec.ts</code> test from <a href="10.%20Testing%20Dapps.html">Testing Dapps</a>, we did not need to actually care to have a Bankrun provider because it was just a test. For our Blink program though, we need to make sure that we use the right Anchor provider in order to run our program on a specific POST request. Below is the code snippet</li>
+</ul>
+<pre><code class="language-ts">const program: anchor.Program&lt;Votingdapp&gt; = new anchor.Program(IDL, {
+	connection,
+});
+</code></pre>
+<p>Our <code>route.ts</code> should now look like this:</p>
+<pre><code class="language-ts">/*
+    src/app/api/votingdapp/route.ts
+*/
+
+import {
+	ActionGetResponse,
+	ActionPostRequest,
+	ACTIONS_CORS_HEADERS,
+} from '@solana/actions';
+import * as anchor from '@coral-xyz/anchor';
+import { PublicKey } from '@solana/web3.js';
+import { Votingdapp } from '@/../anchor/target/types/votingdapp';
+
+const IDL = require('@/../anchor/target/idl/votingdapp.json');
+
+export const OPTIONS = GET;
+
+export async function GET(request: Request) {
+	const actionMetadata: ActionGetResponse = {
+		icon: 'https://zestfulkitchen.com/wp-content/uploads/2021/09/Peanut-butter_hero_for-web-2.jpg',
+		title: 'Vote for your favorite type of peanut butter!',
+		description: 'Vote between crunchy and smooth peanut butter',
+		label: 'Vote',
+		links: {
+			actions: [
+				{
+					label: 'Vote for Crunchy',
+					href: '/api/vote?candidate=Crunchy',
+					type: 'post',
+				},
+				{
+					label: 'Vote for Smooth',
+					href: '/api/vote?candidate=Smooth',
+					type: 'post',
+				},
+			],
+		},
+	};
+	return Response.json(actionMetadata, { headers: ACTIONS_CORS_HEADERS });
+}
+
+export async function POST(request: Request) {
+	const url = new URL(request.url);
+	const candidate = url.searchParams.get('candidate');
+
+	if (candidate != 'crunchy' &amp;&amp; candidate != 'smooth') {
+		return new Response('Invalid candidate', { status: 400 });
+	}
+
+	const connection = new anchor.web3.Connection(
+		'http://127.0.0.1:8899',
+		'confirmed'
+	);
+	// Our provider :
+	const program: anchor.Program&lt;Votingdapp&gt; = new anchor.Program(IDL, {
+		connection,
+	});
+
+	const body: ActionPostRequest = await request.json();
+	let voter;
+
+	try {
+		voter = new PublicKey(body.account);
+	} catch (error) {
+		return new Response('Invalid account', {
+			status: 400,
+			headers: ACTIONS_CORS_HEADERS,
+		});
+	}
+}
+</code></pre>
+<p>In the case that <code>const program: anchor.Program&lt;Votingdapp&gt; = new anchor.Program(IDL, { connection });</code> does not pass as valid code in your <code>route.ts</code>, then please update your <code>next.config.mjs</code> file in order for your code to compile properly. You can do a quick search online to find the fix.</p>
+<ul>
+<li>Now lets grab the instruction for voting for a candidate from inside our Blink, and in order to do this, we need the specific ID of the candidate we wish to vote for.</li>
+</ul>
+<pre><code class="language-ts">/*
+    src/app/api/votingdapp/route.ts
+*/
+
+...
+
+export async function POST (request: Request) {
+    ...
+
+    const instruction = await program.methods.vote(candidate, new anchor.BN(1))
+        .accounts({
+            signer: voter,
+        })
+        .instruction();
+}
+</code></pre>
+<ul>
+<li>Get a blockhash. We'll use a latest blockhash. It is to be noted that blockhases expire after a 150 confirmed blocks so if you try and use it and it is too late, it's gone - this is to prevent replay attacks on Solana.</li>
+</ul>
+<pre><code class="language-ts">/*
+    route.ts
+*/
+
+...
+
+export async function POST (request: Request) {
+    ...
+
+    const blockhash = await connection.getLatestBlockhash()
+}
+</code></pre>
+<ul>
+<li>Now let's create our transaction and also specify our blockhash, fee payer, and what we are expecting inside our <code>POST</code> function.</li>
+</ul>
+<pre><code class="language-ts">/*
+    route.ts
+*/
+
+...
+
+export async function POST (request: Request) {
+    ...
+
+    // const blockhash
+    ...
+
+    const transaction = new Transaction({
+        feePayer: voter,
+        blockhash: blockhash.blockhash,
+        lastValidBlockHeight: blockhash.lastValidBlockHeight,
+    }).add(instruction);
+}
+</code></pre>
+<p><span style="color: orange;">9</span></p>
+<h4 id="return-the-transaction-as-an-actual-response-back-to-the-user-on-the-blink"><a class="header" href="#return-the-transaction-as-an-actual-response-back-to-the-user-on-the-blink">Return the transaction as an actual response back to the user on the Blink</a></h4>
+<p>When you do return a response, remember to include the <code>ACTION_CORS_HEADERS</code> with it.</p>
+<pre><code class="language-ts">/*
+    route.ts
+*/
+
+...
+
+export async function POST (request: Request) {
+    ...
+
+    // const blockhash
+    ...
+
+    // const transaction
+    ...
+
+    const response = await createPostResponse({
+        fields: {
+            transaction: transaction,
+            type: &quot;transaction&quot;
+        }
+    });
+
+    return Response.json(response, { headers: ACTIONS_CORS_HEADERS })
+}
+</code></pre>
+<p>Our <code>route.ts</code> code should now look like this:</p>
+<pre><code class="language-ts">import {
+	ActionGetResponse,
+	ActionPostRequest,
+	ACTIONS_CORS_HEADERS,
+	createPostResponse,
+} from '@solana/actions';
+import * as anchor from '@coral-xyz/anchor';
+// import { BN } from '@coral-xyz/anchor';
+import { PublicKey, Transaction } from '@solana/web3.js';
+// import { Votingdapp } from &quot;@project/anchor&quot;;
+import { Votingdapp } from '@/../anchor/target/types/votingdapp';
+
+//const IDL = require('../../../../anchor/tests/votingdapp.json')
+const IDL = require('@/../anchor/target/idl/votingdapp.json');
+
+export const OPTIONS = GET;
+
+export async function GET(request: Request) {
+	const actionMetadata: ActionGetResponse = {
+		icon: 'https://zestfulkitchen.com/wp-content/uploads/2021/09/Peanut-butter_hero_for-web-2.jpg',
+		title: 'Vote for your favorite type of peanut butter!',
+		description: 'Vote between crunchy and smooth peanut butter',
+		label: 'Vote',
+		links: {
+			actions: [
+				{
+					label: 'Vote for Crunchy',
+					href: '/api/vote?candidate=Crunchy',
+					type: 'post',
+				},
+				{
+					label: 'Vote for Smooth',
+					href: '/api/vote?candidate=Smooth',
+					type: 'post',
+				},
+			],
+		},
+	};
+	return Response.json(actionMetadata, { headers: ACTIONS_CORS_HEADERS });
+}
+
+export async function POST(request: Request) {
+	const url = new URL(request.url);
+	const candidate = url.searchParams.get('candidate');
+
+	if (candidate != 'Crunchy' &amp;&amp; candidate != 'Smooth') {
+		return new Response('Invalid candidate', { status: 400 });
+	}
+
+	const connection = new anchor.web3.Connection(
+		'http://127.0.0.1:8899',
+		'confirmed'
+	);
+	const program: anchor.Program&lt;Votingdapp&gt; = new anchor.Program(IDL, {
+		connection,
+	});
+
+	const body: ActionPostRequest = await request.json();
+	let voter;
+
+	try {
+		voter = new PublicKey(body.account);
+	} catch (error) {
+		return new Response('Invalid account', {
+			status: 400,
+			headers: ACTIONS_CORS_HEADERS,
+		});
+	}
+
+	const instruction = await program.methods
+		.vote(candidate, new anchor.BN(1))
+		.accounts({
+			signer: voter,
+		})
+		.instruction();
+
+	const blockhash = await connection.getLatestBlockhash();
+
+	const transaction = new Transaction({
+		feePayer: voter,
+		blockhash: blockhash.blockhash,
+		lastValidBlockHeight: blockhash.lastValidBlockHeight,
+	}).add(instruction);
+
+	const response = await createPostResponse({
+		fields: {
+			transaction: transaction,
+			type: 'transaction',
+		},
+	});
+
+	return Response.json(response, { headers: ACTIONS_CORS_HEADERS });
+}
+</code></pre>
+<hr />
+<p>Now let's test our Blink. If you already have the Blink open on <code>dial.to</code>, simply refresh it, otherwise use the link <a href="https://dial.to/?action=solana-action:http://localhost:3000/api/votingdapp">https://dial.to/?action=solana-action:http://localhost:3000/api/votingdapp</a> to open your Blink.</p>
+<p>If you run locally, there is going to be a lot of information shown inside your wallet floating window. What you find usually with wallets if that they are not doing anything like caching on local, they are just just skipping it. We can just confirm it because we know that we are working on local. Oftentimes, if you do see errors though, it is advised that you do not confirm your transaction just as a general FYI.</p>
+<hr />
+<p>We previously deployed our program / smart contract onto our local test validator and we don't actually have any information about this smart contract or polls or candidates, so we actually have to create them. A very easy way to create those is you can just run your test. And if you write your test correctly, which we did earlier, this should be able to create the correct candidates of Smooth and Crunchy for people to vote on.</p>
+<p>So let us go ahead and run a test to create actual Smooth and Crunchy candidates real quick using <code>$ anchor test --skip-local-validator</code>. This command will deploy to our local test validator and then run all of our test. And it should set up our specific poll onto our local validator. In case you encounter errors while trying to run test;</p>
+<ul>
+<li>
+<p>Update your <code>new PublicKey()</code> string value inside your <code>votingdapp.spec.ts</code> with the generated <code>Program Id</code> shown inside your terminal. You can also obtain the correct <code>Program Id</code> by running command <code>$ anchor keys list</code> inside your terminal.</p>
+</li>
+<li>
+<p>Set up your poll and candidate ID configuration inside your <code>votingdapp.spec.ts</code> in order to create votes. In order to configure our candidate poll and ID, we'll make the following updates to your <code>votingdapp.spec.ts</code> code:</p>
+</li>
+</ul>
+<pre><code class="language-ts">import * as anchor from '@coral-xyz/anchor';
+import { Program } from '@coral-xyz/anchor';
+import { Keypair, PublicKey } from '@solana/web3.js';
+import { Votingdapp } from '../target/types/votingdapp';
+import { startAnchor } from 'solana-bankrun';
+import { BankrunProvider } from 'anchor-bankrun';
+
+const IDL = require('../target/idl/votingdapp.json');
+
+/*const votingdappAddress = new PublicKey(
+  'AsjZ3kWAUSQRNt2pZVeJkywhZ6gpLpHZmJjduPmKZDZZ'
+);*/
+const votingdappAddress = new PublicKey(
+	'ARCa2n7p7CFanHpEDhygY5i9o1Jbqwr87qmFkncTJQ49'
+);
+
+describe('votingdapp', () =&gt; {
+	let context;
+	let provider;
+	anchor.setProvider(anchor.AnchorProvider.env());
+	//let votingdappProgram: Program&lt;Votingdapp&gt;;
+	let votingdappProgram = anchor.workspace.Votingdapp as Program&lt;Votingdapp&gt;;
+
+	/*beforeAll(async () =&gt; {
+		context = await startAnchor(
+			'',
+			[{ name: 'votingdapp', programId: votingdappAddress }],
+			[]
+		);
+		provider = new BankrunProvider(context);
+		votingdappProgram = new Program&lt;Votingdapp&gt;(IDL, provider);
+	});*/
+	// Test 1:
+	it('Initialize Poll', async () =&gt; {
+		await votingdappProgram.methods
+			.initializePoll(
+				new anchor.BN(1),
+				'What is your favorite type of peanut butter',
+				new anchor.BN(0),
+				new anchor.BN(1821246680)
+			)
+			.rpc();
+
+		const [pollAddress] = PublicKey.findProgramAddressSync(
+			// Grab the buffer from a u64
+			[new anchor.BN(1).toArrayLike(Buffer, 'le', 8)],
+			votingdappAddress
+		);
+
+		const poll = await votingdappProgram.account.poll.fetch(pollAddress);
+
+		console.log(poll);
+
+		expect(poll.pollId.toNumber()).toEqual(1);
+		expect(poll.description).toEqual(
+			'What is your favorite type of peanut butter'
+		);
+		expect(poll.pollStart.toNumber()).toBeLessThan(poll.pollEnd.toNumber());
+	});
+
+	// Test 2:
+	it('Initialize Candidate', async () =&gt; {
+		await votingdappProgram.methods
+			.initializeCandidate('Smooth', new anchor.BN(1))
+			.rpc();
+		await votingdappProgram.methods
+			.initializeCandidate('Crunchy', new anchor.BN(1))
+			.rpc();
+
+		const [crunchyAddress] = PublicKey.findProgramAddressSync(
+			[new anchor.BN(1).toArrayLike(Buffer, 'le', 8), Buffer.from('Crunchy')],
+			votingdappAddress
+		);
+		const crunchyCandidate = await votingdappProgram.account.candidate.fetch(
+			crunchyAddress
+		);
+		console.log(crunchyCandidate);
+		expect(crunchyCandidate.candidateVotes.toNumber()).toEqual(0);
+
+		const [smoothAddress] = PublicKey.findProgramAddressSync(
+			[new anchor.BN(1).toArrayLike(Buffer, 'le', 8), Buffer.from('Smooth')],
+			votingdappAddress
+		);
+		const smoothCandidate = await votingdappProgram.account.candidate.fetch(
+			smoothAddress
+		);
+		console.log(smoothCandidate);
+		expect(smoothCandidate.candidateVotes.toNumber()).toEqual(0);
+	});
+
+	// Test 3:
+	it('vote', async () =&gt; {
+		await votingdappProgram.methods.vote('Smooth', new anchor.BN(1)).rpc();
+
+		const [smoothAddress] = PublicKey.findProgramAddressSync(
+			[new anchor.BN(1).toArrayLike(Buffer, 'le', 8), Buffer.from('Smooth')],
+			votingdappAddress
+		);
+		const smoothCandidate = await votingdappProgram.account.candidate.fetch(
+			smoothAddress
+		);
+		console.log(smoothCandidate);
+		expect(smoothCandidate.candidateVotes.toNumber()).toEqual(1);
+	});
+});
+</code></pre>
+<ul>
+<li>
+<p>Run <code>$ anchor clean</code> inside your terminal to cleanup your workspace and ensure that everything is set up for success. This command will delete file(s) inside your <code>/anchor/target/idl</code> and <code>/anchor/target/types</code>. No, worries, you will regain updated versions of them when you build or test your program.</p>
+</li>
+<li>
+<p>Run the command <code>$ anchor keys list</code> inside your terminal and copy the new public key.</p>
+</li>
+<li>
+<p>Go into your <code>/anchor/Anchor.toml</code> file and replace the value of <code>votingdapp</code> with your copied new public key.</p>
+</li>
+<li>
+<p>Also go into your <code>/anchor/programs/src/lib.rs</code> file and replace the string value of <code>declare_id!()</code> with your copied new public key.</p>
+</li>
+<li>
+<p>Delete existing <code>/anchor/test-ledger</code> folder.</p>
+</li>
+<li>
+<p>Optionally copy and paste the most recent and up-to-date <code>.so</code> binary of your program from <code>/anchor/target/deploy/votingdapp.so</code> to the <code>/anchor/tests/fixtures</code> folder.</p>
+</li>
+<li>
+<p>Finally, rerun <code>$ anchor test --skip-local-validator</code>. Upon subsequent new tests run <code>$ anchor test --skip-local-validator --skip-deploy</code>.</p>
+</li>
+</ul>
+<hr />
+<p>Congratulations, you have completed this chapter!</p>
+<p>Use the Solana Explorer <a href="https://explorer.solana.com/">https://explorer.solana.com/</a> pointing it at your localhost to view your Votingdapp's transaction history.</p>
+<hr />
+<p>Now if you wanted to take this specific Blink to production, you would have to go through the registry and register it. And it is also recommended that you deploy this to an actual environment, maybe Devnet or even Mainnet. And that way, other people can interact with it via whatever social network they please.</p>
+<p><b>Chapter Recap:</b></p>
+<ul>
+<li>Extracted Voting Dapp code</li>
+<li>Created server-side component via nextjs to serve the Actions and allow people to get the serialized transactions.</li>
+<li>Viewed and tested a Blink via <a href="dial.to">dial.to</a></li>
+</ul>
+<p>Timestamp - [1:51:56 - 02:31:43]</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="11. Solana Blinks and Actions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="13. Project 4 Overview.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="11. Solana Blinks and Actions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="13. Project 4 Overview.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
