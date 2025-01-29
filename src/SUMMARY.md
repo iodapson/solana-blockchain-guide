@@ -38,4 +38,4 @@
 # Project 4: Solana CRUD
 
 - [Project 4 Overview](13.%20Project%204%20Overview.md)
-- [Solana Journal CRUD set-up and Backend](14.%20Solana%20Journal%20CRUD%20set-up%20and%20Backend.md)
+- [Solana CRUD Project Set-up](14.%20Solana%20CRUD%20Project%20Set-up.md)
