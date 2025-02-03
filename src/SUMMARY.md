@@ -6,7 +6,7 @@
 
 - [Overview](./1.%20Overview.md)
 - [Blockchain & How it Works](./2.%20What%20is%20Blockchain%20&%20How%20it%20Works.md)
-- [Solana Program teaser](3.%20Solana%20Program%20teaser.mdSolana%20Program%20teaser.md)
+- [Solana Program teaser](3.%20Solana%20Program%20teaser.md)
 
 ---
 
