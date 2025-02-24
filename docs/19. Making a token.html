@@ -1,0 +1,291 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Making a Token - Solana Blockchain Guide</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="1. Overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="2. What is Blockchain & How it Works.html"><strong aria-hidden="true">2.</strong> Blockchain & How it Works</a></li><li class="chapter-item expanded "><a href="3. Solana Program teaser.html"><strong aria-hidden="true">3.</strong> Solana Program teaser</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 1: Favorites Program</li><li class="chapter-item expanded "><a href="4. Solana Project 1 - Section A.html"><strong aria-hidden="true">4.</strong> Solana Project 1 - Section A</a></li><li class="chapter-item expanded "><a href="5. Solana Project 1 - Section B.html"><strong aria-hidden="true">5.</strong> Solana Project 1 - Section B</a></li><li class="chapter-item expanded "><a href="6. Solana Project 1 - Section C.html"><strong aria-hidden="true">6.</strong> Solana Project 1 - Section C</a></li><li class="chapter-item expanded "><a href="7. Solana Project - Section D.html"><strong aria-hidden="true">7.</strong> Solana Project 1 - Section D</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 2: Voting Application</li><li class="chapter-item expanded "><a href="8. Installing Solana on a Local Dev Machine.html"><strong aria-hidden="true">8.</strong> Installing Solana on a Local Dev Machine</a></li><li class="chapter-item expanded "><a href="9. Creating the Voting Dapp.html"><strong aria-hidden="true">9.</strong> Creating the Voting Dapp</a></li><li class="chapter-item expanded "><a href="10. Understanding the Voting Dapp.html"><strong aria-hidden="true">10.</strong> Understanding the Voting Dapp</a></li><li class="chapter-item expanded "><a href="11. Testing Dapps.html"><strong aria-hidden="true">11.</strong> Testing Dapps</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 3: Integrating Blinks</li><li class="chapter-item expanded "><a href="12. Solana Blinks and Actions.html"><strong aria-hidden="true">12.</strong> Solana Actions and Blinks</a></li><li class="chapter-item expanded "><a href="13. Adding Blinks & Actions to Our Dapp.html"><strong aria-hidden="true">13.</strong> Adding Blinks & Actions to Our Dapp</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 4: Solana Journal CRUD-Dapp</li><li class="chapter-item expanded "><a href="14. Project 4 Overview.html"><strong aria-hidden="true">14.</strong> Project 4 Overview</a></li><li class="chapter-item expanded "><a href="15. Solana Journal CRUD set-up and Backend.html"><strong aria-hidden="true">15.</strong> Solana Journal CRUD set-up and Backend</a></li><li class="chapter-item expanded "><a href="16. Solana Journal CRUD Frontend.html"><strong aria-hidden="true">16.</strong> Solana Journal CRUD Frontend</a></li><li class="chapter-item expanded "><a href="17. Solana Journal CRUD in action.html"><strong aria-hidden="true">17.</strong> Solana Journal CRUD in action</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 5: Creating a Token</li><li class="chapter-item expanded "><a href="18. Tokens Overview.html"><strong aria-hidden="true">18.</strong> Tokens Overview</a></li><li class="chapter-item expanded "><a href="19. Making a token.html" class="active"><strong aria-hidden="true">19.</strong> Making a Token</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Solana Blockchain Guide</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h3 id="making-a-token"><a class="header" href="#making-a-token">Making a Token</a></h3>
+<p>So let us make a token. We will be using the command-line tools here, but the concepts are exactly the same as if you are using the JavaScript or TypeScript tools.</p>
+<p>We will also be using the new token program called <span color="orange">Token extensions</span> that features a bunch of useful features that we can add to our tokens. One of those is the metadata feature which allows us to have our metadata - all the things you see about the token like a name and description directly inside the token-mint. And if you do not know what that means, that is fine, all it means is that we we will be taking less time because we have less things to work on.</p>
+<p>Before you proceed, check to make sure you already have the Solana command-line installed by using the command - <code>$: solana --version</code>. If you do have the Solana CLI installed, it would print out the version you have installed.</p>
+<p><span style="color: orange;">1.</span></p>
+<h4 id="make-a-mint-authority-public-key-inside-a-new-directory-for-our-token-project"><a class="header" href="#make-a-mint-authority-public-key-inside-a-new-directory-for-our-token-project">Make a Mint-Authority' Public-Key inside a new directory for our token project</a></h4>
+<p>Let's make a new project directory called <code>new-token</code></p>
+<pre><code class="language-bash">mkdir new-token
+</code></pre>
+<p>CD into directory <code>new-token</code>, and then create a mint-authority inside it using command</p>
+<pre><code class="language-bash">solana-keygen grind --starts-with bos:1
+</code></pre>
+<p>This command creates a keypair file called <code>bos&lt;generated-public-keypair-matching-your-private-key&gt;.json</code> for your mint-authority. Note that you can make your mint-authority start with any set of characters you choose.</p>
+<p>If you think of a token-mint as a physical mint that prints tokens, you can think of the mint authority as being the boss of that mint. The mint-authority needs to sign all the transactions to mint its new tokens. If you are not the mint-authority, you cannot mint tokens fo the given mint.</p>
+<br/>
+<p><span style="color: orange;">2.</span></p>
+<h4 id="switch-your-solana-command-line-tools-to-use-devnet"><a class="header" href="#switch-your-solana-command-line-tools-to-use-devnet">Switch your Solana Command-Line tools to use devnet</a></h4>
+<p>Upon running command <code>$: solana config get</code>, you should see an output showing you some info such as your <code>RPC URL</code> and <code>WebSocket URL</code>. If both do not have values - <code>https://api.devnet.solana.com</code> and <code>wss://api.devnet.solana.com</code> respectively, then it means you need to switch your config to devnet, which is what we will be using for this section. To switch to devnet, enter the command</p>
+<pre><code class="language-bash">solana config set --url devnet
+</code></pre>
+<p>Please take a note of your default <code>Keypair Path</code> value. You should copy it somewhere for possible future use.</p>
+<br/>
+<p><span style="color: orange;">3.</span></p>
+<h4 id="make-solana-use-our-new-mint-authoritty-public-keypair-file-name-to-sign-all-our-transactions"><a class="header" href="#make-solana-use-our-new-mint-authoritty-public-keypair-file-name-to-sign-all-our-transactions">Make Solana use our new Mint-authoritty public-keypair file-name to sign all our transactions</a></h4>
+<p>We need to have our generated keypair.json filename copied, and then enter command</p>
+<pre><code class="language-bash">solana config set --keypair bos&lt;generated-public-keypair-matching-your-private-key&gt;.json
+</code></pre>
+<br/>
+<p><span style="color: orange;">4.</span></p>
+<h4 id="airdrop-some-dev-sol"><a class="header" href="#airdrop-some-dev-sol">Airdrop some Dev SOL</a></h4>
+<p>Now that we have created our mint-authority account that would be writing to the blockchain on devnet, we need to have some devnet SOL for our mint-authority account to use.</p>
+<ul>
+<li>
+<p>Go to <a href="faucet.solana.com">faucet.solana.com</a> and paste in our generated <code>bos&lt;generated-public-keypair-matching-your-private-key&gt;</code> keypair / wallet address.</p>
+</li>
+<li>
+<p>Select the amount of SOL to airdrop on Devnet. You may choose 0.5 SOL.</p>
+</li>
+<li>
+<p>Verify that your requested devnet SOL was received by entering command <code>$: solana balance</code>. The SOL we just airdropped and received belongs to our Mint-Authority and it would use the SOL to create new accounts.</p>
+</li>
+</ul>
+<br/>
+<p><span style="color: orange;">5.</span></p>
+<h4 id="make-a-token-mint-public-key"><a class="header" href="#make-a-token-mint-public-key">Make a token-mint Public-Key</a></h4>
+<p>Similar to create our mint-authority, we would create our token-mint using this command</p>
+<pre><code class="language-bash">solana-keygen grind --starts-with mnt:1
+</code></pre>
+<p>This command creates a keypair file called <code>mnt&lt;generated-public-keypair-matching-your-private-key&gt;.json</code> for your token-mint. Note that you can make your token-mint start with any set of characters you choose. <code>mnt</code> was used just so we can remember that it is our mint.</p>
+<p>Copy the generated keypair file-name we want to use the token-mint, as in <code>mnt&lt;generated-public-keypair-matching-your-private-key&gt;.json</code> for use in the next step of putting an actual token-mint inside the keypair.</p>
+<br/>
+<p><span style="color: orange;">6.</span></p>
+<h4 id="put-a-token-mint-in-the-generated-token-mint-public-key-and-establish-a-token"><a class="header" href="#put-a-token-mint-in-the-generated-token-mint-public-key-and-establish-a-token">Put a token-mint in the generated token-mint Public-Key and establish a token</a></h4>
+<p>To put a token-mint inside a given keypair / address file, e.g, our <code>mnt&lt;generated-public-keypair-matching-your-private-key&gt;.json</code>, we use command</p>
+<pre><code class="language-bash">spl-token create-token --program-id TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb --enable-metadata mnt&lt;generated-public-keypair-matching-your-private-key&gt;.json
+</code></pre>
+<p><code>TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb</code> inside the command above is the program ID of the token extensions program we use to create a token. <code>--enable-metadata</code> is an extension that would make our lives easier in providing meta-info like an image link, abbreviation, e.t.c, for our token. For more info about token-extensions, check out its Docs at - <a href="https://solana.com/developers/guides/token-extensions/getting-started">https://solana.com/developers/guides/token-extensions/getting-started</a>.</p>
+<p>If successful, you should see an output on your terminal that shows you an <code>Address</code> value, <code>Decimals</code>, and a <code>Signature</code>. There are 9 decimals because sending 1 SOL equals sending 1 billion Lamports. This command does establish your token, but does not mint it.</p>
+<br/>
+<p><span style="color: orange;">7.</span></p>
+<h4 id="we-can-now-check-out-our-established-token-inside-solana-explorer"><a class="header" href="#we-can-now-check-out-our-established-token-inside-solana-explorer">We can now check out our established token inside Solana-Explorer</a></h4>
+<p>Go to <a href="https://explorer.solana.com">https://explorer.solana.com</a>, make sure you are on the Devent cluster, and paste in your Mint public keypair / wallet address, as in, <code>mnt&lt;generated-public-keypair-matching-your-private-key&gt;</code>.</p>
+<p>Upon looking up our token-mint on Solana explorer, we can see some information about it. Our token has a <code>Current Supply</code> value of 0 because we have not minted any token yet.</p>
+<!-- Put a screenshot in here-->
+<p><img src="./assets/Token-without-metadata-On-Solana-Explorer.png" alt="Screenshot of token without metadata on Solana Explorer" title="Our Token with no metedata as seen on Solana Explorer" /></p>
+<p>For now, our token is also unknown because we did not provide any metadata for it. Let's fix that.</p>
+<br/>
+<p><span style="color: orange;">8.</span></p>
+<h4 id="add-meta-data-to-our-established-token"><a class="header" href="#add-meta-data-to-our-established-token">Add meta-data to our established token</a></h4>
+<p>To add some meta-data to our established token, we are going to need to upload an image (to act like a favicon for our token), and a JSON file, somewhere public on the internet.</p>
+<p>In our token's case, it is just a test token created for us to learn how to make a token. We can use GitHub as the public place on the internet to store the meta-data for our token instead of a decentralized store service which is the appropriate choice for a mainnet token. It is important to realize here that links to things such as the token's image, or JSON (meta-data) file has to just open the item, no HTML or anything else around.</p>
+<ul>
+<li>
+<p>Find an image and store in a public space on the internet, e.g, GitHub, and have a raw link to it at hand. This is the image intended to be used as your token's favicon.</p>
+</li>
+<li>
+<p>Create a JSON file named <code>metadata.json</code> whose content should have a <code>name</code> <code>symbol</code>, <code>description</code>, and the raw-link to the image you intend to use as your token's thumbnail. It should generally look like this:</p>
+</li>
+</ul>
+<pre><code class="language-json">{
+	&quot;name&quot;: &quot;&lt;Your-chosen-name-for-the-token&gt;&quot;,
+	&quot;symbol&quot;: &quot;&lt;Your token abbreviation-characters&gt;&quot;,
+	&quot;description&quot;: &quot;&lt;Your-token's-decription&gt;&quot;,
+	&quot;image&quot;: &quot;&lt;raw-link-to-your-token's-favicon-image&gt;&quot;
+}
+</code></pre>
+<ul>
+<li>
+<p>Upload the created <code>metadata.json</code> file to a public space on the internet as well, and have the raw URL to locate it at hand.</p>
+</li>
+<li>
+<p>After we have uploaded the JSON file created above to the internet, we go back to the terminal and attach the <code>metadata.json</code> file to our token via the URL to the file by using command</p>
+</li>
+</ul>
+<pre><code class="language-bash">spl-token initialize-metadata &lt;mnt-generated-public-keypair-matching-your-private-key&gt; '&lt;Your-chosen-name-for-the-token&gt;' '&lt;Your token abbreviation-characters&gt;' &lt;raw-link-to-your-metadata.json-file&gt;
+</code></pre>
+<!-- Put a screenshot in here-->
+<p><img src="./assets/Token-with-metadata-On-Solana-Explorer.png" alt="Screenshot of token with metadata on Solana Explorer" title="Our Token with metedata as seen on Solana Explorer" /></p>
+<p>In the above screenshot, we can see that Solana was able to go grab our metadata and add it to our token on the blockchain.</p>
+<p><span style="color: orange">Note: </span>If we were making a token for Mainnet, a real serious production token, we would probably want to use a decentralized storage service somewhere like Arweave or IRIS - that is basicially kind of like a blockchain, but for JSON files, and images, and all that kind of stuff, rather than Solana which is a blockchain more suited for transactions like traditional blockchains. These decentralized storage services are designed to keep things online for a really long time because they are not owned by anybody and they are resilient to attacks. They are a good place to put something that you want to be around for a really long time.</p>
+<br/>
+<p><span style="color: orange;">9.</span></p>
+<h4 id="mint-our-established-token-with-our-mint-as-its-mint-authority"><a class="header" href="#mint-our-established-token-with-our-mint-as-its-mint-authority">Mint our established token with our mint as its mint-authority</a></h4>
+<hr />
+<p>Timestamp - [03:37:02 - ]</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="18. Tokens Overview.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="18. Tokens Overview.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

@@ -35,8 +35,16 @@
 
 ---
 
-# Project 4: Solana CRUD
+# Project 4: Solana Journal CRUD-Dapp
 
 - [Project 4 Overview](14.%20Project%204%20Overview.md)
 - [Solana Journal CRUD set-up and Backend](15.%20Solana%20Journal%20CRUD%20set-up%20and%20Backend.md)
 - [Solana Journal CRUD Frontend](16.%20Solana%20Journal%20CRUD%20Frontend.md)
+- [Solana Journal CRUD in action](17.%20Solana%20Journal%20CRUD%20in%20action.md)
+
+---
+
+# Project 5: Creating a Token
+
+- [Tokens Overview](18.%20Tokens%20Overview.md)
+- [Making a Token](19.%20Making%20a%20token.md)

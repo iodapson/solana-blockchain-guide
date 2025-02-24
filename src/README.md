@@ -2,7 +2,9 @@
 
 This is a book version of [Solana Blockchain Bootcamp 2024](https://www.youtube.com/watch?v=amAq-WHAFs8) powered by the [Rust](https:///www.rust-lang.org/learn) programming language. [TypeScript](https://www.typescriptlang.org/docs/handbook/intro.html) is another language used throughout the bootcamp, and thus, this guidebook.
 
-You can use it a reference material for Fullstack Solana Development complemented with the official [Solana documentation](https://solana.com/docs) for deeper concepts and know-how.
+You can use it as a reference material for Fullstack Solana Development complemented with the official [Solana documentation](https://solana.com/docs) for deeper concepts and know-how.
+
+You can find the Official Bootcamp's code repo at [https://github.com/solana-developers/developer-bootcamp-2024](https://github.com/solana-developers/developer-bootcamp-2024).
 
 ### Conventions Used
 
