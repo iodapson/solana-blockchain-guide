@@ -230,6 +230,7 @@
 </ul>
 <pre><code class="language-bash">spl-token initialize-metadata &lt;mnt-generated-public-keypair-matching-your-private-key&gt; '&lt;Your-chosen-name-for-the-token&gt;' '&lt;Your token abbreviation-characters&gt;' &lt;raw-link-to-your-metadata.json-file&gt;
 </code></pre>
+<p>If you see <span style="color: #722f37; font-size: 12; font-weight: 600;">Error: AccountInvalidOwner</span>, then it means that your <code>&quot;image&quot;</code> field inside your <code>metadata.json</code> file is not pointing to a URL that loads your image as a raw file without extra HTML whatsoever.</p>
 <!-- Put a screenshot in here-->
 <p><img src="./assets/Token-with-metadata-On-Solana-Explorer.png" alt="Screenshot of token with metadata on Solana Explorer" title="Our Token with metedata as seen on Solana Explorer" /></p>
 <p>In the above screenshot, we can see that Solana was able to go grab our metadata and add it to our token on the blockchain.</p>
