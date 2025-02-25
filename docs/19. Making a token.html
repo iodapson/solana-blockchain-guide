@@ -154,7 +154,7 @@
 <p>Upon running command <code>$: solana config get</code>, you should see an output showing you some info such as your <code>RPC URL</code> and <code>WebSocket URL</code>. If both do not have values - <code>https://api.devnet.solana.com</code> and <code>wss://api.devnet.solana.com</code> respectively, then it means you need to switch your config to devnet, which is what we will be using for this section. To switch to devnet, enter the command</p>
 <pre><code class="language-bash">solana config set --url devnet
 </code></pre>
-<p>Please take a note of your default <code>Keypair Path</code> value. You should copy it somewhere for possible future use.</p>
+<p>Please take a note of your default <code>Keypair Path</code> value. You should copy it somewhere for possible future use. If you are using Linux or WSL, the default should be - <code>/home/&lt;user-name&gt;/.config/solana/id.json</code>.</p>
 <br/>
 <p><span style="color: orange;">3.</span></p>
 <h4 id="make-solana-use-our-new-mint-authoritty-public-keypair-file-name-to-sign-all-our-transactions"><a class="header" href="#make-solana-use-our-new-mint-authoritty-public-keypair-file-name-to-sign-all-our-transactions">Make Solana use our new Mint-authoritty public-keypair file-name to sign all our transactions</a></h4>
@@ -167,10 +167,10 @@
 <p>Now that we have created our mint-authority account that would be writing to the blockchain on devnet, we need to have some devnet SOL for our mint-authority account to use.</p>
 <ul>
 <li>
-<p>Go to <a href="faucet.solana.com">faucet.solana.com</a> and paste in our generated <code>bos&lt;generated-public-keypair-matching-your-private-key&gt;</code> keypair / wallet address.</p>
+<p>Go to <a href="https://faucet.solana.com">faucet.solana.com</a> and paste in our generated <code>bos&lt;generated-public-keypair-matching-your-private-key&gt;</code> keypair / wallet address.</p>
 </li>
 <li>
-<p>Select the amount of SOL to airdrop on Devnet. You may choose 0.5 SOL.</p>
+<p>Select the amount of SOL to airdrop on Devnet. You may choose 0.5 SOL. If for some reason, you do not see a prompt telling you airdorp successfull, you should give it a moment, maybe an hour or so before trying again.</p>
 </li>
 <li>
 <p>Verify that your requested devnet SOL was received by entering command <code>$: solana balance</code>. The SOL we just airdropped and received belongs to our Mint-Authority and it would use the SOL to create new accounts.</p>
@@ -187,7 +187,7 @@
 <br/>
 <p><span style="color: orange;">6.</span></p>
 <h4 id="put-a-token-mint-in-the-generated-token-mint-public-key-and-establish-a-token"><a class="header" href="#put-a-token-mint-in-the-generated-token-mint-public-key-and-establish-a-token">Put a token-mint in the generated token-mint Public-Key and establish a token</a></h4>
-<p>To put a token-mint inside a given keypair / address file, e.g, our <code>mnt&lt;generated-public-keypair-matching-your-private-key&gt;.json</code>, we use command</p>
+<p>To put a token-mint inside a given keypair / address file, e.g, our <code>mnt&lt;generated-public-keypair-matching-your-private-key&gt;.json</code> file, we type out command</p>
 <pre><code class="language-bash">spl-token create-token --program-id TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb --enable-metadata mnt&lt;generated-public-keypair-matching-your-private-key&gt;.json
 </code></pre>
 <p><code>TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb</code> inside the command above is the program ID of the token extensions program we use to create a token. <code>--enable-metadata</code> is an extension that would make our lives easier in providing meta-info like an image link, abbreviation, e.t.c, for our token. For more info about token-extensions, check out its Docs at - <a href="https://solana.com/developers/guides/token-extensions/getting-started">https://solana.com/developers/guides/token-extensions/getting-started</a>.</p>
@@ -207,7 +207,7 @@
 <p>In our token's case, it is just a test token created for us to learn how to make a token. We can use GitHub as the public place on the internet to store the meta-data for our token instead of a decentralized store service which is the appropriate choice for a mainnet token. It is important to realize here that links to things such as the token's image, or JSON (meta-data) file has to just open the item, no HTML or anything else around.</p>
 <ul>
 <li>
-<p>Find an image and store in a public space on the internet, e.g, GitHub, and have a raw link to it at hand. This is the image intended to be used as your token's favicon.</p>
+<p>Find an image and store it in a public space on the internet, e.g, GitHub, and have a raw link to it at hand. This is the image intended to be used as your token's favicon.</p>
 </li>
 <li>
 <p>Create a JSON file named <code>metadata.json</code> whose content should have a <code>name</code> <code>symbol</code>, <code>description</code>, and the raw-link to the image you intend to use as your token's thumbnail. It should generally look like this:</p>
@@ -225,7 +225,7 @@
 <p>Upload the created <code>metadata.json</code> file to a public space on the internet as well, and have the raw URL to locate it at hand.</p>
 </li>
 <li>
-<p>After we have uploaded the JSON file created above to the internet, we go back to the terminal and attach the <code>metadata.json</code> file to our token via the URL to the file by using command</p>
+<p>After we have uploaded the JSON file created above to the internet, we go back to the terminal and attach the <code>metadata.json</code> file to our token with the URL to the file, by typing out command</p>
 </li>
 </ul>
 <pre><code class="language-bash">spl-token initialize-metadata &lt;mnt-generated-public-keypair-matching-your-private-key&gt; '&lt;Your-chosen-name-for-the-token&gt;' '&lt;Your token abbreviation-characters&gt;' &lt;raw-link-to-your-metadata.json-file&gt;

@@ -188,18 +188,7 @@ pub mod cruddapp {
 <p><span style="color: orange;">3.</span></p>
 <h4 id="lets-define-our-program-account-to-provide-a-program-state-for-us-to-hold-all-of-our-data"><a class="header" href="#lets-define-our-program-account-to-provide-a-program-state-for-us-to-hold-all-of-our-data">Let's define our program account to provide a program state for us to hold all of our data</a></h4>
 <p>Please note that smart contracts on Solana are stateless, however, we can use the <code>#[account]</code> macro from Anchor inside our program to hold all our program data. Let's call our program state's data structure <code>JournalEntryState</code>.</p>
-<pre><code class="language-rs">#![allow(clippy::result_large_err)]
-
-use anchor_lang::prelude::*;
-
-declare_id!(&quot;coUnmi3oBUtwtd9fjeAvSsJssXh5A5xyPbhpewyzRVF&quot;);
-
-#[program]
-pub mod cruddapp {
-   use super::*;
-}
-</code></pre>
-<p>We are creating a journal here because that is a very basic example of a CRUD app. In a journal, you want to create journal entries, you want to be able to update them if you need too and be able to delete them if you need to. Our Journal-Dapp is a very basic journal entry app.</p>
+<p>We are creating a journal here (in this section) because that is a very basic example of a CRUD app. In a journal, you want to create journal entries, you want to be able to update them if you need too and be able to delete them if you need to. Our Journal-Dapp is a very basic journal entry app.</p>
 <p>We want to know the owner of our journal, the title of the journal, its journal entry or messsage so we can save that;</p>
 <pre><code class="language-rs">/*
   lib.rs
