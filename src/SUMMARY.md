@@ -48,3 +48,9 @@
 
 - [Tokens Overview](18.%20Tokens%20Overview.md)
 - [Making a Token](19.%20Making%20a%20token.md)
+
+---
+
+# Project 6: NFTs
+
+- [NFTs Overview](20.%20NFTs%20Overview.md)
