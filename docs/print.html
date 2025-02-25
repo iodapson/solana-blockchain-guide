@@ -3293,7 +3293,7 @@ pub struct JournalEntryState {
 </code></pre>
 <ul>
 <li>
-<p>Unlike when creating a new <code>#[account]</code>, we don't need the <code>init</code> constraint since we are doing the direct opposite of initializing something, we don't need to specify the <code>space</code> constraint since we are not storing anything from the blockchain, we don't need to specify the <code>payer</code> constraint since we won't have to pay rent any more for something we remove by ourselves on the blockchain, but we would be mutating it, hence, why we had to specify the <code>mut</code> account constraint</p>
+<p>Unlike when creating a new <code>#[account]</code>, we don't need the <code>init</code> constraint since we are doing the direct opposite of initializing something, we don't need to specify the <code>space</code> constraint since we are not storing anything from the blockchain, we don't need to specify the <code>payer</code> constraint since we won't have to pay rent any more for something we remove by ourselves on the blockchain, but we would be mutating it, hence, why we had to specify the <code>mut</code> account constraint.</p>
 </li>
 <li>
 <p>Unlike when updating an <code>#[account]</code>, we don't need to specify the <code>realloc</code> constraint since we are not changing the size of the account - we are simply removing it. We don't need to specify the <code>realloc::payer</code> constraint since we are not saving or charging any lamports when the account's space changes - our account gets cleared. We don't need to specify the <code>realloc::zero</code> constraint since we are not recalculating space from zero when the account data changes - again because our account is simply removed.</p>
@@ -3432,7 +3432,7 @@ pub struct JournalEntryState {
 <pre><code class="language-bash">anchor deploy --provider.cluster localnet
 </code></pre>
 <p>Please note that if you are using the Solana CLI instead of the Anchor CLI as we do in this guidebook, then the correct command for you to deploy your Anchor binary on local is - <code>$: anchor deploy --provider.cluster localhost</code>.</p>
-<p><img src="./assets/Crud-Dapp_successfully_deployed_locally.png" alt="Screenshot of successful local deployment of crud-dapp" title="Crud-Dapp successfully deployed locally" /></p>
+<p><img src="./assets/Crud-Dapp_successfully_deployed_to_localnet.png" alt="Screenshot of successful local deployment of crud-dapp" title="Crud-Dapp successfully deployed locally" /></p>
 <br/>
 <p><span style="color: orange;">11.</span></p>
 <h4 id="sync-your-program-id-throughout-your-workspace"><a class="header" href="#sync-your-program-id-throughout-your-workspace">Sync your Program ID throughout your workspace</a></h4>
@@ -3980,7 +3980,7 @@ function CruddappCard({ account }: { account: PublicKey }) {
 <!-- Put a screenshot in here-->
 <p><img src="./assets/Token-with-metadata-On-Solana-Explorer.png" alt="Screenshot of token with metadata on Solana Explorer" title="Our Token with metedata as seen on Solana Explorer" /></p>
 <p>In the above screenshot, we can see that Solana was able to go grab our metadata and add it to our token on the blockchain.</p>
-<p><span style="color: orange">Note: </span>If we were making a token for Mainnet, a real serious production token, we would probably want to use a decentralized storage service somewhere like Arweave or IRIS - that is basicially kind of like a blockchain, but for JSON files, and images, and all that kind of stuff, rather than Solana which is a blockchain more suited for transactions like traditional blockchains. These decentralized storage services are designed to keep things online for a really long time because they are not owned by anybody and they are resilient to attacks. They are a good place to put something that you want to be around for a really long time.</p>
+<p><span style="color: orange">Sidenote: </span>If we were making a token for Mainnet, a real serious production token, we would probably want to use a decentralized storage service somewhere like Arweave or IRIS - that is basicially kind of like a blockchain, but for JSON files, and images, and all that kind of stuff, rather than Solana which is a blockchain more suited for transactions like traditional blockchains. These decentralized storage services are designed to keep things online for a really long time because they are not owned by anybody and they are resilient to attacks. They are a good place to put something that you want to be around for a really long time.</p>
 <br/>
 <p><span style="color: orange;">9.</span></p>
 <h4 id="mint-our-established-token-with-our-mint-as-its-mint-authority"><a class="header" href="#mint-our-established-token-with-our-mint-as-its-mint-authority">Mint our established token with our mint as its mint-authority</a></h4>

@@ -924,7 +924,7 @@ pub struct JournalEntryState {
 </code></pre>
 <ul>
 <li>
-<p>Unlike when creating a new <code>#[account]</code>, we don't need the <code>init</code> constraint since we are doing the direct opposite of initializing something, we don't need to specify the <code>space</code> constraint since we are not storing anything from the blockchain, we don't need to specify the <code>payer</code> constraint since we won't have to pay rent any more for something we remove by ourselves on the blockchain, but we would be mutating it, hence, why we had to specify the <code>mut</code> account constraint</p>
+<p>Unlike when creating a new <code>#[account]</code>, we don't need the <code>init</code> constraint since we are doing the direct opposite of initializing something, we don't need to specify the <code>space</code> constraint since we are not storing anything from the blockchain, we don't need to specify the <code>payer</code> constraint since we won't have to pay rent any more for something we remove by ourselves on the blockchain, but we would be mutating it, hence, why we had to specify the <code>mut</code> account constraint.</p>
 </li>
 <li>
 <p>Unlike when updating an <code>#[account]</code>, we don't need to specify the <code>realloc</code> constraint since we are not changing the size of the account - we are simply removing it. We don't need to specify the <code>realloc::payer</code> constraint since we are not saving or charging any lamports when the account's space changes - our account gets cleared. We don't need to specify the <code>realloc::zero</code> constraint since we are not recalculating space from zero when the account data changes - again because our account is simply removed.</p>
@@ -1063,7 +1063,7 @@ pub struct JournalEntryState {
 <pre><code class="language-bash">anchor deploy --provider.cluster localnet
 </code></pre>
 <p>Please note that if you are using the Solana CLI instead of the Anchor CLI as we do in this guidebook, then the correct command for you to deploy your Anchor binary on local is - <code>$: anchor deploy --provider.cluster localhost</code>.</p>
-<p><img src="./assets/Crud-Dapp_successfully_deployed_locally.png" alt="Screenshot of successful local deployment of crud-dapp" title="Crud-Dapp successfully deployed locally" /></p>
+<p><img src="./assets/Crud-Dapp_successfully_deployed_to_localnet.png" alt="Screenshot of successful local deployment of crud-dapp" title="Crud-Dapp successfully deployed locally" /></p>
 <br/>
 <p><span style="color: orange;">11.</span></p>
 <h4 id="sync-your-program-id-throughout-your-workspace"><a class="header" href="#sync-your-program-id-throughout-your-workspace">Sync your Program ID throughout your workspace</a></h4>
