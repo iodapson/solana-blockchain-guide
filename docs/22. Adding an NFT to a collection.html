@@ -1,0 +1,328 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Adding a NFT to a collection - Solana Blockchain Guide</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="1. Overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="2. What is Blockchain & How it Works.html"><strong aria-hidden="true">2.</strong> Blockchain & How it Works</a></li><li class="chapter-item expanded "><a href="3. Solana Program teaser.html"><strong aria-hidden="true">3.</strong> Solana Program teaser</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 1: Favorites Program</li><li class="chapter-item expanded "><a href="4. Solana Project 1 - Section A.html"><strong aria-hidden="true">4.</strong> Solana Project 1 - Section A</a></li><li class="chapter-item expanded "><a href="5. Solana Project 1 - Section B.html"><strong aria-hidden="true">5.</strong> Solana Project 1 - Section B</a></li><li class="chapter-item expanded "><a href="6. Solana Project 1 - Section C.html"><strong aria-hidden="true">6.</strong> Solana Project 1 - Section C</a></li><li class="chapter-item expanded "><a href="7. Solana Project - Section D.html"><strong aria-hidden="true">7.</strong> Solana Project 1 - Section D</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 2: Voting Application</li><li class="chapter-item expanded "><a href="8. Installing Solana on a Local Dev Machine.html"><strong aria-hidden="true">8.</strong> Installing Solana on a Local Dev Machine</a></li><li class="chapter-item expanded "><a href="9. Creating the Voting Dapp.html"><strong aria-hidden="true">9.</strong> Creating the Voting Dapp</a></li><li class="chapter-item expanded "><a href="10. Understanding the Voting Dapp.html"><strong aria-hidden="true">10.</strong> Understanding the Voting Dapp</a></li><li class="chapter-item expanded "><a href="11. Testing Dapps.html"><strong aria-hidden="true">11.</strong> Testing Dapps</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 3: Integrating Blinks</li><li class="chapter-item expanded "><a href="12. Solana Blinks and Actions.html"><strong aria-hidden="true">12.</strong> Solana Actions and Blinks</a></li><li class="chapter-item expanded "><a href="13. Adding Blinks & Actions to Our Dapp.html"><strong aria-hidden="true">13.</strong> Adding Blinks & Actions to Our Dapp</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 4: Solana Journal CRUD-Dapp</li><li class="chapter-item expanded "><a href="14. Project 4 Overview.html"><strong aria-hidden="true">14.</strong> Project 4 Overview</a></li><li class="chapter-item expanded "><a href="15. Solana Journal CRUD set-up and Backend.html"><strong aria-hidden="true">15.</strong> Solana Journal CRUD set-up and Backend</a></li><li class="chapter-item expanded "><a href="16. Solana Journal CRUD Frontend.html"><strong aria-hidden="true">16.</strong> Solana Journal CRUD Frontend</a></li><li class="chapter-item expanded "><a href="17. Solana Journal CRUD in action.html"><strong aria-hidden="true">17.</strong> Solana Journal CRUD in action</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 5: Creating a Token</li><li class="chapter-item expanded "><a href="18. Tokens Overview.html"><strong aria-hidden="true">18.</strong> Tokens Overview</a></li><li class="chapter-item expanded "><a href="19. Making a token.html"><strong aria-hidden="true">19.</strong> Making a Token</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Project 6: NFTs</li><li class="chapter-item expanded "><a href="20. NFTs Overview.html"><strong aria-hidden="true">20.</strong> NFTs Overview</a></li><li class="chapter-item expanded "><a href="21. Making an NFT Collection.html"><strong aria-hidden="true">21.</strong> Making a NFT Collection</a></li><li class="chapter-item expanded "><a href="22. Adding an NFT to a collection.html" class="active"><strong aria-hidden="true">22.</strong> Adding a NFT to a collection</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Solana Blockchain Guide</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h3 id="adding-and-veriying-a-new-nft-member-in-our-collection"><a class="header" href="#adding-and-veriying-a-new-nft-member-in-our-collection">Adding and veriying a new NFT-member in our collection</a></h3>
+<p>Now let us create a memmber that is part of our Nft Collection, i.e, add an item to our collection, and also verify as the collection owner that the new NFT belongs to our collection.</p>
+<p><span style="color: orange;">1.</span></p>
+<h4 id="make-a-new-ts-file-eg-add-nft-to-collectionts-inside-our-previously-new-nft-folder"><a class="header" href="#make-a-new-ts-file-eg-add-nft-to-collectionts-inside-our-previously-new-nft-folder">Make a new TS file, e.g 'add-nft-to-collection.ts' inside our previously new-nft folder</a></h4>
+<p>In this file, we would copy over some reusable code from our previously created <code>create-collection.ts</code> file</p>
+<pre><code class="language-ts">/*
+  add-nft-to-collection.ts
+*/
+
+import {
+	createNft,
+	fetchDigitalAsset,
+	mplTokenMetadata,
+} from '@metaplex-foundation/mpl-token-metadata';
+
+import {
+	airdropIfRequired,
+	getExplorerLink,
+	getKeypairFromFile,
+} from '@solana-developers/helpers';
+
+import { createUmi } from '@metaplex-foundation/umi-bundle-defaults';
+
+// web3.js is already installed because it is a dependency of some of the other packages
+import { Connection, LAMPORT_PER_SOL, clusterApiUrl } from '@solana/web3.js';
+
+import {
+	generateSigner,
+	keypairIdentity,
+	percentAmount,
+	publicKey,
+} from '@metaplex-foundation/umi';
+
+const connection = new Connection(clusterApiUrl('devnet'));
+
+// const user
+const user = await getKeypairFromFile();
+
+await airdropIfRequired(
+	connection,
+	user.publicKey,
+	1 * LAMPORTS_PER_SOL,
+	0.5 * LAMPORTS_PER_SOL
+);
+
+console.log('Loaded user', user.publicKey.toBase58());
+
+const umi = createUmi(connection.rpcEndpoint); // umi connection to Devnet
+umi.use(mplTokenMetadata()); // umi use - run 'mplTokenMetadata' function
+
+const umiUser = umi.eddsa.createKeypairFromSecretKey(user.secretKey); // this is just a copy of user, but it is in the format that umi uses for secret keys
+umi.use(keypairIdentity(umiUser));
+
+console.log('Set-up Umi instance for user');
+</code></pre>
+<br/>
+<p><span style="color: orange;">2.</span></p>
+<h4 id="save-the-address-of-the-colletion-for-our-new-nft-declare-new-nft-creation-into-our-collection-await-nft-creation-transaction-and-fetch-the-nft"><a class="header" href="#save-the-address-of-the-colletion-for-our-new-nft-declare-new-nft-creation-into-our-collection-await-nft-creation-transaction-and-fetch-the-nft">Save the address of the colletion for our new NFT, declare new NFT creation into our collection, await NFT creation transaction, and fetch the NFT</a></h4>
+<p>We need to save the address for our collection because we are about to use it to make the NFT that belongs to the collection. The address for your collection can be copied from the url link to the collection as shown in the terminal or Solana Explorer link, as in - <code>https://explorer.solana.com/address/&lt;collection-address-here&gt;</code>.</p>
+<pre><code class="language-ts">/*
+  create-collection.ts
+*/
+
+// imports
+...
+
+// const connection
+...
+
+// const user
+const user = await getKeypairFromFile();
+
+// await airdropIfRequired(...);
+...
+
+// console.log(&quot;Loaded user&quot;, user.publicKey.toBase58());
+...
+
+const umi = createUmi(connection.rpcEndpoint); // umi connection to Devnet
+umi.use(mplTokenMetadata());
+
+const umiUser = umi.eddsa.createKeypairFromSecretKey(user.secretKey);// this is just a copy of user, but it is in the format that umi uses for secret keys
+umi.use(keypairIdentity(umiUser));
+console.log(&quot;Set-up Umi instance for user&quot;);
+
+
+const collectionAddress = new publicKey(&quot;&lt;collection-address-here&gt;&quot;);
+
+console.log(`Creating NFT...`);
+
+const mint = generateSigner(umi); // make a keypair (as mint) using umi, because only one NFT can be minted out per mint
+
+const transaction = await createNft(umi, {
+	mint,
+	name: 'My 1st NFT',
+	uri: '&lt;raw-link-to-your-.json-metadata&gt;',
+	sellerFeeBasisPoints: percentAmount(0),
+    collection: {
+        key: collectionAddress,
+        verified: false, // we would verify that the NFT is part of our collection later on
+    } // provides some information about the collection we want to add the NFT to
+});
+
+await transaction.sendAndConfirm(umi);
+
+const createdNft = await fetchDigitalAsset(
+    umi,
+    mint.publicKey
+);
+
+console.log(
+    `Created NFT 🖼️! Address is ${getExplorerLink(
+        &quot;address&quot;,
+        createdNft.mint.publicKey,
+        &quot;devnet&quot; // a link for devnet
+    )}`
+);
+
+</code></pre>
+<p>Please note that <code>&lt;raw-link-to-your-.json-metadata&gt;</code> of <code>createNft()</code>' object argument must be a raw link to a Json file that loads up without extra HTML in-between. In mainnet, you can make use of decentralized storage solutions, e.g, Arweave, or Iris to store your json metadata for permanence instead of github like we did here for demonstrative purposes.</p>
+<p>Your <code>new-nft-metadata.json</code> file could look like this</p>
+<pre><code class="language-json">{
+	&quot;name&quot;: &quot;New NFT 1&quot;,
+	&quot;description&quot;: &quot;A first member of the Test Collection 1 series&quot;,
+	&quot;symbol&quot;: &quot;TC1-N1&quot;,
+	&quot;image&quot;: &quot;&lt;raw-link-to-your-new-nft&gt;&quot;
+}
+</code></pre>
+<p>Just like with our metatdata.json file itself, the image-link value for the image property in it should also be a raw link that loads up an image without extra HTML or anything else surrounding it.</p>
+<br/>
+<p><span style="color: orange;">3.</span></p>
+<h4 id="run-our-add-nft-to-collectionts-script"><a class="header" href="#run-our-add-nft-to-collectionts-script">Run our 'add-nft-to-collection.ts' script</a></h4>
+<p>This guidebook assumes you have <code>esrun</code> already installed for this project. Let us run our <code>our-to-collection.ts</code> script using command</p>
+<pre><code class="language-bash">npx esrun add-nft-to-collection.ts
+</code></pre>
+<br/>
+<p><span style="color: orange;">4.</span></p>
+<h4 id="check-out-your-new-collection-on-solana-explorer"><a class="header" href="#check-out-your-new-collection-on-solana-explorer">Check out your new collection on Solana Explorer</a></h4>
+<p>Upon successfuly running our <code>add-nft-to-collection.ts</code> code, it would have added a new NFT to our existing &quot;Test Collection 1&quot;, and then provide us a link to it on Solana Explorer right inside the terminal. Follow this link using <code>Command + click</code> or <code>Ctrl + click</code> to see the new NFT.</p>
+<p><img src="./assets/New-NFT-added-to-Test-Collection-1-as-seen-on-Solana-Explorer-Snapshot.png" alt="Screenshot of new NFT added to &quot;Test Collection 1&quot; as seen on Solana Explorer" title="Our new NFT added to Test Collection 1 as seen on Solana Explorer" /></p>
+<hr />
+<p>Timestamp - [04:09:13 - 04:19:21], [04:19:22 - ]</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="21. Making an NFT Collection.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="21. Making an NFT Collection.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

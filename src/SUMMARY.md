@@ -54,3 +54,5 @@
 # Project 6: NFTs
 
 - [NFTs Overview](20.%20NFTs%20Overview.md)
+- [Making a NFT Collection](21.%20Making%20an%20NFT%20Collection.md)
+- [Adding a NFT to a collection](22.%20Adding%20an%20NFT%20to%20a%20collection.md)
