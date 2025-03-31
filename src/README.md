@@ -22,7 +22,7 @@ You would find the conventions used in this guidebook both consistent and very i
 
 ### Contributions and Support
 
-- This guidebook would benefit greatly from any kind of support possible. With your support, the guidebook will deliver better value and satisfaction to the new and existing Solana developer. Reading this guidebook is another way you can offer your support and improve the correctness and learner-utility it strives to achieve. Should you find typos or inaccuracies in any chapter, page, paragraph or sentence in this guidebook, please feel free to contribute the necessary changes [here](https://iodapson.github.io). Please feel free to fork this guidebook and translate it into other languages.
+- This guidebook would benefit greatly from any kind of support possible. With your support, the guidebook will deliver better value and satisfaction to the new and existing Solana developer. Reading this guidebook is another way you can offer your support and improve the correctness and learner-utility it strives to achieve. Should you find typos or inaccuracies in any chapter, page, paragraph or sentence in this guidebook, please feel free to contribute the necessary changes [here](https://iodapson.github.io/solana-blockchain-guide). Please feel free to fork this guidebook and translate it into other languages.
 
 <br/>
 
